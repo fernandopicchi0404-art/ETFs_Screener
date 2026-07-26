@@ -3,3 +3,4 @@
 !.env.example
 data/cache/
 data/raw/*.xml
+data/output/

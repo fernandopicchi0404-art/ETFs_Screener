@@ -1,8 +1,0 @@
-{
-  "etf": "SCHY",
-  "holdings_total": 105,
-  "equities_processed": 5,
-  "companies_with_data": 2,
-  "exceptions": 3,
-  "output_dir": "/workspace/data/output/schy"
-}
