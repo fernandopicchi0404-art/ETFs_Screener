@@ -1,0 +1,5 @@
+etf,symbol,period,test_name,calculated,reference,abs_diff,pct_diff,tolerance,result,source,source_url,comment
+SCHY,DFM:EMIRATESNBD,2025,eps_reconciliation,3.7998732372048805,3.7998732372048805,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,DFM:EMIRATESNBD,2025,balance_sheet_identity,1164442000000,1164442000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,DFM:EMIRATESNBD,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,Moeda do demonstrativo versus moeda do preço.
+SCHY,BSE:BNHOLDINGS,,dividend_presence,,,,,,WARNING,internal,,Nenhum campo de dividendos encontrado na ROIC para este ativo.

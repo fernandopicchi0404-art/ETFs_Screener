@@ -1,0 +1,14 @@
+{
+  "Emirates NBD Bank PJSC": {
+    "symbol": "",
+    "cusip": "",
+    "country": "AE",
+    "roic_symbol": "DFM:EMIRATESNBD"
+  },
+  "BOC Hong Kong Holdings Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "HK",
+    "roic_symbol": "BSE:BNHOLDINGS"
+  }
+}

@@ -1,0 +1,4 @@
+etf,symbol,date,severity,tag,stage,message,metric_impact,recommended_action,status,resolved_at
+SCHY,HCL Technologies Ltd,2026-07-26,BLOCKER,MAPPING_NOT_FOUND,resolver,Não foi possível mapear HCL Technologies Ltd para um identificador ROIC.,todas,Revisar mapeamento manual em data/mappings/schy_symbols.json,pending,
+SCHY,Vodacom Group Ltd,2026-07-26,BLOCKER,MAPPING_NOT_FOUND,resolver,Não foi possível mapear Vodacom Group Ltd para um identificador ROIC.,todas,Revisar mapeamento manual em data/mappings/schy_symbols.json,pending,
+SCHY,Banco do Brasil SA,2026-07-26,BLOCKER,MAPPING_NOT_FOUND,resolver,Não foi possível mapear Banco do Brasil SA para um identificador ROIC.,todas,Revisar mapeamento manual em data/mappings/schy_symbols.json,pending,
