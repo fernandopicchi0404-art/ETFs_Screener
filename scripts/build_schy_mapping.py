@@ -34,13 +34,28 @@ def build_mapping(limit: int | None = None) -> None:
             results.append({**existing, "name": holding.name, "status": "cached"})
             continue
 
-        symbol, status, candidates = resolve_roic_symbol(
-            client,
-            company_name=holding.name,
-            country=holding.country,
-            known_symbol=existing.get("symbol"),
-            known_roic_symbol=existing.get("roic_symbol"),
-        )
+        try:
+            symbol, status, candidates = resolve_roic_symbol(
+                client,
+                company_name=holding.name,
+                country=holding.country,
+                known_symbol=existing.get("symbol"),
+                known_roic_symbol=existing.get("roic_symbol"),
+            )
+        except Exception as exc:  # noqa: BLE001
+            entry = {
+                "name": holding.name,
+                "country": holding.country,
+                "symbol": existing.get("symbol", ""),
+                "cusip": holding.cusip or "",
+                "roic_symbol": "",
+                "status": "error",
+                "error": str(exc),
+                "top_candidates": [],
+            }
+            results.append(entry)
+            print(f"  erro: {exc}", flush=True)
+            continue
         entry = {
             "name": holding.name,
             "country": holding.country,

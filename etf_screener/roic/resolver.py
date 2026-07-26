@@ -10,12 +10,24 @@ LEGAL_SUFFIXES = re.compile(
     re.IGNORECASE,
 )
 
+MANUAL_ROIC_SYMBOLS = {
+    "BOC Hong Kong Holdings Ltd": "HKEX:2388",
+    "Imperial Brands PLC": "LSE:IMB",
+    "Kone Oyj": "HEL:KNEBV",
+    "Tung Ho Steel Enterprise Corp": "TWSE:2006",
+    "Saudi Telecom Co": "TADAWUL:7010",
+}
+
 KNOWN_NAME_QUERIES = {
     "HCL Technologies Ltd": ["HCLTECH"],
     "Vodacom Group Ltd": ["Vodacom"],
     "Emirates NBD Bank PJSC": ["Emirates NBD"],
     "Banco do Brasil SA": ["BBAS3", "Banco do Brasil"],
-    "BOC Hong Kong Holdings Ltd": ["2388", "BOC Hong Kong"],
+    "BOC Hong Kong Holdings Ltd": ["HKEX:2388", "2388"],
+    "Imperial Brands PLC": ["IMB", "Imperial Brands"],
+    "Kone Oyj": ["KNEBV", "KONE"],
+    "Tung Ho Steel Enterprise Corp": ["TWSE:2006", "Tung Ho Steel"],
+    "Saudi Telecom Co": ["TADAWUL:7010", "7010", "Saudi Telecom"],
     "Deutsche Post AG": ["Deutsche Post", "DHL"],
     "Roche Holding AG Ordinary Shares new": ["Roche"],
     "British American Tobacco PLC": ["British American Tobacco", "BATS"],
@@ -94,6 +106,10 @@ def resolve_roic_symbol(
     known_symbol: str | None = None,
     known_roic_symbol: str | None = None,
 ) -> tuple[str | None, str, list[dict[str, Any]]]:
+    manual_symbol = MANUAL_ROIC_SYMBOLS.get(company_name)
+    if manual_symbol:
+        return manual_symbol, "manual", []
+
     if known_roic_symbol:
         return known_roic_symbol, "mapped", []
 

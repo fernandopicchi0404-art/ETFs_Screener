@@ -3,12 +3,77 @@
     "symbol": "",
     "cusip": "",
     "country": "AE",
-    "roic_symbol": "DFM:EMIRATESNBD"
+    "roic_symbol": "DFM:EMIRATESNBD",
+    "status": "search_match"
   },
   "BOC Hong Kong Holdings Ltd": {
     "symbol": "",
     "cusip": "",
     "country": "HK",
-    "roic_symbol": "BSE:BNHOLDINGS"
+    "roic_symbol": "HKEX:2388",
+    "status": "manual"
+  },
+  "HCL Technologies Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "IN",
+    "roic_symbol": "NSE:HCLTECH",
+    "status": "search_match"
+  },
+  "Vodacom Group Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "ZA",
+    "roic_symbol": "JSE:VOD",
+    "status": "search_match"
+  },
+  "Banco do Brasil SA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "BR",
+    "roic_symbol": "B3:BBAS3",
+    "status": "search_match"
+  },
+  "Imperial Brands PLC": {
+    "symbol": "",
+    "cusip": "",
+    "country": "GB",
+    "roic_symbol": "LSE:IMB",
+    "status": "manual"
+  },
+  "Kone Oyj": {
+    "symbol": "",
+    "cusip": "",
+    "country": "FI",
+    "roic_symbol": "HEL:KNEBV",
+    "status": "manual"
+  },
+  "Tung Ho Steel Enterprise Corp": {
+    "symbol": "",
+    "cusip": "",
+    "country": "TW",
+    "roic_symbol": "TWSE:2006",
+    "status": "manual"
+  },
+  "Sberbank of Russia PJSC": {
+    "symbol": "",
+    "cusip": "",
+    "country": "RU",
+    "roic_symbol": "MOEX:SBER",
+    "status": "search_match"
+  },
+  "Saudi Telecom Co": {
+    "symbol": "",
+    "cusip": "",
+    "country": "SA",
+    "roic_symbol": "TADAWUL:7010",
+    "status": "manual"
+  },
+  "British American Tobacco PLC": {
+    "symbol": "",
+    "cusip": "",
+    "country": "GB",
+    "roic_symbol": "LSE:BATS",
+    "status": "search_match"
   }
 }

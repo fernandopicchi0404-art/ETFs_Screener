@@ -63,7 +63,7 @@ class RoicClient:
                     time.sleep(REQUEST_INTERVAL_SECONDS * (attempt + 1))
                     continue
                 raise last_error from exc
-            except urllib.error.URLError as exc:
+            except (urllib.error.URLError, TimeoutError) as exc:
                 last_error = RuntimeError(f"Erro de rede em {path}: {exc}")
                 time.sleep(REQUEST_INTERVAL_SECONDS * (attempt + 1))
 
