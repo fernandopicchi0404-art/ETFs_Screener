@@ -28,7 +28,7 @@ def build_mapping(limit: int | None = None) -> None:
     results = []
 
     for index, holding in enumerate(holdings, start=1):
-        print(f"[{index}/{len(holdings)}] Mapeando {holding.name}...")
+        print(f"[{index}/{len(holdings)}] Mapeando {holding.name}...", flush=True)
         existing = mapping.get(holding.name, {})
         if existing.get("roic_symbol"):
             results.append({**existing, "name": holding.name, "status": "cached"})

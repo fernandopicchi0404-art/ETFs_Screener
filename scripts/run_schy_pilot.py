@@ -124,7 +124,7 @@ def run(limit: int | None = None) -> None:
     run_date = datetime.now(timezone.utc).date().isoformat()
 
     for index, holding in enumerate(equities, start=1):
-        print(f"[{index}/{len(equities)}] Processando {holding.name}...")
+        print(f"[{index}/{len(equities)}] Processando {holding.name}...", flush=True)
         mapped = symbol_map.get(holding.name, {})
         roic_symbol, mapping_status, _ = resolve_roic_symbol(
             client,
