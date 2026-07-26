@@ -52,10 +52,10 @@ def first_period(payload: dict) -> dict:
     return data[0]
 
 
-def format_millions(value: float | int | None, currency: str) -> str:
+def format_currency(value: float | int | None, currency: str) -> str:
     if value is None:
         return "n/d"
-    return f"{currency} {value:,.0f} (milhões, conforme API)"
+    return f"{currency} {value:,.0f}"
 
 
 def main() -> int:
@@ -92,12 +92,12 @@ def main() -> int:
     )
     print(
         "Lucro líquido (anual mais recente, não TTM): "
-        f"{format_millions(income.get('is_net_income'), income['currency'])} "
+        f"{format_currency(income.get('is_net_income'), income['currency'])} "
         f"(exercício {income['fiscal_year']}, encerrado em {income['period_end_date']})"
     )
     print(
         "Patrimônio líquido (total): "
-        f"{format_millions(balance.get('bs_total_equity'), balance['currency'])} "
+        f"{format_currency(balance.get('bs_total_equity'), balance['currency'])} "
         f"(exercício {balance['fiscal_year']}, encerrado em {balance['period_end_date']})"
     )
     print(
