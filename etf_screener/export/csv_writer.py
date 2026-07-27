@@ -18,6 +18,7 @@ COMPANY_FIELDS = [
     "etf",
     "roic_symbol",
     "company_name",
+    "weight_normalized",
     "exchange",
     "country",
     "mapping_status",

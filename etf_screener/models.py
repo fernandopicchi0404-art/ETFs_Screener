@@ -64,6 +64,7 @@ class CompanyFundamentals:
     mapping_status: str
     fundamental_currency: str
     price_currency: str
+    weight_normalized: float | None = None
     fiscal_year: int | None = None
     fiscal_year_end: str | None = None
     price_date: str | None = None

@@ -20,6 +20,46 @@ MANUAL_ROIC_SYMBOLS = {
     "Kuehne + Nagel International AG": "SWX:KNIN",
     "TMBThanachart Bank PCL": "SET:TTB",
     "Gjensidige Forsikring ASA": "OSL:GJF",
+    "Japan Tobacco Inc": "TSE:2914",
+    "Roche Holding AG": "SWX:ROG",
+    "Roche Holding AG Ordinary Shares new": "SWX:ROG",
+    "Ono Pharmaceutical Co Ltd": "TSE:4528",
+    "Vinci SA": "EPA:DG",
+    "Insurance Australia Group Ltd": "ASX:IAG",
+    "Singapore Exchange Ltd": "SGX:S68",
+    "DBS Group Holdings Ltd": "SGX:D05",
+    "Wesfarmers Ltd": "ASX:WES",
+    "Rio Tinto Ltd": "ASX:RIO",
+    "KT&G Corp": "KRX:033780",
+    "Daito Trust Construction Co Ltd": "TSE:1878",
+    "Industries Qatar QSC": "QSE:IQCD",
+    "Telkom Indonesia Persero Tbk PT": "IDX:TLKM",
+    "Medibank Pvt Ltd": "ASX:MPL",
+    "LG Uplus Corp": "KRX:032640",
+    "Bank Rakyat Indonesia Persero Tbk PT": "IDX:BBRI",
+    "Bank Central Asia Tbk PT": "IDX:BBCA",
+    "Jarir Marketing Co": "TADAWUL:4190",
+    "Chipbond Technology Corp": "TWSE:6147",
+    "Radiant Opto-Electronics Corp": "TWSE:6176",
+    "Cheil Worldwide Inc": "KRX:030000",
+    "Koninklijke Ahold Delhaize NV": "AMS:AD",
+    "Jardine Cycle & Carriage Ltd": "SGX:C07",
+    "Coca-Cola HBC AG": "LSE:CCH",
+    "Cie Generale des Etablissements Michelin SCA": "EPA:ML",
+    "United Overseas Bank Ltd": "SGX:U11",
+    "Severstal PAO": "MOEX:CHMF",
+    "Genting Singapore Ltd": "SGX:G13",
+    "China Construction Bank Corp": "HKEX:939",
+    "Swisscom AG": "SWX:SCMN",
+    "Quebecor Inc": "TSX:QBR/B",
+    "Telekom Malaysia Bhd": "KLSE:TM",
+    "Abu Dhabi Islamic Bank PJSC": "ADX:ADIB",
+    "Arca Continental SAB de CV": "BMV:AC",
+    "Kimberly-Clark de Mexico SAB de CV": "BMV:KIMBER/A",
+    "Neoenergia SA": "B3:NEOE3",
+    "Sanlam Ltd": "JSE:SLM",
+    "Generali": "BIT:G",
+    "Coca-Cola Femsa SAB de CV": "BMV:KOFL",
 }
 
 KNOWN_NAME_QUERIES = {
@@ -94,6 +134,8 @@ def _score_candidate(candidate: dict[str, Any], company_name: str, country: str)
 
     if candidate.get("listing_country_code") == country:
         score += 12
+    elif candidate.get("listing_country_code"):
+        score -= 20
     if candidate.get("type") == "stock":
         score += 4
     if candidate.get("is_primary"):
@@ -143,7 +185,15 @@ def resolve_roic_symbol(
     if best_symbol is None:
         return None, "not_found", all_candidates[:10]
 
-    if best_score < 10:
+    if best_score < 15:
         return best_symbol, "ambiguous", all_candidates[:10]
 
     return best_symbol, best_status, all_candidates[:10]
+
+
+def fetch_ticker_metadata(client: RoicClient, roic_symbol: str) -> dict[str, Any] | None:
+    payload = client.get("/tickers/search", {"query": roic_symbol, "limit": 10})
+    for candidate in payload.get("data", []):
+        if candidate.get("symbol") == roic_symbol:
+            return candidate
+    return None

@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import Any
 
+from etf_screener.metrics.currency import normalize_price
+from etf_screener.metrics.eligibility import apply_eligibility, currencies_compatible
 from etf_screener.models import CompanyFundamentals, ExceptionRecord, ValidationResult
 
 
@@ -106,7 +108,11 @@ def extract_fundamentals(
     if buybacks_gross is not None or share_issuance is not None:
         buybacks_net = (buybacks_gross or 0) - (share_issuance or 0)
 
-    price = price_payload.get("close")
+    price_raw = price_payload.get("close")
+    fundamental_currency = income.get("currency") or balance.get("currency") or ""
+    price_currency = price_payload.get("currency") or ""
+    normalized_price = normalize_price(price_raw, price_currency, fundamental_currency)
+    price = normalized_price.value
     market_cap = price * diluted_shares if price and diluted_shares else None
 
     dividend_per_share = _safe_div(dividends_paid, diluted_shares)
@@ -114,10 +120,10 @@ def extract_fundamentals(
     buyback_net_per_share = _safe_div(buybacks_net, diluted_shares)
 
     roe = _safe_div(earnings_for_common, common_equity_average)
-    earnings_yield = _safe_div(diluted_eps, price)
-    dividend_yield = _safe_div(dividend_per_share, price)
-    gross_buyback_yield = _safe_div(buyback_gross_per_share, price)
-    net_buyback_yield = _safe_div(buyback_net_per_share, price)
+    earnings_yield = _safe_div(diluted_eps, price) if price is not None else None
+    dividend_yield = _safe_div(dividend_per_share, price) if price is not None else None
+    gross_buyback_yield = _safe_div(buyback_gross_per_share, price) if price is not None else None
+    net_buyback_yield = _safe_div(buyback_net_per_share, price) if price is not None else None
     gross_shareholder_yield = None
     net_shareholder_yield = None
     if dividend_yield is not None or gross_buyback_yield is not None:
@@ -142,15 +148,21 @@ def extract_fundamentals(
     if common_equity_average is not None and common_equity_average <= 0:
         tags.append("NEGATIVE_EQUITY")
 
-    return CompanyFundamentals(
+    if normalized_price.status == "currency_mismatch":
+        tags.append("CURRENCY_MISMATCH")
+        quality = "BLOCKER"
+    elif normalized_price.status == "unit_converted":
+        tags.append("PRICE_UNIT_CONVERTED")
+
+    company = CompanyFundamentals(
         etf=etf,
         roic_symbol=roic_symbol,
         company_name=company_name,
         exchange=roic_symbol.split(":")[0] if ":" in roic_symbol else "",
         country=country,
         mapping_status=mapping_status,
-        fundamental_currency=income.get("currency") or balance.get("currency") or "",
-        price_currency=price_payload.get("currency") or "",
+        fundamental_currency=fundamental_currency,
+        price_currency=price_currency,
         fiscal_year=income.get("fiscal_year"),
         fiscal_year_end=income.get("period_end_date"),
         price_date=price_payload.get("date"),
@@ -193,8 +205,15 @@ def extract_fundamentals(
             "balance_prior": balance_prior,
             "cashflow": cashflow,
             "price": price_payload,
+            "price_normalization": {
+                "status": normalized_price.status,
+                "factor": normalized_price.factor,
+                "price_raw": price_raw,
+            },
         },
     )
+    apply_eligibility(company, mapping_status)
+    return company
 
 
 def validate_company(company: CompanyFundamentals) -> list[ValidationResult]:
@@ -251,22 +270,24 @@ def validate_company(company: CompanyFundamentals) -> list[ValidationResult]:
         )
 
     if company.fundamental_currency and company.price_currency:
-        same = company.fundamental_currency == company.price_currency
+        compatible = currencies_compatible(company.fundamental_currency, company.price_currency)
+        converted = company.raw.get("price_normalization", {}).get("status") == "unit_converted"
+        passed = compatible or converted
         results.append(
             ValidationResult(
                 etf=company.etf,
                 symbol=company.roic_symbol,
                 period=str(company.fiscal_year or ""),
                 test_name="currency_match",
-                calculated=1.0 if same else 0.0,
+                calculated=1.0 if passed else 0.0,
                 reference=1.0,
-                abs_diff=0.0 if same else 1.0,
-                pct_diff=0.0 if same else 1.0,
+                abs_diff=0.0 if passed else 1.0,
+                pct_diff=0.0 if passed else 1.0,
                 tolerance=0.0,
-                result="PASS" if same else "WARNING",
+                result="PASS" if passed else "BLOCKER",
                 source="internal",
                 source_url="",
-                comment="Moeda do demonstrativo versus moeda do preço.",
+                comment="Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável.",
             )
         )
 
@@ -295,42 +316,51 @@ def validate_company(company: CompanyFundamentals) -> list[ValidationResult]:
 def aggregate_etf(
     companies: list[CompanyFundamentals],
     holdings: list,
+    target_clean_coverage: float = 0.90,
 ) -> dict[str, float | int | str | None]:
     equities = [holding for holding in holdings if holding.included_in_equity_analysis]
     equity_weight_total = sum(holding.weight_original for holding in equities)
     non_equity_weight = 100 - equity_weight_total
+    weight_by_name = {holding.name: holding.weight_normalized for holding in equities}
 
-    def weighted(metric_name: str) -> tuple[float | None, float]:
+    def weighted(metric_name: str, require_clean: bool = False) -> tuple[float | None, float, float | None]:
         covered = 0.0
         total = 0.0
+        simple_values: list[float] = []
         for company in companies:
-            weight = next(
-                (holding.weight_normalized for holding in equities if holding.name == company.company_name),
-                None,
-            )
+            weight = weight_by_name.get(company.company_name)
             value = getattr(company, metric_name)
             if weight is None or value is None:
                 continue
+            if require_clean and company.quality == "BLOCKER":
+                continue
             total += (weight / 100) * value
             covered += weight
-        return (total if covered else None, covered)
+            simple_values.append(value)
+        mean_covered = sum(simple_values) / len(simple_values) if simple_values else None
+        return (total if covered else None, covered, mean_covered)
 
-    earnings_yield, earnings_cov = weighted("earnings_yield")
-    dividend_yield, dividend_cov = weighted("dividend_yield")
-    gross_buyback_yield, buyback_cov = weighted("gross_buyback_yield")
-    net_buyback_yield, _ = weighted("net_buyback_yield")
-    gross_shareholder_yield, shareholder_cov = weighted("gross_shareholder_yield")
-    net_shareholder_yield, _ = weighted("net_shareholder_yield")
+    earnings_yield, earnings_cov, earnings_mean = weighted("earnings_yield", require_clean=True)
+    dividend_yield, dividend_cov, dividend_mean = weighted("dividend_yield", require_clean=True)
+    gross_buyback_yield, buyback_cov, buyback_mean = weighted("gross_buyback_yield", require_clean=True)
+    net_buyback_yield, _, _ = weighted("net_buyback_yield", require_clean=True)
+    gross_shareholder_yield, shareholder_cov, shareholder_mean = weighted(
+        "gross_shareholder_yield",
+        require_clean=True,
+    )
+    net_shareholder_yield, _, _ = weighted("net_shareholder_yield", require_clean=True)
 
     proportional_earnings = 0.0
     proportional_equity = 0.0
     roe_cov = 0.0
     for company in companies:
-        weight = next(
-            (holding.weight_normalized for holding in equities if holding.name == company.company_name),
-            None,
-        )
-        if weight is None or company.earnings_for_common is None or company.common_equity_average is None:
+        weight = weight_by_name.get(company.company_name)
+        if (
+            weight is None
+            or company.quality == "BLOCKER"
+            or company.earnings_for_common is None
+            or company.common_equity_average is None
+        ):
             continue
         factor = weight / 100
         proportional_earnings += company.earnings_for_common * factor
@@ -338,12 +368,23 @@ def aggregate_etf(
         roe_cov += weight
 
     roe_aggregate = _safe_div(proportional_earnings, proportional_equity)
+    from etf_screener.holdings.selection import clean_company_weight
+
+    clean_coverage = 0.0
+    for company in companies:
+        holding = next((item for item in equities if item.name == company.company_name), None)
+        if holding is None:
+            continue
+        clean_coverage += clean_company_weight(company, holding)
 
     return {
         "etf": companies[0].etf if companies else "SCHY",
         "equity_positions": len(equities),
         "equity_weight_original_pct": equity_weight_total,
         "non_equity_weight_original_pct": non_equity_weight,
+        "target_clean_coverage_pct": target_clean_coverage * 100,
+        "clean_coverage_pct": clean_coverage,
+        "target_clean_coverage_met": clean_coverage >= target_clean_coverage * 100,
         "roe_aggregate": roe_aggregate,
         "earnings_yield_aggregate": earnings_yield,
         "dividend_yield_aggregate": dividend_yield,
@@ -351,6 +392,10 @@ def aggregate_etf(
         "net_buyback_yield_aggregate": net_buyback_yield,
         "gross_shareholder_yield_aggregate": gross_shareholder_yield,
         "net_shareholder_yield_aggregate": net_shareholder_yield,
+        "earnings_yield_mean_covered": earnings_mean,
+        "dividend_yield_mean_covered": dividend_mean,
+        "gross_buyback_yield_mean_covered": buyback_mean,
+        "gross_shareholder_yield_mean_covered": shareholder_mean,
         "coverage_roe_pct": roe_cov,
         "coverage_earnings_yield_pct": earnings_cov,
         "coverage_dividend_yield_pct": dividend_cov,
