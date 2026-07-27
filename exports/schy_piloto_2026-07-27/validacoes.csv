@@ -1,0 +1,281 @@
+etf,symbol,period,test_name,calculated,reference,abs_diff,pct_diff,tolerance,result,source,source_url,comment
+SCHY,ASX:BHP,2025,eps_reconciliation,2.6959410977769034,2.6959410977769034,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,ASX:BHP,2025,balance_sheet_identity,165295526000,165295526000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,ASX:BHP,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,TSE:4528,2026,eps_reconciliation,148.5137344391274,148.5137344391274,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,TSE:4528,2026,balance_sheet_identity,1106515000000,1106515000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,TSE:4528,2026,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,LSE:GSK,2025,eps_reconciliation,1.3883896040806412,1.3883896040806412,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,LSE:GSK,2025,balance_sheet_identity,61118000000,61118000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,LSE:GSK,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,EURONEXT:TTE,2025,eps_reconciliation,4.970423999121551,4.970423999121551,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,EURONEXT:TTE,2025,balance_sheet_identity,247716910499.99997,247716910499.99994,3.0517578125e-05,1.2319537678474317e-16,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,EURONEXT:TTE,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,MIL:ENEL,2025,eps_reconciliation,0.390000000012,0.390000000012,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,MIL:ENEL,2025,balance_sheet_identity,178657000000,178657000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,MIL:ENEL,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,LSE:ULVR,2025,eps_reconciliation,3.7612066234599966,3.7612066234599966,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,LSE:ULVR,2025,balance_sheet_identity,61450778239.92481,61450778239.92481,0.0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,LSE:ULVR,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,LSE:BATS,2025,eps_reconciliation,3.530695770804911,3.530695770804911,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,LSE:BATS,2025,balance_sheet_identity,109290000000,109290000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,LSE:BATS,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,XETR:DHL,2025,eps_reconciliation,3.04377666801211,3.04377666801211,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,XETR:DHL,2025,balance_sheet_identity,71018000000,71018000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,XETR:DHL,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,ASX:WES,2025,eps_reconciliation,2.580246913580247,2.580246913580247,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,ASX:WES,2025,balance_sheet_identity,27981000000,27981000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,ASX:WES,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,MIL:ENI,2025,eps_reconciliation,0.8445322366503676,0.8445322366503676,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,MIL:ENI,2025,balance_sheet_identity,137069000000,137069000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,MIL:ENI,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,ASX:RIO,2025,eps_reconciliation,5.612113846959465,5.612113846959465,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,ASX:RIO,2025,balance_sheet_identity,95072180320,95072180320,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,ASX:RIO,2025,currency_match,0.0,1.0,1.0,1.0,0.0,BLOCKER,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,EURONEXT:ML,2025,eps_reconciliation,2.3348988140396836,2.3348988140396836,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,EURONEXT:ML,2025,balance_sheet_identity,35018000000,35018000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,EURONEXT:ML,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,LSE:VOD,2026,eps_reconciliation,-0.014438531214086085,-0.014438531214086085,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,LSE:VOD,2026,balance_sheet_identity,113555930949.02324,113555930949.02324,0.0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,LSE:VOD,2026,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,XETR:ALV,2025,eps_reconciliation,28.13619393742914,28.13619393742914,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,XETR:ALV,2025,balance_sheet_identity,1024276000000,1024276000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,XETR:ALV,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,HEL:KNEBV,2025,eps_reconciliation,1.8881228002242398,1.8881228002242398,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,HEL:KNEBV,2025,balance_sheet_identity,9052000000,9052000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,HEL:KNEBV,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,SIX:SCMN,2025,eps_reconciliation,24.535969509299335,24.535969509299335,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,SIX:SCMN,2025,balance_sheet_identity,36023000000,36023000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,SIX:SCMN,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,EURONEXT:KPN,2025,eps_reconciliation,0.22352579520499663,0.22352579520499663,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,EURONEXT:KPN,2025,balance_sheet_identity,12696000000,12696000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,EURONEXT:KPN,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,EURONEXT:AD,2025,eps_reconciliation,2.501657458563536,2.501657458563536,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,EURONEXT:AD,2025,balance_sheet_identity,49089000000,49089000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,EURONEXT:AD,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,TADAWUL:7010,2025,eps_reconciliation,2.965606,2.965606,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,TADAWUL:7010,2025,balance_sheet_identity,157476669000,157476669000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,TADAWUL:7010,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,SIX:SGSN,2025,eps_reconciliation,3.461139896373057,3.461139896373057,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,SIX:SGSN,2025,balance_sheet_identity,7883000000,7883000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,SIX:SGSN,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,SIX:ZURN,2025,eps_reconciliation,37.40237140205919,37.40237140205919,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,SIX:ZURN,2025,balance_sheet_identity,322665852180,322665852180,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,SIX:ZURN,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,TSE:2914,2025,eps_reconciliation,287.3258965857681,287.3258965857681,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,TSE:2914,2025,balance_sheet_identity,8419240000000,8419240000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,TSE:2914,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,NSE:POWERGRID,2026,eps_reconciliation,17.12571603949105,17.12571603949105,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,NSE:POWERGRID,2026,balance_sheet_identity,2947272600000,2947272600000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,NSE:POWERGRID,2026,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,HKEX:939,2025,eps_reconciliation,0.9575745140368115,0.9575745140368115,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,HKEX:939,2025,balance_sheet_identity,45631818000000,45631818000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,HKEX:939,2025,currency_match,0.0,1.0,1.0,1.0,0.0,BLOCKER,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,LSE:IMB,2025,eps_reconciliation,2.4933782807608957,2.4933782807608957,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,LSE:IMB,2025,balance_sheet_identity,28715000000,28715000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,LSE:IMB,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,NSE:HCLTECH,2026,eps_reconciliation,61.357392516930496,61.357392516930496,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,NSE:HCLTECH,2026,balance_sheet_identity,1162580000000,1162580000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,NSE:HCLTECH,2026,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,ASX:TLS,2025,eps_reconciliation,0.18800000000588582,0.18800000000588582,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,ASX:TLS,2025,balance_sheet_identity,44968000000,44968000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,ASX:TLS,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,TSX:BNS,2025,eps_reconciliation,5.83573717948718,5.83573717948718,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,TSX:BNS,2025,balance_sheet_identity,1460042000000,1460042000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,TSX:BNS,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,SGX:D05,2025,eps_reconciliation,3.8364912280701753,3.8364912280701753,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,SGX:D05,2025,balance_sheet_identity,897488000000,897488000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,SGX:D05,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,OSL:TEL,2025,eps_reconciliation,5.141019915787843,5.141019915787843,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,OSL:TEL,2025,balance_sheet_identity,221651000000,221651000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,OSL:TEL,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,SIX:KNIN,2025,eps_reconciliation,7.415107548526519,7.415107548526519,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,SIX:KNIN,2025,balance_sheet_identity,11927000000,11927000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,SIX:KNIN,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,BME:ELE,2025,eps_reconciliation,2.096816521004728,2.096816521004728,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,BME:ELE,2025,balance_sheet_identity,37482000000,37482000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,BME:ELE,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,HEL:ELISA,2025,eps_reconciliation,2.1288250379702713,2.1288250379702713,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,HEL:ELISA,2025,balance_sheet_identity,3515700000,3515700000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,HEL:ELISA,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,TSX:MFC,2025,eps_reconciliation,3.1973067915690865,3.1973067915690865,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,TSX:MFC,2025,balance_sheet_identity,1025433000000,1025433000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,TSX:MFC,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,TSX:BCE,2025,eps_reconciliation,6.789999996866154,6.789999996866154,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,TSX:BCE,2025,balance_sheet_identity,80165000000,80165000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,TSX:BCE,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,IDX:TLKM,2025,eps_reconciliation,176.51745537856542,176.51745537856542,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,IDX:TLKM,2025,balance_sheet_identity,287280000000000,287280000000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,IDX:TLKM,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,TSE:1878,2026,eps_reconciliation,298.95999958073753,298.95999958073753,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,TSE:1878,2026,balance_sheet_identity,1367502000000,1367502000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,TSE:1878,2026,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,MIL:G,2025,eps_reconciliation,2.6993122840068557,2.6993122840068557,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,MIL:G,2025,balance_sheet_identity,558529000000,558529000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,MIL:G,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,SGX:U11,2025,eps_reconciliation,2.801217650184036,2.801217650184036,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,SGX:U11,2025,balance_sheet_identity,572061000000,572061000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,SGX:U11,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,B3:ITUB4,2025,eps_reconciliation,3.781419703467215,3.781419703467215,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,B3:ITUB4,2025,balance_sheet_identity,3066169000000,3066169000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,B3:ITUB4,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,QSE:IQCD,2025,eps_reconciliation,0.710752561983471,0.710752561983471,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,QSE:IQCD,2025,balance_sheet_identity,43138075000,43138075000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,QSE:IQCD,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,SET:PTTEP,2025,eps_reconciliation,15.182154156171284,15.182154156171284,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,SET:PTTEP,2025,balance_sheet_identity,933936670000,933936670000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,SET:PTTEP,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,LSE:CCH,2025,eps_reconciliation,2.2571695126298725,2.2571695126298725,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,LSE:CCH,2025,balance_sheet_identity,10114600502.87863,10114600502.87863,0.0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,LSE:CCH,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,TSX:SLF,2025,eps_reconciliation,6.477031802120141,6.477031802120141,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,TSX:SLF,2025,balance_sheet_identity,398455000000,398455000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,TSX:SLF,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,JSE:VOD,2026,eps_reconciliation,10.387474528746022,10.387474528746022,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,JSE:VOD,2026,balance_sheet_identity,276433000000,276433000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,JSE:VOD,2026,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,BME:NTGY,2025,eps_reconciliation,2.174308866853485,2.174308866853485,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,BME:NTGY,2025,balance_sheet_identity,39101000000,39101000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,BME:NTGY,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,KRX:033780,2025,eps_reconciliation,10220.000034689452,10220.000034689452,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,KRX:033780,2025,balance_sheet_identity,14189127000000,14189127000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,KRX:033780,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,B3:ABEV3,2025,eps_reconciliation,0.9884913828830839,0.9884913828830839,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,B3:ABEV3,2025,balance_sheet_identity,145087200000,145087200000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,B3:ABEV3,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,TSX:QBR.A,2025,eps_reconciliation,3.689655172413793,3.689655172413793,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,TSX:QBR.A,2025,balance_sheet_identity,12812200000,12812200000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,TSX:QBR.A,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,NSE:ITC,2026,eps_reconciliation,16.508584036411683,16.508584036411683,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,NSE:ITC,2026,balance_sheet_identity,937923800000,937923800000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,NSE:ITC,2026,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,JSE:BVT,2025,eps_reconciliation,17.82511330625145,17.82511330625145,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,JSE:BVT,2025,balance_sheet_identity,124590172000,124590172000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,JSE:BVT,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,JSE:BVT,2025,dividend_presence,,,,,,WARNING,internal,,Nenhum campo de dividendos encontrado na ROIC para este ativo.
+SCHY,KRX:005380,2025,eps_reconciliation,36225.31068241742,36225.31068241742,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,KRX:005380,2025,balance_sheet_identity,368844849000000,368844849000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,KRX:005380,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,ASX:QBE,2025,eps_reconciliation,2.1217590299707854,2.1217590299707854,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,ASX:QBE,2025,balance_sheet_identity,72710283499.99985,72710283500,0.000152587890625,2.0985737268511728e-15,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,ASX:QBE,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,OSL:DNB,2025,eps_reconciliation,29.53872994382167,29.53872994382167,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,OSL:DNB,2025,balance_sheet_identity,3695290000000,3695290000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,OSL:DNB,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,MYX:TM,,dividend_presence,,,,,,WARNING,internal,,Nenhum campo de dividendos encontrado na ROIC para este ativo.
+SCHY,B3:TIMS3,2025,eps_reconciliation,1.7860064713981103,1.7860064713981103,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,B3:TIMS3,2025,balance_sheet_identity,56939179000,56939179000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,B3:TIMS3,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,B3:KLBN3,2025,eps_reconciliation,0.22860000001684602,0.22860000001684602,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,B3:KLBN3,2025,balance_sheet_identity,63796777000,63796777000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,B3:KLBN3,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,IDX:BBCA,2025,eps_reconciliation,466.8529777572306,466.8529777572306,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,IDX:BBCA,2025,balance_sheet_identity,1586828536000000,1586828536000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,IDX:BBCA,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,DFM:EMIRATESNBD,2025,eps_reconciliation,3.7998732372048805,3.7998732372048805,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,DFM:EMIRATESNBD,2025,balance_sheet_identity,1164442000000,1164442000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,DFM:EMIRATESNBD,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,HEL:KESKOA,2025,eps_reconciliation,1.01536238005765,1.01536238005765,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,HEL:KESKOA,2025,balance_sheet_identity,8823100000,8823100000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,HEL:KESKOA,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,HKEX:2388,2025,eps_reconciliation,3.7947445223108733,3.7947445223108733,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,HKEX:2388,2025,balance_sheet_identity,4489809000000,4489809000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,HKEX:2388,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,SGX:G13,2025,eps_reconciliation,0.032282552431049556,0.032282552431049556,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,SGX:G13,2025,balance_sheet_identity,9185799000,9185799000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,SGX:G13,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,SET:CPN,2025,eps_reconciliation,4.198140679144385,4.198140679144385,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,SET:CPN,2025,balance_sheet_identity,302622708263,302622708263,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,SET:CPN,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,TWSE:2385,2025,eps_reconciliation,8.92758857719262,8.92758857719262,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,TWSE:2385,2025,balance_sheet_identity,100995225000,100995225000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,TWSE:2385,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,IDX:BBRI,2025,eps_reconciliation,376.17245159247295,376.17245159247295,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,IDX:BBRI,2025,balance_sheet_identity,2135371105000000,2135371105000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,IDX:BBRI,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,NZX:SPK,2025,eps_reconciliation,0.14076881429344884,0.14076881429344884,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,NZX:SPK,2025,balance_sheet_identity,4525000000,4525000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,NZX:SPK,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,BMV:AC,2025,eps_reconciliation,11.530177388658055,11.530177388658055,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,BMV:AC,2025,balance_sheet_identity,294482969000,294482969000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,BMV:AC,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,QSE:ORDS,2025,eps_reconciliation,1.2064697802197801,1.2064697802197801,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,QSE:ORDS,2025,balance_sheet_identity,63847166000,63847166000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,QSE:ORDS,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,KRX:032640,2025,eps_reconciliation,1221.0000001328526,1221.0000001328526,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,KRX:032640,2025,balance_sheet_identity,19681792000000,19681792000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,KRX:032640,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,TADAWUL:4190,2025,eps_reconciliation,0.8743266666666667,0.8743266666666667,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,TADAWUL:4190,2025,balance_sheet_identity,4416028000,4416028000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,TADAWUL:4190,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,TWSE:6176,2025,eps_reconciliation,9.303097804784537,9.303097804784537,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,TWSE:6176,2025,balance_sheet_identity,68428546000,68428546000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,TWSE:6176,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,B3:BBAS3,2025,eps_reconciliation,2.399518847188782,2.399518847188782,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,B3:BBAS3,2025,balance_sheet_identity,2455143253000,2455143253000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,B3:BBAS3,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,ASX:IAG,2025,eps_reconciliation,0.5613999999041613,0.5613999999041613,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,ASX:IAG,2025,balance_sheet_identity,26309000000,26309000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,ASX:IAG,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,B3:ENGI3,2025,eps_reconciliation,0.8663280597949877,0.8663280597949877,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,B3:ENGI3,2025,balance_sheet_identity,83471647000,83471647000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,B3:ENGI3,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,SGX:S68,2025,eps_reconciliation,0.6026448245587929,0.6026448245587929,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,SGX:S68,2025,balance_sheet_identity,4143988000,4143988000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,SGX:S68,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,TSX:GWO,2025,eps_reconciliation,4.263711384656142,4.263711384656142,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,TSX:GWO,2025,balance_sheet_identity,862828000000,862828000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,TSX:GWO,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,ADX:ADIB,,dividend_presence,,,,,,WARNING,internal,,Nenhum campo de dividendos encontrado na ROIC para este ativo.
+SCHY,TSX:IAG,2025,eps_reconciliation,11.32258064516129,11.32258064516129,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,TSX:IAG,2025,balance_sheet_identity,122808000000,122808000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,TSX:IAG,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,JSE:SLM,2025,eps_reconciliation,7.54032448796178,7.54032448796178,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,JSE:SLM,2025,balance_sheet_identity,1295698000000,1295698000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,JSE:SLM,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,JSE:SLM,2025,dividend_presence,,,,,,WARNING,internal,,Nenhum campo de dividendos encontrado na ROIC para este ativo.
+SCHY,ASX:MPL,2025,eps_reconciliation,0.18184437575316723,0.18184437575316723,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,ASX:MPL,2025,balance_sheet_identity,4700300000,4700300000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,ASX:MPL,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,SGX:C07,2025,eps_reconciliation,3.24385991902834,3.24385991902834,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,SGX:C07,2025,balance_sheet_identity,42678871840,42678871840,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,SGX:C07,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,CPH:TRYG,2025,eps_reconciliation,8.914758089256438,8.914758089256438,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,CPH:TRYG,2025,balance_sheet_identity,103665000000,103665000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,CPH:TRYG,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,TPEX:6147,2025,eps_reconciliation,3.6799999983027725,3.6799999983027725,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,TPEX:6147,2025,balance_sheet_identity,54230273000,54230273000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,TPEX:6147,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,LSE:SDR,2025,eps_reconciliation,0.33619830592924765,0.33619830592924765,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,LSE:SDR,2025,balance_sheet_identity,24612700000,24612700000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,LSE:SDR,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,KRX:030000,2025,eps_reconciliation,2049.0000044919952,2049.0000044919952,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,KRX:030000,2025,balance_sheet_identity,3587816549320,3587816549310,10,2.787210511611945e-12,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,KRX:030000,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,TWSE:2006,2025,eps_reconciliation,6.442542390228924,6.442542390228924,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,TWSE:2006,2025,balance_sheet_identity,51997209000,51997209000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,TWSE:2006,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,OSL:GJF,2025,eps_reconciliation,13.108765293752793,13.108765293752793,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,OSL:GJF,2025,balance_sheet_identity,191899400000,191899400000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,OSL:GJF,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,BME:MAP,2025,eps_reconciliation,0.36965958419008454,0.36965958419008454,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,BME:MAP,2025,balance_sheet_identity,58512700000,58512700000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,BME:MAP,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,SET:TTB,2025,eps_reconciliation,0.21511043481886022,0.21511043481886022,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,SET:TTB,2025,balance_sheet_identity,1701965779000,1701965779000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,SET:TTB,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,B3:BBSE3,2025,eps_reconciliation,4.645209729274948,4.645209729274948,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,B3:BBSE3,2025,balance_sheet_identity,23097696000,23097696000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,B3:BBSE3,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,SET:TISCO,2025,eps_reconciliation,8.316813109266787,8.316813109266787,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,SET:TISCO,2025,balance_sheet_identity,290702153000,290702153000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,SET:TISCO,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,MYX:BURSA,,dividend_presence,,,,,,WARNING,internal,,Nenhum campo de dividendos encontrado na ROIC para este ativo.
+SCHY,MOEX:SBER,,dividend_presence,,,,,,WARNING,internal,,Nenhum campo de dividendos encontrado na ROIC para este ativo.
+SCHY,MOEX:CHMF,,dividend_presence,,,,,,WARNING,internal,,Nenhum campo de dividendos encontrado na ROIC para este ativo.
+SCHY,SIX:RO,2025,eps_reconciliation,16.039850560398506,16.039850560398506,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,SIX:RO,2025,balance_sheet_identity,100703000000,100703000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,SIX:RO,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,EURONEXT:DG,2025,eps_reconciliation,8.646346583595244,8.646346583595244,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,EURONEXT:DG,2025,balance_sheet_identity,133065000000,133065000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,EURONEXT:DG,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."

@@ -1,0 +1,2502 @@
+[
+  {
+    "symbol": "",
+    "cusip": "",
+    "country": "IN",
+    "roic_symbol": "NSE:HCLTECH",
+    "status": "cached",
+    "name": "HCL Technologies Ltd"
+  },
+  {
+    "symbol": "",
+    "cusip": "",
+    "country": "ZA",
+    "roic_symbol": "JSE:VOD",
+    "status": "cached",
+    "name": "Vodacom Group Ltd"
+  },
+  {
+    "symbol": "",
+    "cusip": "",
+    "country": "AE",
+    "roic_symbol": "DFM:EMIRATESNBD",
+    "status": "cached",
+    "name": "Emirates NBD Bank PJSC"
+  },
+  {
+    "symbol": "",
+    "cusip": "",
+    "country": "BR",
+    "roic_symbol": "B3:BBAS3",
+    "status": "cached",
+    "name": "Banco do Brasil SA"
+  },
+  {
+    "symbol": "",
+    "cusip": "",
+    "country": "HK",
+    "roic_symbol": "HKEX:2388",
+    "status": "cached",
+    "name": "BOC Hong Kong Holdings Ltd"
+  },
+  {
+    "symbol": "",
+    "cusip": "",
+    "country": "GB",
+    "roic_symbol": "LSE:IMB",
+    "status": "cached",
+    "name": "Imperial Brands PLC"
+  },
+  {
+    "symbol": "",
+    "cusip": "",
+    "country": "FI",
+    "roic_symbol": "HEL:KNEBV",
+    "status": "cached",
+    "name": "Kone Oyj"
+  },
+  {
+    "symbol": "",
+    "cusip": "",
+    "country": "TW",
+    "roic_symbol": "TWSE:2006",
+    "status": "cached",
+    "name": "Tung Ho Steel Enterprise Corp"
+  },
+  {
+    "symbol": "",
+    "cusip": "",
+    "country": "RU",
+    "roic_symbol": "MOEX:SBER",
+    "status": "cached",
+    "name": "Sberbank of Russia PJSC"
+  },
+  {
+    "symbol": "",
+    "cusip": "",
+    "country": "SA",
+    "roic_symbol": "TADAWUL:7010",
+    "status": "cached",
+    "name": "Saudi Telecom Co"
+  },
+  {
+    "symbol": "",
+    "cusip": "",
+    "country": "GB",
+    "roic_symbol": "LSE:BATS",
+    "status": "cached",
+    "name": "British American Tobacco PLC"
+  },
+  {
+    "name": "Klabin SA",
+    "country": "BR",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "B3:KLBN3",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:KLAR",
+        "name": "Klarna Group plc",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:KLAQ",
+        "name": "KL Acquisition Corp",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:KLAC",
+        "name": "KLA Corporation",
+        "country": "US",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Abu Dhabi Islamic Bank PJSC",
+    "country": "AE",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "ADX:ALPHADHABI",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "DSE:ISLAMIBANK",
+        "name": "Islami Bank Bangladesh PLC",
+        "country": "BD",
+        "score": 6
+      },
+      {
+        "symbol": "DSE:ISLAMIBANK",
+        "name": "Islami Bank Bangladesh PLC",
+        "country": "BD",
+        "score": 6
+      },
+      {
+        "symbol": "NGM:ABI",
+        "name": "AB IGRENE",
+        "country": "SE",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Insurance Australia Group Ltd",
+    "country": "AU",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "SET:INSURE",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "SET:INSURE",
+        "name": "Indara Insurance Public Co. Ltd.",
+        "country": "TH",
+        "score": 9
+      },
+      {
+        "symbol": "SIX:INSU",
+        "name": "Lyxor Index Fund - Lyxor STOXX Europe 600 Insurance UCITS ETF",
+        "country": null,
+        "score": -1
+      },
+      {
+        "symbol": "NSE:ENDURANCE",
+        "name": "Endurance Technologies Ltd.",
+        "country": "IN",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Wesfarmers Ltd",
+    "country": "AU",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "ASX:WES",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:WES",
+        "name": "Western Midstream Partners, LP",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "ASX:WES",
+        "name": "Wesfarmers Limited",
+        "country": "AU",
+        "score": 21
+      },
+      {
+        "symbol": "NASDAQ:WEST",
+        "name": "Westrock Coffee Company",
+        "country": "US",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "symbol": "",
+    "cusip": "",
+    "country": "BR",
+    "roic_symbol": "B3:KLBN3",
+    "status": "cached",
+    "name": "Klabin SA"
+  },
+  {
+    "name": "Singapore Exchange Ltd",
+    "country": "SG",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "OTC:SINGF",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "SET:SINGER",
+        "name": "Singer Thailand Public Co. Ltd.",
+        "country": "TH",
+        "score": 6
+      },
+      {
+        "symbol": "OTC:SING",
+        "name": "Singlepoint, Inc.",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "OTC:SINGF",
+        "name": "Singapore Airlines Ltd.",
+        "country": "US",
+        "score": 7
+      }
+    ]
+  },
+  {
+    "name": "Rio Tinto Ltd",
+    "country": "AU",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "ASX:RIO",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:RIO",
+        "name": "Rio Tinto Plc",
+        "country": "US",
+        "score": -3
+      },
+      {
+        "symbol": "TSX:RIO",
+        "name": "RIO2 Limited",
+        "country": "CA",
+        "score": 9
+      },
+      {
+        "symbol": "TSXV:RIO",
+        "name": "Rio2 Limited",
+        "country": null,
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Neoenergia SA",
+    "country": "BR",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "B3:NEOE3",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "EURONEXT:NEOEN",
+        "name": "Neoen S.A.",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "EURONEXT:NEOEN",
+        "name": "Neoen S.A.",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "B3:NEOE3",
+        "name": "Neoenergia S.A.",
+        "country": null,
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Endesa SA",
+    "country": "ES",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "BME:END",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:END",
+        "name": "Endeavour International Corp",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:ENDP",
+        "name": "Endo International plc",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "MYX:ELKDESA",
+        "name": "ELK-Desa Resources Bhd.",
+        "country": "MY",
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Coca-Cola Femsa SAB de CV",
+    "country": "MX",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "BMV:FEMSA/UB",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NASDAQ:COLA",
+        "name": "Columbus Acquisition Corp",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "BMV:FEMSA/UB",
+        "name": "Fomento Economico Mexicano SAB de CV Units Cons. Of 5 ShsB",
+        "country": "MX",
+        "score": 18
+      },
+      {
+        "symbol": "GPW:COLA",
+        "name": "Coca-Cola Company",
+        "country": "PL",
+        "score": 7
+      }
+    ]
+  },
+  {
+    "name": "KT&G Corp",
+    "country": "KR",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "NSE:COASTCORP",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:KT",
+        "name": "KT Corporation",
+        "country": "US",
+        "score": -3
+      },
+      {
+        "symbol": "TSX:CORP",
+        "name": "Exemplar Investment Grade Fund ETF units",
+        "country": null,
+        "score": -4
+      },
+      {
+        "symbol": "NSE:COASTCORP",
+        "name": "Coastal Corporation Limited",
+        "country": "IN",
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Engie Brasil Energia SA",
+    "country": "BR",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "B3:ENGI3",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "BVL:ENGIEC1",
+        "name": "ENGIE Energia Peru SA",
+        "country": "PE",
+        "score": 9
+      },
+      {
+        "symbol": "BVL:ENGIEC1",
+        "name": "ENGIE Energia Peru SA",
+        "country": "PE",
+        "score": 9
+      },
+      {
+        "symbol": "NASDAQ:ENG",
+        "name": "ENGlobal Corporation",
+        "country": null,
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Quebecor Inc",
+    "country": "CA",
+    "symbol": "",
+    "cusip": "748193208",
+    "roic_symbol": "GPW:INC",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "AMEX:INC",
+        "name": "VanEck Dynamic High Income ETF",
+        "country": null,
+        "score": -1
+      },
+      {
+        "symbol": "GPW:INC",
+        "name": "INC SA",
+        "country": "PL",
+        "score": 9
+      },
+      {
+        "symbol": "MIL:INC",
+        "name": "Innovatec SpA",
+        "country": "IT",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "DBS Group Holdings Ltd",
+    "country": "SG",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "OTC:DBSDF",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "BSE:BNHOLDINGS",
+        "name": "BN Holdings Ltd.",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "AMEX:DBS",
+        "name": "Invesco DB Silver Fund",
+        "country": null,
+        "score": -4
+      },
+      {
+        "symbol": "MYX:GDGROUP",
+        "name": "Golden Destinations Group Berhad",
+        "country": "MY",
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Telekom Malaysia Bhd",
+    "country": "MY",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "BUD:MTELEKOM",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "BUD:MTELEKOM",
+        "name": "Magyar Telekom Telecommunications PLC",
+        "country": "HU",
+        "score": 9
+      },
+      {
+        "symbol": "BUD:MTELEKOM",
+        "name": "Magyar Telekom Telecommunications PLC",
+        "country": "HU",
+        "score": 9
+      },
+      {
+        "symbol": "BUD:MTELEKOM",
+        "name": "Magyar Telekom Telecommunications PLC",
+        "country": "HU",
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Bank of Nova Scotia/The",
+    "country": "CA",
+    "symbol": "",
+    "cusip": "064149107",
+    "roic_symbol": "NYSE:BANC",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:BANC",
+        "name": "Banc of California, Inc.",
+        "country": "US",
+        "score": 9
+      },
+      {
+        "symbol": "NASDAQ:BAND",
+        "name": "Bandwidth Inc.",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:BANF",
+        "name": "BancFirst Corporation",
+        "country": "US",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Industries Qatar QSC",
+    "country": "QA",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "NSE:INDUSTOWER",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "NSE:INDUSTOWER",
+        "name": "Indus Towers Limited",
+        "country": "IN",
+        "score": 6
+      },
+      {
+        "symbol": "PSX:INDU",
+        "name": "Indus Motor Co. Ltd.",
+        "country": "PK",
+        "score": 6
+      },
+      {
+        "symbol": "BSE:INDUSFINL",
+        "name": "Indus Finance Limited",
+        "country": "IN",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Daito Trust Construction Co Ltd",
+    "country": "JP",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "NSE:TRUST",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "NSE:TRUST",
+        "name": "Trust Fintech Limited",
+        "country": "IN",
+        "score": 9
+      },
+      {
+        "symbol": "DSE:TRUSTB1MF",
+        "name": "Trust Bank 1st Mutual Fund Units",
+        "country": "BD",
+        "score": -1
+      },
+      {
+        "symbol": "DSE:TRUSTBANK",
+        "name": "Trust Bank PLC",
+        "country": "BD",
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Telkom Indonesia Persero Tbk PT",
+    "country": "ID",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "IDX:TELE",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:TEL",
+        "name": "TE Connectivity plc",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:TELA",
+        "name": "TELA Bio, Inc.",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:TELO",
+        "name": "Telomir Pharmaceuticals, Inc.",
+        "country": "US",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Roche Holding AG",
+    "country": "CH",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "NSE:MCDHOLDING",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "NSE:MCDHOLDING",
+        "name": "McDowell Holdings Ltd",
+        "country": null,
+        "score": 9
+      },
+      {
+        "symbol": "NSE:BNAGROCHEM",
+        "name": "BN Agrochem Ltd",
+        "country": "IN",
+        "score": 9
+      },
+      {
+        "symbol": "NSE:FLUOROCHEM",
+        "name": "Gujarat Fluorochemicals Ltd.",
+        "country": "IN",
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "TotalEnergies SE",
+    "country": "FR",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "EURONEXT:TTE",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NSE:TOTAL",
+        "name": "Total Transport Systems Ltd.",
+        "country": "IN",
+        "score": 6
+      },
+      {
+        "symbol": "NSENG:TOTAL",
+        "name": "TotalEnergies Marketing Nigeria Plc",
+        "country": "NG",
+        "score": 9
+      },
+      {
+        "symbol": "NYSE:TTE",
+        "name": "TotalEnergies SE",
+        "country": "US",
+        "score": 15
+      }
+    ]
+  },
+  {
+    "name": "Itau Unibanco Holding SA",
+    "country": "BR",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "B3:ITUB4",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "B3:ITUB4",
+        "name": "Itau Unibanco Holding SA Pfd",
+        "country": "BR",
+        "score": 27
+      },
+      {
+        "symbol": "B3:ITUB4F",
+        "name": "Itau Unibanco Holding SA Pfd",
+        "country": "BR",
+        "score": 27
+      },
+      {
+        "symbol": "NYSE:ITUB",
+        "name": "Itau Unibanco Banco Holding SA",
+        "country": "US",
+        "score": -3
+      }
+    ]
+  },
+  {
+    "name": "Medibank Pvt Ltd",
+    "country": "AU",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "ASX:PVT",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "ASX:PVT",
+        "name": "Pivotal Metals Limited",
+        "country": "AU",
+        "score": 18
+      },
+      {
+        "symbol": "HOSE:PVT",
+        "name": "PetroVietnam Transportation Corp.",
+        "country": "VN",
+        "score": 6
+      },
+      {
+        "symbol": "PSECZ:PVT",
+        "name": "RMS Mezzanine, a.s.",
+        "country": "CZ",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "ITC Ltd",
+    "country": "IN",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "NSE:ITC",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:LTC",
+        "name": "LTC Properties, Inc.",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "NYSE:ITCB",
+        "name": "Itaú Corpbanca",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:ITCI",
+        "name": "Intra-Cellular Therapies, Inc.",
+        "country": null,
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "LG Uplus Corp",
+    "country": "KR",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "NASDAQ:LGIH",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "TSX:CORP",
+        "name": "Exemplar Investment Grade Fund ETF units",
+        "country": null,
+        "score": -4
+      },
+      {
+        "symbol": "LSE:UPL",
+        "name": "Upland Resources Ltd",
+        "country": "GB",
+        "score": 6
+      },
+      {
+        "symbol": "TSXV:LG",
+        "name": "Lahontan Gold Corp.",
+        "country": "CA",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Enel SpA",
+    "country": "IT",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "MIL:ENEL",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "MIL:ENEL",
+        "name": "Enel SpA",
+        "country": "IT",
+        "score": 29
+      },
+      {
+        "symbol": "SIX:ENEL",
+        "name": "Enel SpA",
+        "country": "CH",
+        "score": 15
+      },
+      {
+        "symbol": "VIE:ENEL",
+        "name": "Enel SpA",
+        "country": "AT",
+        "score": 15
+      }
+    ]
+  },
+  {
+    "name": "Bank Rakyat Indonesia Persero Tbk PT",
+    "country": "ID",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "IDX:BANK",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "ADX:RAKBANK",
+        "name": "The National Bank of Ras Al Khaimah",
+        "country": "AE",
+        "score": 9
+      },
+      {
+        "symbol": "IDX:BANK",
+        "name": "PT Bank Aladin Syariah Tbk",
+        "country": "ID",
+        "score": 21
+      },
+      {
+        "symbol": "LSE:BANK",
+        "name": "Fiinu Plc",
+        "country": "GB",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Jarir Marketing Co",
+    "country": "SA",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "BSE:KAJARIR",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "BSE:KAJARIR",
+        "name": "KIC Metaliks Ltd.",
+        "country": "IN",
+        "score": 6
+      },
+      {
+        "symbol": "FRA:JARI",
+        "name": "Amundi Index Solutions - Amundi Index MSCI Japan SRI PAB",
+        "country": null,
+        "score": -4
+      },
+      {
+        "symbol": "FRA:JARH",
+        "name": "Amundi Index Solutions - Amundi Index MSCI Japan SRI PAB",
+        "country": null,
+        "score": -4
+      }
+    ]
+  },
+  {
+    "name": "Central Pattana PCL",
+    "country": "TH",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "SET:CENTEL",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NSE:CENTRALBK",
+        "name": "Central Bank of India",
+        "country": "IN",
+        "score": 9
+      },
+      {
+        "symbol": "DSE:CENTRALINS",
+        "name": "Central Insurance PLC",
+        "country": "BD",
+        "score": 9
+      },
+      {
+        "symbol": "DSE:CENTRALPHL",
+        "name": "Central Pharmaceuticals Ltd.",
+        "country": "BD",
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Tryg A/S",
+    "country": "DK",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "CPH:TRYG",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "CPH:TRYG",
+        "name": "Tryg A/S",
+        "country": "DK",
+        "score": 29
+      },
+      {
+        "symbol": "VIE:TRYG",
+        "name": "Tryg A/S",
+        "country": "AT",
+        "score": 15
+      },
+      {
+        "symbol": "ASX:TRY",
+        "name": "Troy Resources Limited",
+        "country": null,
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Unilever PLC",
+    "country": "GB",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "LSE:ULVR",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NSENG:UNILEVER",
+        "name": "Unilever Nigeria PLC",
+        "country": "NG",
+        "score": 9
+      },
+      {
+        "symbol": "DSE:UNILEVERCL",
+        "name": "Unilever Consumer Care Limited",
+        "country": "BD",
+        "score": 9
+      },
+      {
+        "symbol": "NSE:UNILEX",
+        "name": "Unilex Colours & Chemicals Limited",
+        "country": "IN",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Chipbond Technology Corp",
+    "country": "TW",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "IDX:CHIP",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "NASDAQ:CHI",
+        "name": "Calamos Convertible Opportunities and Income Fund",
+        "country": "US",
+        "score": -4
+      },
+      {
+        "symbol": "IDX:CHIP",
+        "name": "PT Pelita Teknologi Global Tbk",
+        "country": "ID",
+        "score": 6
+      },
+      {
+        "symbol": "NSE:CHEMBOND",
+        "name": "Chembond Material Technologies Limited",
+        "country": "IN",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "AXA SA",
+    "country": "FR",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "STU:AXA",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:SA",
+        "name": "Seabridge Gold, Inc.",
+        "country": "US",
+        "score": 4
+      },
+      {
+        "symbol": "STU:AXA",
+        "name": "AXA SA",
+        "country": "DE",
+        "score": 15
+      },
+      {
+        "symbol": "BX:AXA",
+        "name": "AXA SA",
+        "country": "CH",
+        "score": 15
+      }
+    ]
+  },
+  {
+    "name": "GSK PLC",
+    "country": "GB",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "LSE:GSK",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:GSK",
+        "name": "GSK plc",
+        "country": "US",
+        "score": 5
+      },
+      {
+        "symbol": "CSE:GSK",
+        "name": "Goldseek Resources Inc.",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "LSE:GSK",
+        "name": "GSK plc",
+        "country": "GB",
+        "score": 29
+      }
+    ]
+  },
+  {
+    "name": "Elisa Oyj",
+    "country": "FI",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "HEL:ELISA",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NASDAQ:ELIS",
+        "name": "Direxion Daily LLY Bear 1X ETF",
+        "country": null,
+        "score": -4
+      },
+      {
+        "symbol": "HEL:ELISA",
+        "name": "Elisa Oyj Class A",
+        "country": "FI",
+        "score": 29
+      },
+      {
+        "symbol": "EURONEXT:ELIS",
+        "name": "Elis SA",
+        "country": "FR",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Great-West Lifeco Inc",
+    "country": "CA",
+    "symbol": "",
+    "cusip": "39138C106",
+    "roic_symbol": "CSE:WEST",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "STO:GREAT",
+        "name": "Greater Than AB",
+        "country": "SE",
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:WEST",
+        "name": "Westrock Coffee Company",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:WESTW",
+        "name": "Westrock Coffee Company, LLC",
+        "country": null,
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Bank Central Asia Tbk PT",
+    "country": "ID",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "IDX:BANK",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "BSE:CENTRALBK",
+        "name": "Central Bank of India",
+        "country": "IN",
+        "score": 7
+      },
+      {
+        "symbol": "NSE:CENTRALBK",
+        "name": "Central Bank of India",
+        "country": "IN",
+        "score": 9
+      },
+      {
+        "symbol": "DSE:CENTRALINS",
+        "name": "Central Insurance PLC",
+        "country": "BD",
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Chicony Electronics Co Ltd",
+    "country": "TW",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "SET:CHIC",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "AMEX:CHIC",
+        "name": "Global X MSCI China Communication Services ETF",
+        "country": null,
+        "score": -4
+      },
+      {
+        "symbol": "NASDAQ:CHI",
+        "name": "Calamos Convertible Opportunities and Income Fund",
+        "country": "US",
+        "score": -4
+      },
+      {
+        "symbol": "AMEX:CHIE",
+        "name": "Global X MSCI China Energy ETF",
+        "country": null,
+        "score": -4
+      }
+    ]
+  },
+  {
+    "name": "Power Grid Corp of India Ltd",
+    "country": "IN",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "NSE:POWERGRID",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NSE:POWERINDIA",
+        "name": "Hitachi Energy India Limited",
+        "country": "IN",
+        "score": 18
+      },
+      {
+        "symbol": "DSE:POWERGRID",
+        "name": "Power Grid Co. of Bangladesh Ltd.",
+        "country": "BD",
+        "score": 9
+      },
+      {
+        "symbol": "NSE:POWERGRID",
+        "name": "Power Grid Corporation of India Limited",
+        "country": "IN",
+        "score": 21
+      }
+    ]
+  },
+  {
+    "name": "Telstra Group Ltd",
+    "country": "AU",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "ASX:TRA",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:TEL",
+        "name": "TE Connectivity plc",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:STRA",
+        "name": "Strategic Education, Inc.",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:TELA",
+        "name": "TELA Bio, Inc.",
+        "country": "US",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "DNB Bank ASA",
+    "country": "NO",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "OSL:DNB",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:ASA",
+        "name": "ASA Gold and Precious Metals Limited",
+        "country": "US",
+        "score": -4
+      },
+      {
+        "symbol": "NYSE:DNB",
+        "name": "Dun & Bradstreet Holdings, Inc.",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "IDX:BANK",
+        "name": "PT Bank Aladin Syariah Tbk",
+        "country": "ID",
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "PTT Exploration & Production PCL",
+    "country": "TH",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "SET:PTT",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "MYX:PTT",
+        "name": "PTT Synergy Group Bhd.",
+        "country": "MY",
+        "score": 9
+      },
+      {
+        "symbol": "SET:PTT",
+        "name": "PTT Public Co., Ltd.",
+        "country": "TH",
+        "score": 21
+      },
+      {
+        "symbol": "UPCOM:PTT",
+        "name": "Indochina Petroleum Transportation Joint Stock Co",
+        "country": "VN",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Arca Continental SAB de CV",
+    "country": "MX",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "STO:ARCA",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "BSE:CONTAINE",
+        "name": "Containe Technologies Ltd.",
+        "country": "IN",
+        "score": 6
+      },
+      {
+        "symbol": "STO:ARCA",
+        "name": "Arcario AB",
+        "country": null,
+        "score": 9
+      },
+      {
+        "symbol": "STO:ARCANE",
+        "name": "Arcane Crypto AB",
+        "country": null,
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Sanlam Ltd",
+    "country": "ZA",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "NYSE:SAND",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "XETR:LTD",
+        "name": "L Brands, Inc.",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "BHB:SALAM",
+        "name": "Al Salam Bank B.S.C.",
+        "country": "BH",
+        "score": 6
+      },
+      {
+        "symbol": "KSE:SANAM",
+        "name": "Sanam Group Holding Co K.S.C.C.",
+        "country": "KW",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Spark New Zealand Ltd",
+    "country": "NZ",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "ASX:NEW",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:NEW",
+        "name": "Puxin Limited",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "SET:NEW",
+        "name": "Wattana Karnpaet Public Company Limited",
+        "country": "TH",
+        "score": 6
+      },
+      {
+        "symbol": "ASX:NEW",
+        "name": "New Energy Solar Limited",
+        "country": null,
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Kesko Oyj",
+    "country": "FI",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "HEL:KESKOA",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "HEL:KESKOA",
+        "name": "Kesko Oyj Class A",
+        "country": "FI",
+        "score": 29
+      },
+      {
+        "symbol": "MOEX:KESK",
+        "name": "AO \"Komi energosbyt komp\" ORD",
+        "country": "RU",
+        "score": 6
+      },
+      {
+        "symbol": "HEL:KESKOB",
+        "name": "Kesko Oyj Class B",
+        "country": "FI",
+        "score": 27
+      }
+    ]
+  },
+  {
+    "name": "BB Seguridade Participacoes SA",
+    "country": "BR",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "B3:BBSE3",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "B3:BBSE3",
+        "name": "BB Seguridade Participacoes SA",
+        "country": "BR",
+        "score": 29
+      },
+      {
+        "symbol": "B3:BBSE3F",
+        "name": "BB Seguridade Participacoes SA",
+        "country": "BR",
+        "score": 27
+      },
+      {
+        "symbol": "NASDAQ:BBSI",
+        "name": "Barrett Business Services, Inc.",
+        "country": "US",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Tisco Financial Group PCL",
+    "country": "TH",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "SET:TISCO",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "SET:TISCO",
+        "name": "TISCO Financial Group Public Co. Ltd.",
+        "country": "TH",
+        "score": 21
+      },
+      {
+        "symbol": "SET:TISCO.R",
+        "name": "TISCO Financial Group Public Co. Ltd. NVDR",
+        "country": "TH",
+        "score": 9
+      },
+      {
+        "symbol": "SET:TISCO",
+        "name": "TISCO Financial Group Public Co. Ltd.",
+        "country": "TH",
+        "score": 21
+      }
+    ]
+  },
+  {
+    "name": "Koninklijke KPN NV",
+    "country": "NL",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "EURONEXT:KPN",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "TG:KPN",
+        "name": "Royal KPN NV",
+        "country": "DE",
+        "score": 7
+      },
+      {
+        "symbol": "DUS:KPN",
+        "name": "Royal KPN NV",
+        "country": "DE",
+        "score": 7
+      },
+      {
+        "symbol": "FRA:KPN",
+        "name": "Royal KPN NV",
+        "country": "DE",
+        "score": 7
+      }
+    ]
+  },
+  {
+    "name": "Cheil Worldwide Inc",
+    "country": "KR",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "NYSE:CHE",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:CHE",
+        "name": "Chemed Corp",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:CHEA",
+        "name": "Chenghe Acquisition Co.",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:CHEC",
+        "name": "Chenghe Acquisition III Co.",
+        "country": "US",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Schroders PLC",
+    "country": "GB",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "",
+    "status": "not_found",
+    "top_candidates": []
+  },
+  {
+    "name": "Radiant Opto-Electronics Corp",
+    "country": "TW",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "NSE:RADIANTCMS",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "NSE:RADIANTCMS",
+        "name": "Radiant Cash Management Services Limited",
+        "country": "IN",
+        "score": 9
+      },
+      {
+        "symbol": "BSE:RADIANTCMS",
+        "name": "Radiant Cash Management Services Limited",
+        "country": "IN",
+        "score": 7
+      },
+      {
+        "symbol": "NASDAQ:RADI",
+        "name": "Radius Global Infrastructure, Inc.",
+        "country": null,
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Japan Tobacco Inc",
+    "country": "JP",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "OTC:JAPAF",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "SET:JAPAN13",
+        "name": "China Assets Management (Hong Kong) Ltd Units Thailand Depository Receipt Repr 0.04",
+        "country": "TH",
+        "score": -6
+      },
+      {
+        "symbol": "SET:JAPAN10001",
+        "name": "Hang Seng Japan TOPIX 100 Index ETF Units Thailand Depositery Receipts Repr 0.01 Sh",
+        "country": "TH",
+        "score": -1
+      },
+      {
+        "symbol": "NYSE:JAN",
+        "name": "Janus Living, Inc.",
+        "country": "US",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Swisscom AG",
+    "country": "CH",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "BSEBG:SCOM",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "AMEX:SCOM",
+        "name": "ProShares UltraPro Short Communication Services Select Sector",
+        "country": null,
+        "score": -4
+      },
+      {
+        "symbol": "CPH:SWISS",
+        "name": "Swiss Properties Invest A/S",
+        "country": "DK",
+        "score": 6
+      },
+      {
+        "symbol": "CSE:SWIS",
+        "name": "GlobeX Data Ltd.",
+        "country": null,
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "TIM SA/Brazil",
+    "country": "BR",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "B3:TIMS3",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "GPW:TIM",
+        "name": "TIM S.A.",
+        "country": null,
+        "score": 9
+      },
+      {
+        "symbol": "CSE:BRAZ",
+        "name": "Canary Gold Corp.",
+        "country": "CA",
+        "score": 6
+      },
+      {
+        "symbol": "NEO:BRAZ",
+        "name": "Canary Gold Corp.",
+        "country": "CA",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "name": "Ono Pharmaceutical Co Ltd",
+    "country": "JP",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "NASDAQ:PONO",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "MYX:PHARMA",
+        "name": "Pharmaniaga Bhd.",
+        "country": "MY",
+        "score": 6
+      },
+      {
+        "symbol": "GPW:ONO",
+        "name": "onesano S.A.",
+        "country": "PL",
+        "score": 6
+      },
+      {
+        "symbol": "NYSE:ONON",
+        "name": "On Holding AG",
+        "country": "US",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Koninklijke Ahold Delhaize NV",
+    "country": "NL",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "IDX:KONI",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "IDX:KONI",
+        "name": "PT Perdana Bangun Pusaka Tbk",
+        "country": "ID",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "BCE Inc",
+    "country": "CA",
+    "symbol": "",
+    "cusip": "05534B760",
+    "roic_symbol": "TSX:BCE",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "AMEX:INC",
+        "name": "VanEck Dynamic High Income ETF",
+        "country": null,
+        "score": -1
+      },
+      {
+        "symbol": "NYSE:BCE",
+        "name": "BCE, Inc.",
+        "country": "US",
+        "score": 7
+      },
+      {
+        "symbol": "NYSE:BCEI",
+        "name": "Civitas Resources, Inc.",
+        "country": null,
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Ooredoo QPSC",
+    "country": "QA",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "KSE:OOREDOO",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "KSE:OOREDOO",
+        "name": "National Mobile Telecommunications Company K.S.C.",
+        "country": "KW",
+        "score": 6
+      },
+      {
+        "symbol": "KSE:OOREDOO",
+        "name": "National Mobile Telecommunications Company K.S.C.",
+        "country": "KW",
+        "score": 6
+      },
+      {
+        "symbol": "TSXV:OOOO",
+        "name": "OOOOO Entertainment Commerce Limited",
+        "country": null,
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Jardine Cycle & Carriage Ltd",
+    "country": "SG",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "NGM:CYCLE",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "NGM:CYCLE",
+        "name": "CYCLEZYME AB",
+        "country": "SE",
+        "score": 9
+      },
+      {
+        "symbol": "FRA:JARH",
+        "name": "Amundi Index Solutions - Amundi Index MSCI Japan SRI PAB",
+        "country": null,
+        "score": -4
+      },
+      {
+        "symbol": "FRA:JARI",
+        "name": "Amundi Index Solutions - Amundi Index MSCI Japan SRI PAB",
+        "country": null,
+        "score": -4
+      }
+    ]
+  },
+  {
+    "name": "Coca-Cola HBC AG",
+    "country": "CH",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "BIST:CCOLA",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "NASDAQ:COLA",
+        "name": "Columbus Acquisition Corp",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "GPW:COLA",
+        "name": "Coca-Cola Company",
+        "country": "PL",
+        "score": 7
+      },
+      {
+        "symbol": "NEO:COLA",
+        "name": "Coca-Cola Company Shs -CAD hedged- Canadian Depositary Receipt Repr Shs Reg S",
+        "country": "CA",
+        "score": -3
+      }
+    ]
+  },
+  {
+    "name": "QBE Insurance Group Ltd",
+    "country": "AU",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "ASX:QBE",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "SET:INSURE",
+        "name": "Indara Insurance Public Co. Ltd.",
+        "country": "TH",
+        "score": 9
+      },
+      {
+        "symbol": "ASX:QBE",
+        "name": "QBE Insurance Group Limited",
+        "country": "AU",
+        "score": 21
+      },
+      {
+        "symbol": "GETTEX:QBE",
+        "name": "QBE Insurance Group Limited",
+        "country": "DE",
+        "score": 7
+      }
+    ]
+  },
+  {
+    "name": "Zurich Insurance Group AG",
+    "country": "CH",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "SIX:ZURN",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NASDAQ:ZURA",
+        "name": "Zura Bio Limited",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "TASE:ZUR",
+        "name": "Zur Shamir Holdings Ltd.",
+        "country": "IL",
+        "score": 6
+      },
+      {
+        "symbol": "CSE:RICH",
+        "name": "Raffles Financial Group Limited",
+        "country": null,
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Allianz SE",
+    "country": "DE",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "XETR:ALV",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "MYX:ALLIANZ",
+        "name": "Allianz Malaysia Bhd.",
+        "country": "MY",
+        "score": 9
+      },
+      {
+        "symbol": "BUD:ALLIANZ",
+        "name": "Allianz SE",
+        "country": "HU",
+        "score": 15
+      },
+      {
+        "symbol": "NYSE:ALL",
+        "name": "Allstate Corporation (The)",
+        "country": "US",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "BHP Group Ltd",
+    "country": "AU",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "ASX:BHP",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:BHP",
+        "name": "BHP Group Limited",
+        "country": "US",
+        "score": -3
+      },
+      {
+        "symbol": "BX:BHP",
+        "name": "BHP Group Ltd Sponsored American Depositary Receipt Repr 2 Shs",
+        "country": "CH",
+        "score": 5
+      },
+      {
+        "symbol": "ASX:BHP",
+        "name": "BHP Group Ltd",
+        "country": "AU",
+        "score": 29
+      }
+    ]
+  },
+  {
+    "name": "Generali",
+    "country": "IT",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "EURONEXT:GEN",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NASDAQ:GENE",
+        "name": "Genetic Technologies Limited",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:GEN",
+        "name": "Gen Digital Inc.",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "MYX:GENERGY",
+        "name": "Wasco Greenergy Berhad",
+        "country": "MY",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Eni SpA",
+    "country": "IT",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "MIL:ENI",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "GPW:ENI",
+        "name": "Energoinstal SA",
+        "country": "PL",
+        "score": 6
+      },
+      {
+        "symbol": "MIL:ENI",
+        "name": "Eni S.p.A.",
+        "country": "IT",
+        "score": 21
+      },
+      {
+        "symbol": "BX:ENI",
+        "name": "Eni S.p.A.",
+        "country": "CH",
+        "score": 7
+      }
+    ]
+  },
+  {
+    "name": "Hyundai Motor Co",
+    "country": "KR",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "LSE:HYUD",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NSE:HYUNDAI",
+        "name": "Hyundai Motor India Limited",
+        "country": "IN",
+        "score": 9
+      },
+      {
+        "symbol": "BSE:HYUNDAI",
+        "name": "Hyundai Motor India Limited",
+        "country": "IN",
+        "score": 7
+      },
+      {
+        "symbol": "NSE:HYUNDAI",
+        "name": "Hyundai Motor India Limited",
+        "country": "IN",
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Bursa Malaysia Bhd",
+    "country": "MY",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "MYX:BURSA",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "MYX:BURSA",
+        "name": "Bursa Malaysia Bhd.",
+        "country": "MY",
+        "score": 29
+      },
+      {
+        "symbol": "MYX:BURSA",
+        "name": "Bursa Malaysia Bhd.",
+        "country": "MY",
+        "score": 29
+      },
+      {
+        "symbol": "MYX:BURSA",
+        "name": "Bursa Malaysia Bhd.",
+        "country": "MY",
+        "score": 29
+      }
+    ]
+  },
+  {
+    "name": "Sun Life Financial Inc",
+    "country": "CA",
+    "symbol": "",
+    "cusip": "866796105",
+    "roic_symbol": "TSXV:SUN",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NASDAQ:LIFE",
+        "name": "Ethos Technologies Inc.",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "NYSE:SUN",
+        "name": "Sunoco LP",
+        "country": "US",
+        "score": 9
+      },
+      {
+        "symbol": "NASDAQ:LIF",
+        "name": "Life360, Inc.",
+        "country": "US",
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Vinci SA",
+    "country": "FR",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "HEL:VINCIT",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "NASDAQ:VINCU",
+        "name": "Vincerx Pharma, Inc.",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:VINCW",
+        "name": "Vincerx Pharma, Inc.",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "NYSE:SA",
+        "name": "Seabridge Gold, Inc.",
+        "country": "US",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "name": "Kuehne + Nagel International AG",
+    "country": "CH",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "",
+    "status": "not_found",
+    "top_candidates": []
+  },
+  {
+    "name": "Bidvest Group Ltd",
+    "country": "ZA",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "JSE:BID",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NASDAQ:BID",
+        "name": "Tribeca Strategic Acquisition Corp.",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "NYSE:BEST",
+        "name": "BEST Inc.",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:BIDU",
+        "name": "Baidu, Inc.",
+        "country": "US",
+        "score": -4
+      }
+    ]
+  },
+  {
+    "name": "Cie Generale des Etablissements Michelin SCA",
+    "country": "FR",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "GPW:CIE",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "GPW:CIE",
+        "name": "Ciech S.A.",
+        "country": null,
+        "score": 9
+      },
+      {
+        "symbol": "MYX:GENERGY",
+        "name": "Wasco Greenergy Berhad",
+        "country": "MY",
+        "score": 6
+      },
+      {
+        "symbol": "BME:CIE",
+        "name": "CIE Automotive, S.A.",
+        "country": "ES",
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "United Overseas Bank Ltd",
+    "country": "SG",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "HEL:UNITED",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "HEL:UNITED",
+        "name": "United Bankers Oyj Class A",
+        "country": "FI",
+        "score": 9
+      },
+      {
+        "symbol": "MYX:OVERSEA",
+        "name": "Oversea Enterprise Bhd.",
+        "country": "MY",
+        "score": 6
+      },
+      {
+        "symbol": "HEL:UNITED",
+        "name": "United Bankers Oyj Class A",
+        "country": "FI",
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Severstal PAO",
+    "country": "RU",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "BSE:STAL",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "BSE:STAL",
+        "name": "Storage Technologies & Automation Ltd.",
+        "country": "IN",
+        "score": 6
+      },
+      {
+        "symbol": "BVB:SEVE",
+        "name": "Severnav SA",
+        "country": "RO",
+        "score": 6
+      },
+      {
+        "symbol": "OTC:STAL",
+        "name": "Star Alliance International Corp.",
+        "country": "US",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Genting Singapore Ltd",
+    "country": "SG",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "MYX:GENTING",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "MYX:GENTING",
+        "name": "Genting Bhd.",
+        "country": "MY",
+        "score": 9
+      },
+      {
+        "symbol": "MYX:GENTING",
+        "name": "Genting Bhd.",
+        "country": "MY",
+        "score": 9
+      },
+      {
+        "symbol": "MYX:GENTING",
+        "name": "Genting Bhd.",
+        "country": "MY",
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Deutsche Post AG",
+    "country": "DE",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "XETR:DHL",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:POST",
+        "name": "Post Holdings, Inc.",
+        "country": "US",
+        "score": 9
+      },
+      {
+        "symbol": "BUD:DEUTSCHETEL",
+        "name": "Deutsche Telekom AG",
+        "country": "HU",
+        "score": 7
+      },
+      {
+        "symbol": "BUD:DEUTSCHEBANK",
+        "name": "Deutsche Bank Aktiengesellschaft",
+        "country": "HU",
+        "score": 7
+      }
+    ]
+  },
+  {
+    "name": "SGS SA",
+    "country": "CH",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "SIX:SGSN",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:SA",
+        "name": "Seabridge Gold, Inc.",
+        "country": "US",
+        "score": 4
+      },
+      {
+        "symbol": "UPCOM:SGS",
+        "name": "Saigon Shipping Joint Stock Co",
+        "country": "VN",
+        "score": 9
+      },
+      {
+        "symbol": "SET:SA",
+        "name": "Siamese Asset Public Company Limited",
+        "country": "TH",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Vodafone Group PLC",
+    "country": "GB",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "LSE:VOD",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NASDAQ:VOD",
+        "name": "Vodafone Group Plc",
+        "country": "US",
+        "score": 5
+      },
+      {
+        "symbol": "TSXV:VONE",
+        "name": "Voyager Metals Inc.",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "JSE:VOD",
+        "name": "Vodacom Group Limited",
+        "country": "ZA",
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Manulife Financial Corp",
+    "country": "CA",
+    "symbol": "",
+    "cusip": "56501R106",
+    "roic_symbol": "TSXV:MANU",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:MANU",
+        "name": "Manchester",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "NYSE:MAN",
+        "name": "ManpowerGroup",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "MYX:MANULFE",
+        "name": "Manulife Holdings Bhd.",
+        "country": "MY",
+        "score": 9
+      }
+    ]
+  },
+  {
+    "name": "Naturgy Energy Group SA",
+    "country": "ES",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "BME:NAT",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NASDAQ:ENER",
+        "name": "Accretion Acquisition Corp.",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:ENERR",
+        "name": "Accretion Acquisition Corp.",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:ENERU",
+        "name": "Accretion Acquisition Corp.",
+        "country": null,
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Kimberly-Clark de Mexico SAB de CV",
+    "country": "MX",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "BMV:KIMBER/A",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "BMV:KIMBERB",
+        "name": "Kimberly-Clark de México, S. A. B. de C. V.",
+        "country": null,
+        "score": 9
+      },
+      {
+        "symbol": "BMV:KIMBERB",
+        "name": "Kimberly-Clark de México, S. A. B. de C. V.",
+        "country": null,
+        "score": 9
+      },
+      {
+        "symbol": "BMV:KIMBER/A",
+        "name": "Kimberly-Clark de Mexico SAB de CV Class A",
+        "country": "MX",
+        "score": 29
+      }
+    ]
+  },
+  {
+    "name": "TMBThanachart Bank PCL",
+    "country": "TH",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "",
+    "status": "not_found",
+    "top_candidates": []
+  },
+  {
+    "name": "Ambev SA",
+    "country": "BR",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "B3:ABEV3",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:AMBC",
+        "name": "Ambac Financial Group, Inc.",
+        "country": null,
+        "score": 6
+      },
+      {
+        "symbol": "NYSE:AMBP",
+        "name": "Ardagh Metal Packaging S.A.",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "NYSE:AMBQ",
+        "name": "Ambiq Micro, Inc.",
+        "country": "US",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "iA Financial Corp Inc",
+    "country": "CA",
+    "symbol": "",
+    "cusip": "45075E104",
+    "roic_symbol": "NASDAQ:IACVV",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "GETTEX:IAL",
+        "name": "IAMGOLD Corporation",
+        "country": "DE",
+        "score": 7
+      },
+      {
+        "symbol": "NASDAQ:IACO",
+        "name": "Idea Acquisition Corp.",
+        "country": "US",
+        "score": 6
+      },
+      {
+        "symbol": "NASDAQ:IACQ",
+        "name": "Irenic Acquisition Corp.",
+        "country": "US",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "Gjensidige Forsikring ASA",
+    "country": "NO",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "",
+    "status": "not_found",
+    "top_candidates": []
+  },
+  {
+    "name": "Telenor ASA",
+    "country": "NO",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "OSL:TEL",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:ASA",
+        "name": "ASA Gold and Precious Metals Limited",
+        "country": "US",
+        "score": -1
+      },
+      {
+        "symbol": "BSE:TELECANOR",
+        "name": "TeleCanor Global Limited",
+        "country": "IN",
+        "score": 6
+      },
+      {
+        "symbol": "OSL:ASA",
+        "name": "Atlantic Sapphire ASA",
+        "country": "NO",
+        "score": 21
+      }
+    ]
+  },
+  {
+    "name": "Mapfre SA",
+    "country": "ES",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "BME:MAP",
+    "status": "search_match",
+    "top_candidates": [
+      {
+        "symbol": "NYSE:SA",
+        "name": "Seabridge Gold, Inc.",
+        "country": "US",
+        "score": 4
+      },
+      {
+        "symbol": "SET:SA",
+        "name": "Siamese Asset Public Company Limited",
+        "country": "TH",
+        "score": 6
+      },
+      {
+        "symbol": "ASX:MAP",
+        "name": "Microba Life Sciences Limited",
+        "country": "AU",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "name": "China Construction Bank Corp",
+    "country": "CN",
+    "symbol": "",
+    "cusip": "",
+    "roic_symbol": "MYX:CHINHIN",
+    "status": "ambiguous",
+    "top_candidates": [
+      {
+        "symbol": "NASDAQ:CHI",
+        "name": "Calamos Convertible Opportunities and Income Fund",
+        "country": "US",
+        "score": -4
+      },
+      {
+        "symbol": "NASDAQ:CHNA",
+        "name": "Loncar China BioPharma ETF",
+        "country": null,
+        "score": -1
+      },
+      {
+        "symbol": "AMEX:CHIC",
+        "name": "Global X MSCI China Communication Services ETF",
+        "country": null,
+        "score": -1
+      }
+    ]
+  }
+]

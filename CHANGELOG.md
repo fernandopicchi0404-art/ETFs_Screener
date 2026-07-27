@@ -34,6 +34,16 @@ Registro das mudanças relevantes do repositório.
 - Retries para timeout de rede na API ROIC; mapeamento continua após erro por ativo.
 - Extração de patrimônio anterior quando a ROIC retorna apenas um exercício.
 - Leitura do peso do N-PORT (`pctVal` já vem em percentual).
+- Normalização de moedas/subunidades (GBX, ZAC, KWF) antes de calcular yields.
+- Bloqueio de métricas com moeda incompatível ou valores implausíveis.
+- Processamento por peso até atingir 90% de cobertura limpa.
+- **30 tickers SCHY corrigidos** (prefixos ROIC errados e empresas mapeadas para ticker
+  errado): Roche, Vinci, Michelin, Swisscom, Ahold, Kuehne+Nagel, Generali, Quebecor,
+  Telekom Malaysia, Coca-Cola Femsa, Chipbond, Telstra, AXA (`EURONEXT:CS`), Scotiabank,
+  Endesa, Manulife, PTT E&P, Sun Life, Naturgy, Bidvest, Central Pattana, Chicony, Spark NZ,
+  Ooredoo, Great-West Lifeco, iA Financial, Hyundai Motor, KPN, TIM e Engie Brasil.
+- Validação de nome relaxada para equivalentes legais (Koninklijke/Royal) e siglas
+  distintivas (KPN, TIM).
 
 ### Notas
 

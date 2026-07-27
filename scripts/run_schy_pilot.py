@@ -21,14 +21,22 @@ from etf_screener.export.csv_writer import (
     write_csv,
 )
 from etf_screener.holdings.sec_nport import normalize_equity_weights, parse_nport_holdings
+from etf_screener.holdings.selection import (
+    clean_company_weight,
+    consolidate_equity_holdings,
+    renormalize_consolidated_holdings,
+)
 from etf_screener.holdings.symbol_map import load_symbol_map, save_symbol_map
+from etf_screener.metrics.eligibility import is_clean_for_coverage
 from etf_screener.metrics.fundamentals import aggregate_etf, extract_fundamentals, validate_company
 from etf_screener.models import ExceptionRecord
 from etf_screener.roic.client import RoicClient
-from etf_screener.roic.resolver import resolve_roic_symbol
+from etf_screener.roic.resolver import fetch_ticker_metadata, resolve_roic_symbol
+from etf_screener.validation.ticker import validate_ticker_match
 
 
 ETF = "SCHY"
+DEFAULT_TARGET_CLEAN_COVERAGE = 0.90
 NPORT_URL = "https://www.sec.gov/Archives/edgar/data/1454889/000141036826039962/primary_doc.xml"
 NPORT_PATH = RAW_DIR / "schy_nport_2026-02-28.xml"
 
@@ -107,13 +115,18 @@ def validation_to_row(result) -> dict:
     }
 
 
-def run(limit: int | None = None) -> None:
+def run(
+    limit: int | None = None,
+    target_clean_coverage: float = DEFAULT_TARGET_CLEAN_COVERAGE,
+    full: bool = False,
+) -> None:
     api_key = load_api_key()
     client = RoicClient(api_key)
     nport_path = ensure_nport_file()
 
     holdings = normalize_equity_weights(parse_nport_holdings(nport_path, ETF))
-    equities = [holding for holding in holdings if holding.included_in_equity_analysis]
+    equities = consolidate_equity_holdings(holdings)
+    equities = renormalize_consolidated_holdings(equities)
     if limit is not None:
         equities = equities[:limit]
 
@@ -122,9 +135,24 @@ def run(limit: int | None = None) -> None:
     validations = []
     exceptions: list[ExceptionRecord] = []
     run_date = datetime.now(timezone.utc).date().isoformat()
+    clean_coverage = 0.0
+    stopped_early = False
 
     for index, holding in enumerate(equities, start=1):
-        print(f"[{index}/{len(equities)}] Processando {holding.name}...", flush=True)
+        if not full and clean_coverage >= target_clean_coverage * 100:
+            stopped_early = True
+            print(
+                f"Meta de cobertura limpa atingida ({clean_coverage:.2f}% >= "
+                f"{target_clean_coverage * 100:.0f}%). Encerrando.",
+                flush=True,
+            )
+            break
+
+        print(
+            f"[{index}/{len(equities)}] Processando {holding.name} "
+            f"({holding.weight_normalized:.2f}%)...",
+            flush=True,
+        )
         mapped = symbol_map.get(holding.name, {})
         roic_symbol, mapping_status, _ = resolve_roic_symbol(
             client,
@@ -151,13 +179,38 @@ def run(limit: int | None = None) -> None:
             )
             continue
 
+        if mapping_status != "manual":
+            ticker_metadata = fetch_ticker_metadata(client, roic_symbol)
+            ticker_ok, ticker_message = validate_ticker_match(
+                holding.name,
+                holding.country,
+                ticker_metadata,
+                roic_symbol,
+            )
+            if not ticker_ok:
+                exceptions.append(
+                    ExceptionRecord(
+                        etf=ETF,
+                        symbol=roic_symbol,
+                        date=run_date,
+                        severity="BLOCKER",
+                        tag="TICKER_VALIDATION_FAILED",
+                        stage="resolver",
+                        message=ticker_message,
+                        metric_impact="todas",
+                        recommended_action="Corrigir mapeamento manual ou regra de validação.",
+                        status="pending",
+                    )
+                )
+                continue
+
         if mapping_status == "ambiguous":
             exceptions.append(
                 ExceptionRecord(
                     etf=ETF,
                     symbol=roic_symbol,
                     date=run_date,
-                    severity="WARNING",
+                    severity="BLOCKER",
                     tag="MAPPING_AMBIGUOUS",
                     stage="resolver",
                     message=f"Mapeamento ambíguo para {holding.name} -> {roic_symbol}.",
@@ -166,6 +219,7 @@ def run(limit: int | None = None) -> None:
                     status="pending",
                 )
             )
+            continue
 
         symbol_map[holding.name] = {
             "symbol": mapped.get("symbol", ""),
@@ -196,11 +250,11 @@ def run(limit: int | None = None) -> None:
                     symbol=roic_symbol,
                     date=run_date,
                     severity="BLOCKER",
-                    tag="API_TEMPORARY_FAILURE",
+                    tag="API_FETCH_FAILURE",
                     stage="fetch",
                     message=str(exc),
                     metric_impact="todas",
-                    recommended_action="Reexecutar o piloto; o cache evitará chamadas repetidas.",
+                    recommended_action="Revisar ticker ou reexecutar após corrigir mapeamento.",
                     status="pending",
                 )
             )
@@ -235,8 +289,13 @@ def run(limit: int | None = None) -> None:
             )
             continue
 
+        company.weight_normalized = holding.weight_normalized
         companies.append(company)
         validations.extend(validate_company(company))
+
+        if is_clean_for_coverage(company):
+            clean_coverage += clean_company_weight(company, holding)
+            print(f"  cobertura limpa acumulada: {clean_coverage:.2f}%", flush=True)
 
     output_dir = OUTPUT_DIR / ETF.lower()
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -261,16 +320,25 @@ def run(limit: int | None = None) -> None:
         "review_status",
     ])
 
-    aggregate = aggregate_etf(companies, holdings)
+    aggregate = aggregate_etf(companies, equities, target_clean_coverage=target_clean_coverage)
     aggregate["composition_date"] = "2026-02-28"
     aggregate["run_date"] = run_date
+    aggregate["stopped_early"] = stopped_early
     write_csv(output_dir / "etf_consolidado.csv", [aggregate], list(aggregate.keys()))
 
     summary = {
         "etf": ETF,
         "holdings_total": len(holdings),
-        "equities_processed": len(equities),
+        "equities_available": len(equities),
+        "equities_processed": len(companies) + len(
+            [item for item in exceptions if item.stage in {"resolver", "fetch", "metrics"}]
+        ),
         "companies_with_data": len(companies),
+        "clean_companies": sum(1 for company in companies if is_clean_for_coverage(company)),
+        "clean_coverage_pct": clean_coverage,
+        "target_clean_coverage_pct": target_clean_coverage * 100,
+        "target_clean_coverage_met": clean_coverage >= target_clean_coverage * 100,
+        "stopped_early": stopped_early,
         "exceptions": len(exceptions),
         "output_dir": str(output_dir),
     }
@@ -281,8 +349,23 @@ def run(limit: int | None = None) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Executa o piloto SCHY.")
     parser.add_argument("--limit", type=int, default=None, help="Limita o número de ações processadas.")
+    parser.add_argument(
+        "--target-clean-coverage",
+        type=float,
+        default=DEFAULT_TARGET_CLEAN_COVERAGE,
+        help="Meta de cobertura limpa (0-1). Padrão: 0.90",
+    )
+    parser.add_argument(
+        "--full",
+        action="store_true",
+        help="Processa todas as ações, ignorando a meta de cobertura limpa.",
+    )
     args = parser.parse_args()
-    run(limit=args.limit)
+    run(
+        limit=args.limit,
+        target_clean_coverage=args.target_clean_coverage,
+        full=args.full,
+    )
     return 0
 
 

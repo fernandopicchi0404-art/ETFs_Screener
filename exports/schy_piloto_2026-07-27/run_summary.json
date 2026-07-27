@@ -1,0 +1,13 @@
+{
+  "etf": "SCHY",
+  "holdings_total": 105,
+  "equities_available": 100,
+  "companies_with_data": 96,
+  "clean_companies": 89,
+  "clean_coverage_pct": 94.02560820730231,
+  "target_clean_coverage_pct": 90.0,
+  "target_clean_coverage_met": true,
+  "stopped_early": false,
+  "exceptions": 4,
+  "output_dir": "/workspace/data/output/schy"
+}
