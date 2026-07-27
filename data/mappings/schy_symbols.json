@@ -111,13 +111,13 @@
     "symbol": "",
     "cusip": "",
     "country": "ES",
-    "roic_symbol": "BME:END"
+    "roic_symbol": "BME:ELE"
   },
   "Coca-Cola Femsa SAB de CV": {
     "symbol": "",
     "cusip": "",
     "country": "MX",
-    "roic_symbol": "BMV:KOFL"
+    "roic_symbol": "BMV:KOF/UBL"
   },
   "KT&G Corp": {
     "symbol": "",
@@ -135,7 +135,7 @@
     "symbol": "",
     "cusip": "748193208",
     "country": "CA",
-    "roic_symbol": "TSX:QBR/B"
+    "roic_symbol": "TSX:QBR.A"
   },
   "DBS Group Holdings Ltd": {
     "symbol": "",
@@ -147,13 +147,13 @@
     "symbol": "",
     "cusip": "",
     "country": "MY",
-    "roic_symbol": "KLSE:TM"
+    "roic_symbol": "MYX:TM"
   },
   "Bank of Nova Scotia/The": {
     "symbol": "",
     "cusip": "064149107",
     "country": "CA",
-    "roic_symbol": "NYSE:BANC"
+    "roic_symbol": "TSX:BNS"
   },
   "Industries Qatar QSC": {
     "symbol": "",
@@ -177,7 +177,7 @@
     "symbol": "",
     "cusip": "",
     "country": "CH",
-    "roic_symbol": "SWX:ROG"
+    "roic_symbol": "SIX:RO"
   },
   "TotalEnergies SE": {
     "symbol": "",
@@ -231,7 +231,7 @@
     "symbol": "",
     "cusip": "",
     "country": "TH",
-    "roic_symbol": "SET:CENTEL"
+    "roic_symbol": "SET:CPN"
   },
   "Tryg A/S": {
     "symbol": "",
@@ -249,13 +249,13 @@
     "symbol": "",
     "cusip": "",
     "country": "TW",
-    "roic_symbol": "TWSE:6147"
+    "roic_symbol": "TPEX:6147"
   },
   "AXA SA": {
     "symbol": "",
     "cusip": "",
     "country": "FR",
-    "roic_symbol": "STU:AXA"
+    "roic_symbol": "EPA:CS"
   },
   "GSK PLC": {
     "symbol": "",
@@ -273,7 +273,7 @@
     "symbol": "",
     "cusip": "39138C106",
     "country": "CA",
-    "roic_symbol": "CSE:WEST"
+    "roic_symbol": "TSX:GWO"
   },
   "Bank Central Asia Tbk PT": {
     "symbol": "",
@@ -285,7 +285,7 @@
     "symbol": "",
     "cusip": "",
     "country": "TW",
-    "roic_symbol": "SET:CHIC"
+    "roic_symbol": "TWSE:2385"
   },
   "Power Grid Corp of India Ltd": {
     "symbol": "",
@@ -297,7 +297,7 @@
     "symbol": "",
     "cusip": "",
     "country": "AU",
-    "roic_symbol": "ASX:TRA"
+    "roic_symbol": "ASX:TLS"
   },
   "DNB Bank ASA": {
     "symbol": "",
@@ -309,7 +309,7 @@
     "symbol": "",
     "cusip": "",
     "country": "TH",
-    "roic_symbol": "SET:PTT"
+    "roic_symbol": "SET:PTTEP"
   },
   "Arca Continental SAB de CV": {
     "symbol": "",
@@ -327,7 +327,7 @@
     "symbol": "",
     "cusip": "",
     "country": "NZ",
-    "roic_symbol": "ASX:NEW"
+    "roic_symbol": "NZX:SPK"
   },
   "Kesko Oyj": {
     "symbol": "",
@@ -375,7 +375,7 @@
     "symbol": "",
     "cusip": "",
     "country": "CH",
-    "roic_symbol": "SWX:SCMN"
+    "roic_symbol": "SIX:SCMN"
   },
   "TIM SA/Brazil": {
     "symbol": "",
@@ -393,7 +393,7 @@
     "symbol": "",
     "cusip": "",
     "country": "NL",
-    "roic_symbol": "AMS:AD"
+    "roic_symbol": "EURONEXT:AD"
   },
   "BCE Inc": {
     "symbol": "",
@@ -405,7 +405,7 @@
     "symbol": "",
     "cusip": "",
     "country": "QA",
-    "roic_symbol": "KSE:OOREDOO"
+    "roic_symbol": "QSE:ORDS"
   },
   "Jardine Cycle & Carriage Ltd": {
     "symbol": "",
@@ -447,7 +447,7 @@
     "symbol": "",
     "cusip": "",
     "country": "IT",
-    "roic_symbol": "BIT:G"
+    "roic_symbol": "MIL:G"
   },
   "Eni SpA": {
     "symbol": "",
@@ -459,7 +459,7 @@
     "symbol": "",
     "cusip": "",
     "country": "KR",
-    "roic_symbol": "LSE:HYUD"
+    "roic_symbol": "KRX:005380"
   },
   "Bursa Malaysia Bhd": {
     "symbol": "",
@@ -471,25 +471,25 @@
     "symbol": "",
     "cusip": "866796105",
     "country": "CA",
-    "roic_symbol": "TSXV:SUN"
+    "roic_symbol": "TSX:SLF"
   },
   "Vinci SA": {
     "symbol": "",
     "cusip": "",
     "country": "FR",
-    "roic_symbol": "EPA:DG"
+    "roic_symbol": "EURONEXT:DG"
   },
   "Bidvest Group Ltd": {
     "symbol": "",
     "cusip": "",
     "country": "ZA",
-    "roic_symbol": "JSE:BID"
+    "roic_symbol": "JSE:BVT"
   },
   "Cie Generale des Etablissements Michelin SCA": {
     "symbol": "",
     "cusip": "",
     "country": "FR",
-    "roic_symbol": "EPA:ML"
+    "roic_symbol": "EURONEXT:ML"
   },
   "United Overseas Bank Ltd": {
     "symbol": "",
@@ -531,13 +531,13 @@
     "symbol": "",
     "cusip": "56501R106",
     "country": "CA",
-    "roic_symbol": "TSXV:MANU"
+    "roic_symbol": "TSX:MFC"
   },
   "Naturgy Energy Group SA": {
     "symbol": "",
     "cusip": "",
     "country": "ES",
-    "roic_symbol": "BME:NAT"
+    "roic_symbol": "BME:NTGY"
   },
   "Kimberly-Clark de Mexico SAB de CV": {
     "symbol": "",
@@ -555,7 +555,7 @@
     "symbol": "",
     "cusip": "45075E104",
     "country": "CA",
-    "roic_symbol": "NASDAQ:IACVV"
+    "roic_symbol": "TSX:IAG"
   },
   "Telenor ASA": {
     "symbol": "",
@@ -585,7 +585,7 @@
     "symbol": "",
     "cusip": "",
     "country": "CH",
-    "roic_symbol": "SWX:KNIN"
+    "roic_symbol": "SIX:KNIN"
   },
   "TMBThanachart Bank PCL": {
     "symbol": "",

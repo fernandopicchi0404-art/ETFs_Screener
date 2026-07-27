@@ -8,10 +8,20 @@ LEGAL_SUFFIXES = re.compile(
     re.IGNORECASE,
 )
 
+# Nomes legais equivalentes entre países (ex.: Koninklijke = Royal em holandês).
+LEGAL_NAME_EQUIVALENTS = {
+    "koninklijke": "royal",
+    "societe": "company",
+    "compagnie": "company",
+}
+
 
 def _normalize_name(name: str) -> str:
     cleaned = LEGAL_SUFFIXES.sub("", name).strip(" ,")
-    return re.sub(r"\s+", " ", cleaned).casefold()
+    normalized = re.sub(r"\s+", " ", cleaned).casefold()
+    for source, target in LEGAL_NAME_EQUIVALENTS.items():
+        normalized = re.sub(rf"\b{source}\b", target, normalized)
+    return normalized
 
 
 def validate_ticker_match(
@@ -44,6 +54,15 @@ def validate_ticker_match(
     target_tokens = [token for token in target_name.split() if len(token) > 2]
     overlap = sum(1 for token in target_tokens[:3] if token in candidate_name)
     if overlap >= 2:
+        return True, ""
+
+    # Aceita siglas distintivas compartilhadas (ex.: KPN, TIM).
+    distinctive_tokens = [
+        token
+        for token in target_tokens
+        if token.isalpha() and (token.isupper() or len(token) <= 4)
+    ]
+    if any(token in candidate_name for token in distinctive_tokens):
         return True, ""
 
     if candidate.get("type") in {"dr", "fund"}:
