@@ -1,6 +1,6 @@
 {
   "version": "2026-07-27",
-  "description": "Universo de ETFs US-listed para escala do piloto de fundamentos. Fonte de composição: SEC N-PORT.",
+  "description": "Lista expandida de 100 ETFs US-listed (levantamento original). Lista operacional curada: etf_universe.json (50 ETFs).",
   "pilot_completed": ["SCHY"],
   "etfs": [
     {"ticker": "VT", "name": "Vanguard Total World Stock ETF", "region": "global", "country": null, "theme": "broad", "issuer": "Vanguard", "index": "FTSE Global All Cap", "priority": "P1"},

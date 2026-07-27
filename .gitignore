@@ -4,5 +4,8 @@
 __pycache__/
 *.py[cod]
 data/cache/
-data/raw/*.xml
+data/database/
+data/raw/
+data/runs/
+data/exports/
 data/output/
