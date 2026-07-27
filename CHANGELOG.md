@@ -34,6 +34,9 @@ Registro das mudanças relevantes do repositório.
 - Retries para timeout de rede na API ROIC; mapeamento continua após erro por ativo.
 - Extração de patrimônio anterior quando a ROIC retorna apenas um exercício.
 - Leitura do peso do N-PORT (`pctVal` já vem em percentual).
+- Normalização de moedas/subunidades (GBX, ZAC, KWF) antes de calcular yields.
+- Bloqueio de métricas com moeda incompatível ou valores implausíveis.
+- Processamento por peso até atingir 90% de cobertura limpa.
 
 ### Notas
 

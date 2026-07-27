@@ -75,13 +75,13 @@
     "symbol": "",
     "cusip": "",
     "country": "AE",
-    "roic_symbol": "ADX:ALPHADHABI"
+    "roic_symbol": "ADX:ADIB"
   },
   "Insurance Australia Group Ltd": {
     "symbol": "",
     "cusip": "",
     "country": "AU",
-    "roic_symbol": "SET:INSURE"
+    "roic_symbol": "ASX:IAG"
   },
   "Wesfarmers Ltd": {
     "symbol": "",
@@ -93,7 +93,7 @@
     "symbol": "",
     "cusip": "",
     "country": "SG",
-    "roic_symbol": "OTC:SINGF"
+    "roic_symbol": "SGX:S68"
   },
   "Rio Tinto Ltd": {
     "symbol": "",
@@ -117,13 +117,13 @@
     "symbol": "",
     "cusip": "",
     "country": "MX",
-    "roic_symbol": "BMV:FEMSA/UB"
+    "roic_symbol": "BMV:KOFL"
   },
   "KT&G Corp": {
     "symbol": "",
     "cusip": "",
     "country": "KR",
-    "roic_symbol": "NSE:COASTCORP"
+    "roic_symbol": "KRX:033780"
   },
   "Engie Brasil Energia SA": {
     "symbol": "",
@@ -135,19 +135,19 @@
     "symbol": "",
     "cusip": "748193208",
     "country": "CA",
-    "roic_symbol": "GPW:INC"
+    "roic_symbol": "TSX:QBR/B"
   },
   "DBS Group Holdings Ltd": {
     "symbol": "",
     "cusip": "",
     "country": "SG",
-    "roic_symbol": "OTC:DBSDF"
+    "roic_symbol": "SGX:D05"
   },
   "Telekom Malaysia Bhd": {
     "symbol": "",
     "cusip": "",
     "country": "MY",
-    "roic_symbol": "BUD:MTELEKOM"
+    "roic_symbol": "KLSE:TM"
   },
   "Bank of Nova Scotia/The": {
     "symbol": "",
@@ -159,25 +159,25 @@
     "symbol": "",
     "cusip": "",
     "country": "QA",
-    "roic_symbol": "NSE:INDUSTOWER"
+    "roic_symbol": "QSE:IQCD"
   },
   "Daito Trust Construction Co Ltd": {
     "symbol": "",
     "cusip": "",
     "country": "JP",
-    "roic_symbol": "NSE:TRUST"
+    "roic_symbol": "TSE:1878"
   },
   "Telkom Indonesia Persero Tbk PT": {
     "symbol": "",
     "cusip": "",
     "country": "ID",
-    "roic_symbol": "IDX:TELE"
+    "roic_symbol": "IDX:TLKM"
   },
   "Roche Holding AG": {
     "symbol": "",
     "cusip": "",
     "country": "CH",
-    "roic_symbol": "NSE:MCDHOLDING"
+    "roic_symbol": "SWX:ROG"
   },
   "TotalEnergies SE": {
     "symbol": "",
@@ -195,7 +195,7 @@
     "symbol": "",
     "cusip": "",
     "country": "AU",
-    "roic_symbol": "ASX:PVT"
+    "roic_symbol": "ASX:MPL"
   },
   "ITC Ltd": {
     "symbol": "",
@@ -207,7 +207,7 @@
     "symbol": "",
     "cusip": "",
     "country": "KR",
-    "roic_symbol": "NASDAQ:LGIH"
+    "roic_symbol": "KRX:032640"
   },
   "Enel SpA": {
     "symbol": "",
@@ -219,13 +219,13 @@
     "symbol": "",
     "cusip": "",
     "country": "ID",
-    "roic_symbol": "IDX:BANK"
+    "roic_symbol": "IDX:BBRI"
   },
   "Jarir Marketing Co": {
     "symbol": "",
     "cusip": "",
     "country": "SA",
-    "roic_symbol": "BSE:KAJARIR"
+    "roic_symbol": "TADAWUL:4190"
   },
   "Central Pattana PCL": {
     "symbol": "",
@@ -249,7 +249,7 @@
     "symbol": "",
     "cusip": "",
     "country": "TW",
-    "roic_symbol": "IDX:CHIP"
+    "roic_symbol": "TWSE:6147"
   },
   "AXA SA": {
     "symbol": "",
@@ -279,7 +279,7 @@
     "symbol": "",
     "cusip": "",
     "country": "ID",
-    "roic_symbol": "IDX:BANK"
+    "roic_symbol": "IDX:BBCA"
   },
   "Chicony Electronics Co Ltd": {
     "symbol": "",
@@ -315,13 +315,13 @@
     "symbol": "",
     "cusip": "",
     "country": "MX",
-    "roic_symbol": "STO:ARCA"
+    "roic_symbol": "BMV:AC"
   },
   "Sanlam Ltd": {
     "symbol": "",
     "cusip": "",
     "country": "ZA",
-    "roic_symbol": "NYSE:SAND"
+    "roic_symbol": "JSE:SLM"
   },
   "Spark New Zealand Ltd": {
     "symbol": "",
@@ -357,25 +357,25 @@
     "symbol": "",
     "cusip": "",
     "country": "KR",
-    "roic_symbol": "NYSE:CHE"
+    "roic_symbol": "KRX:030000"
   },
   "Radiant Opto-Electronics Corp": {
     "symbol": "",
     "cusip": "",
     "country": "TW",
-    "roic_symbol": "NSE:RADIANTCMS"
+    "roic_symbol": "TWSE:6176"
   },
   "Japan Tobacco Inc": {
     "symbol": "",
     "cusip": "",
     "country": "JP",
-    "roic_symbol": "OTC:JAPAF"
+    "roic_symbol": "TSE:2914"
   },
   "Swisscom AG": {
     "symbol": "",
     "cusip": "",
     "country": "CH",
-    "roic_symbol": "BSEBG:SCOM"
+    "roic_symbol": "SWX:SCMN"
   },
   "TIM SA/Brazil": {
     "symbol": "",
@@ -387,13 +387,13 @@
     "symbol": "",
     "cusip": "",
     "country": "JP",
-    "roic_symbol": "NASDAQ:PONO"
+    "roic_symbol": "TSE:4528"
   },
   "Koninklijke Ahold Delhaize NV": {
     "symbol": "",
     "cusip": "",
     "country": "NL",
-    "roic_symbol": "IDX:KONI"
+    "roic_symbol": "AMS:AD"
   },
   "BCE Inc": {
     "symbol": "",
@@ -411,13 +411,13 @@
     "symbol": "",
     "cusip": "",
     "country": "SG",
-    "roic_symbol": "NGM:CYCLE"
+    "roic_symbol": "SGX:C07"
   },
   "Coca-Cola HBC AG": {
     "symbol": "",
     "cusip": "",
     "country": "CH",
-    "roic_symbol": "BIST:CCOLA"
+    "roic_symbol": "LSE:CCH"
   },
   "QBE Insurance Group Ltd": {
     "symbol": "",
@@ -447,7 +447,7 @@
     "symbol": "",
     "cusip": "",
     "country": "IT",
-    "roic_symbol": "EURONEXT:GEN"
+    "roic_symbol": "BIT:G"
   },
   "Eni SpA": {
     "symbol": "",
@@ -477,7 +477,7 @@
     "symbol": "",
     "cusip": "",
     "country": "FR",
-    "roic_symbol": "HEL:VINCIT"
+    "roic_symbol": "EPA:DG"
   },
   "Bidvest Group Ltd": {
     "symbol": "",
@@ -489,25 +489,25 @@
     "symbol": "",
     "cusip": "",
     "country": "FR",
-    "roic_symbol": "GPW:CIE"
+    "roic_symbol": "EPA:ML"
   },
   "United Overseas Bank Ltd": {
     "symbol": "",
     "cusip": "",
     "country": "SG",
-    "roic_symbol": "HEL:UNITED"
+    "roic_symbol": "SGX:U11"
   },
   "Severstal PAO": {
     "symbol": "",
     "cusip": "",
     "country": "RU",
-    "roic_symbol": "BSE:STAL"
+    "roic_symbol": "MOEX:CHMF"
   },
   "Genting Singapore Ltd": {
     "symbol": "",
     "cusip": "",
     "country": "SG",
-    "roic_symbol": "MYX:GENTING"
+    "roic_symbol": "SGX:G13"
   },
   "Deutsche Post AG": {
     "symbol": "",
@@ -573,7 +573,7 @@
     "symbol": "",
     "cusip": "",
     "country": "CN",
-    "roic_symbol": "MYX:CHINHIN"
+    "roic_symbol": "HKEX:939"
   },
   "Schroders PLC": {
     "symbol": "",

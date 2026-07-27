@@ -83,6 +83,13 @@ O mapeamento fica salvo em `data/mappings/schy_symbols.json`.
 python3 scripts/run_schy_pilot.py
 ```
 
+Por padrão, o piloto processa as maiores posições até atingir **90% de cobertura limpa**
+(dados validados). Para processar tudo:
+
+```bash
+python3 scripts/run_schy_pilot.py --full
+```
+
 Para testar com poucas ações:
 
 ```bash
