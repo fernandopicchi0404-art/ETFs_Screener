@@ -7,7 +7,7 @@ Registro das mudanças relevantes do repositório.
 ### Adicionado
 
 - **Universo de ETFs para escala do piloto** (`data/etf_universe.md` e
-  `data/etf_universe.json`): 98 ETFs US-listed por região, país e tema (amplo,
+  `data/etf_universe.json`): 100 ETFs US-listed por região, país e tema (amplo,
   dividendo, valor, small cap), com prioridade P1–P3 e ordem sugerida de expansão após
   SCHY.
 - **Base de estudo sobre fundamentos de avaliação de ETFs** (pasta `estudo/`), em 12

@@ -221,9 +221,9 @@ Tilts comuns em carteiras de longo prazo; não são ultra-nicho.
 | Prioridade | Quantidade | Exemplos |
 | --- | --- | --- |
 | **P1** | 28 | VXUS, VEA, VGK, EWJ, EPOL, EWZ, VWO, SCHY, VYMI |
-| **P2** | 38 | EZU, EWQ, MCHI, INDA, ILF, FNDF, EFV, EWY |
-| **P3** | 32 | GREK, VNM, ASHR, EMXC, UAE, SCZ |
-| **Total** | **98** | — |
+| **P2** | 42 | EZU, EWQ, MCHI, INDA, ILF, FNDF, EFV, EWY |
+| **P3** | 30 | GREK, VNM, ASHR, EMXC, UAE, SCZ |
+| **Total** | **100** | — |
 
 ---
 
