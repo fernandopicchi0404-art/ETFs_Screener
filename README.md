@@ -1,9 +1,60 @@
 # ETFs Screener
 
-Projeto para extrair a composição de ETFs, consultar fundamentos das empresas e calcular métricas agregadas.
+Base de fundamentos para avaliar e escolher ETFs a partir de dados fundamentalistas —
+sem stock picking, com foco em veículos passivos e diversificados.
 
-## Documentação
+O repositório combina **material de estudo** em português com um **piloto automatizado**
+que extrai composição de ETFs, consulta fundamentos na ROIC.ai e calcula métricas
+agregadas.
 
-- [Plano financeiro e técnico](PLANO_PROJETO.md)
-- [Tabelas, abas e campos de saída](FORMATOS_SAIDA.md)
-- [Como usar](COMO_USAR.md)
+## Comece aqui
+
+- **Estudo teórico:** [`estudo/00-mapa-e-tese-central.md`](estudo/00-mapa-e-tese-central.md)
+- **Como usar tudo:** [`COMO_USAR.md`](COMO_USAR.md)
+- **Plano do piloto SCHY:** [`PLANO_PROJETO.md`](PLANO_PROJETO.md)
+- **Formatos de saída:** [`FORMATOS_SAIDA.md`](FORMATOS_SAIDA.md)
+
+## A pergunta que este material responde
+
+> Dado o preço que estou pagando hoje por um pedaço de um mercado inteiro, qual retorno é
+> razoável esperar nos próximos 10 a 20 anos?
+
+Tudo orbita uma identidade — que não é modelo, é aritmética:
+
+```
+Retorno  ≈  (dividendos + recompra líquida)  +  crescimento do lucro por ação  ±  Δ(P/L)
+```
+
+## Conteúdo de estudo
+
+| Arquivo | Assunto |
+| --- | --- |
+| [00](estudo/00-mapa-e-tese-central.md) | Mapa e tese central |
+| [01](estudo/01-de-onde-vem-o-retorno.md) | De onde vem o retorno (primeiros princípios) |
+| [02](estudo/02-siegel-o-que-o-livro-mostra.md) | O que Siegel mostra — e as críticas |
+| [03](estudo/03-earnings-yield-a-ancora.md) | Earnings yield e CAPE |
+| [04](estudo/04-roe-reinvestimento-e-crescimento.md) | ROE, reinvestimento e crescimento |
+| [05](estudo/05-dividendos-e-recompras.md) | Dividendos e recompras |
+| [06](estudo/06-modelos-de-projecao.md) | Modelos de projeção de retorno |
+| [07](estudo/07-diversificacao-e-passivo.md) | Diversificação e gestão passiva |
+| [08](estudo/08-custos-impostos-e-mecanica-do-etf.md) | Custos, impostos e mecânica do ETF |
+| [09](estudo/09-checklist-de-avaliacao-de-etf.md) | Checklist de avaliação |
+| [10](estudo/10-armadilhas-e-limites.md) | Armadilhas e limites |
+| [11](estudo/11-glossario-e-referencias.md) | Glossário e referências |
+
+## Piloto SCHY
+
+O ETF piloto é o **SCHY** (Schwab International Dividend Equity ETF). O pipeline:
+
+1. Extrai composição do arquivo SEC N-PORT
+2. Mapeia empresas para identificadores ROIC.ai
+3. Calcula ROE, earnings yield, dividend yield e shareholder yield por ativo
+4. Gera CSVs consolidados em `data/output/schy/`
+
+```bash
+python3 scripts/build_schy_mapping.py
+python3 scripts/run_schy_pilot.py
+```
+
+Material de estudo, não recomendação de investimento. Dados de mercado citados são de
+julho de 2026.

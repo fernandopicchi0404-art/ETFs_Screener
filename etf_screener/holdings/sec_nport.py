@@ -27,7 +27,7 @@ def parse_nport_holdings(xml_path: Path, etf: str) -> list[Holding]:
     for index, node in enumerate(root.findall(".//n:invstOrSec", NS), start=1):
         asset_category = node.findtext("n:assetCat", default="", namespaces=NS) or ""
         name = node.findtext("n:name", default="", namespaces=NS) or ""
-        weight = float(node.findtext("n:pctVal", default="0", namespaces=NS) or 0) * 100
+        weight = float(node.findtext("n:pctVal", default="0", namespaces=NS) or 0)
         market_value = node.findtext("n:valUSD", default=None, namespaces=NS)
         country = node.findtext("n:invCountry", default="", namespaces=NS) or ""
         cusip = node.findtext("n:cusip", default=None, namespaces=NS)
