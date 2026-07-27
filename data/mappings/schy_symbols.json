@@ -1,0 +1,602 @@
+{
+  "Emirates NBD Bank PJSC": {
+    "symbol": "",
+    "cusip": "",
+    "country": "AE",
+    "roic_symbol": "DFM:EMIRATESNBD"
+  },
+  "BOC Hong Kong Holdings Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "HK",
+    "roic_symbol": "HKEX:2388"
+  },
+  "HCL Technologies Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "IN",
+    "roic_symbol": "NSE:HCLTECH"
+  },
+  "Vodacom Group Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "ZA",
+    "roic_symbol": "JSE:VOD"
+  },
+  "Banco do Brasil SA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "BR",
+    "roic_symbol": "B3:BBAS3"
+  },
+  "Imperial Brands PLC": {
+    "symbol": "",
+    "cusip": "",
+    "country": "GB",
+    "roic_symbol": "LSE:IMB"
+  },
+  "Kone Oyj": {
+    "symbol": "",
+    "cusip": "",
+    "country": "FI",
+    "roic_symbol": "HEL:KNEBV"
+  },
+  "Tung Ho Steel Enterprise Corp": {
+    "symbol": "",
+    "cusip": "",
+    "country": "TW",
+    "roic_symbol": "TWSE:2006"
+  },
+  "Sberbank of Russia PJSC": {
+    "symbol": "",
+    "cusip": "",
+    "country": "RU",
+    "roic_symbol": "MOEX:SBER"
+  },
+  "Saudi Telecom Co": {
+    "symbol": "",
+    "cusip": "",
+    "country": "SA",
+    "roic_symbol": "TADAWUL:7010"
+  },
+  "British American Tobacco PLC": {
+    "symbol": "",
+    "cusip": "",
+    "country": "GB",
+    "roic_symbol": "LSE:BATS"
+  },
+  "Klabin SA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "BR",
+    "roic_symbol": "B3:KLBN3"
+  },
+  "Abu Dhabi Islamic Bank PJSC": {
+    "symbol": "",
+    "cusip": "",
+    "country": "AE",
+    "roic_symbol": "ADX:ALPHADHABI"
+  },
+  "Insurance Australia Group Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "AU",
+    "roic_symbol": "SET:INSURE"
+  },
+  "Wesfarmers Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "AU",
+    "roic_symbol": "ASX:WES"
+  },
+  "Singapore Exchange Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "SG",
+    "roic_symbol": "OTC:SINGF"
+  },
+  "Rio Tinto Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "AU",
+    "roic_symbol": "ASX:RIO"
+  },
+  "Neoenergia SA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "BR",
+    "roic_symbol": "B3:NEOE3"
+  },
+  "Endesa SA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "ES",
+    "roic_symbol": "BME:END"
+  },
+  "Coca-Cola Femsa SAB de CV": {
+    "symbol": "",
+    "cusip": "",
+    "country": "MX",
+    "roic_symbol": "BMV:FEMSA/UB"
+  },
+  "KT&G Corp": {
+    "symbol": "",
+    "cusip": "",
+    "country": "KR",
+    "roic_symbol": "NSE:COASTCORP"
+  },
+  "Engie Brasil Energia SA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "BR",
+    "roic_symbol": "B3:ENGI3"
+  },
+  "Quebecor Inc": {
+    "symbol": "",
+    "cusip": "748193208",
+    "country": "CA",
+    "roic_symbol": "GPW:INC"
+  },
+  "DBS Group Holdings Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "SG",
+    "roic_symbol": "OTC:DBSDF"
+  },
+  "Telekom Malaysia Bhd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "MY",
+    "roic_symbol": "BUD:MTELEKOM"
+  },
+  "Bank of Nova Scotia/The": {
+    "symbol": "",
+    "cusip": "064149107",
+    "country": "CA",
+    "roic_symbol": "NYSE:BANC"
+  },
+  "Industries Qatar QSC": {
+    "symbol": "",
+    "cusip": "",
+    "country": "QA",
+    "roic_symbol": "NSE:INDUSTOWER"
+  },
+  "Daito Trust Construction Co Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "JP",
+    "roic_symbol": "NSE:TRUST"
+  },
+  "Telkom Indonesia Persero Tbk PT": {
+    "symbol": "",
+    "cusip": "",
+    "country": "ID",
+    "roic_symbol": "IDX:TELE"
+  },
+  "Roche Holding AG": {
+    "symbol": "",
+    "cusip": "",
+    "country": "CH",
+    "roic_symbol": "NSE:MCDHOLDING"
+  },
+  "TotalEnergies SE": {
+    "symbol": "",
+    "cusip": "",
+    "country": "FR",
+    "roic_symbol": "EURONEXT:TTE"
+  },
+  "Itau Unibanco Holding SA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "BR",
+    "roic_symbol": "B3:ITUB4"
+  },
+  "Medibank Pvt Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "AU",
+    "roic_symbol": "ASX:PVT"
+  },
+  "ITC Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "IN",
+    "roic_symbol": "NSE:ITC"
+  },
+  "LG Uplus Corp": {
+    "symbol": "",
+    "cusip": "",
+    "country": "KR",
+    "roic_symbol": "NASDAQ:LGIH"
+  },
+  "Enel SpA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "IT",
+    "roic_symbol": "MIL:ENEL"
+  },
+  "Bank Rakyat Indonesia Persero Tbk PT": {
+    "symbol": "",
+    "cusip": "",
+    "country": "ID",
+    "roic_symbol": "IDX:BANK"
+  },
+  "Jarir Marketing Co": {
+    "symbol": "",
+    "cusip": "",
+    "country": "SA",
+    "roic_symbol": "BSE:KAJARIR"
+  },
+  "Central Pattana PCL": {
+    "symbol": "",
+    "cusip": "",
+    "country": "TH",
+    "roic_symbol": "SET:CENTEL"
+  },
+  "Tryg A/S": {
+    "symbol": "",
+    "cusip": "",
+    "country": "DK",
+    "roic_symbol": "CPH:TRYG"
+  },
+  "Unilever PLC": {
+    "symbol": "",
+    "cusip": "",
+    "country": "GB",
+    "roic_symbol": "LSE:ULVR"
+  },
+  "Chipbond Technology Corp": {
+    "symbol": "",
+    "cusip": "",
+    "country": "TW",
+    "roic_symbol": "IDX:CHIP"
+  },
+  "AXA SA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "FR",
+    "roic_symbol": "STU:AXA"
+  },
+  "GSK PLC": {
+    "symbol": "",
+    "cusip": "",
+    "country": "GB",
+    "roic_symbol": "LSE:GSK"
+  },
+  "Elisa Oyj": {
+    "symbol": "",
+    "cusip": "",
+    "country": "FI",
+    "roic_symbol": "HEL:ELISA"
+  },
+  "Great-West Lifeco Inc": {
+    "symbol": "",
+    "cusip": "39138C106",
+    "country": "CA",
+    "roic_symbol": "CSE:WEST"
+  },
+  "Bank Central Asia Tbk PT": {
+    "symbol": "",
+    "cusip": "",
+    "country": "ID",
+    "roic_symbol": "IDX:BANK"
+  },
+  "Chicony Electronics Co Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "TW",
+    "roic_symbol": "SET:CHIC"
+  },
+  "Power Grid Corp of India Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "IN",
+    "roic_symbol": "NSE:POWERGRID"
+  },
+  "Telstra Group Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "AU",
+    "roic_symbol": "ASX:TRA"
+  },
+  "DNB Bank ASA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "NO",
+    "roic_symbol": "OSL:DNB"
+  },
+  "PTT Exploration & Production PCL": {
+    "symbol": "",
+    "cusip": "",
+    "country": "TH",
+    "roic_symbol": "SET:PTT"
+  },
+  "Arca Continental SAB de CV": {
+    "symbol": "",
+    "cusip": "",
+    "country": "MX",
+    "roic_symbol": "STO:ARCA"
+  },
+  "Sanlam Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "ZA",
+    "roic_symbol": "NYSE:SAND"
+  },
+  "Spark New Zealand Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "NZ",
+    "roic_symbol": "ASX:NEW"
+  },
+  "Kesko Oyj": {
+    "symbol": "",
+    "cusip": "",
+    "country": "FI",
+    "roic_symbol": "HEL:KESKOA"
+  },
+  "BB Seguridade Participacoes SA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "BR",
+    "roic_symbol": "B3:BBSE3"
+  },
+  "Tisco Financial Group PCL": {
+    "symbol": "",
+    "cusip": "",
+    "country": "TH",
+    "roic_symbol": "SET:TISCO"
+  },
+  "Koninklijke KPN NV": {
+    "symbol": "",
+    "cusip": "",
+    "country": "NL",
+    "roic_symbol": "EURONEXT:KPN"
+  },
+  "Cheil Worldwide Inc": {
+    "symbol": "",
+    "cusip": "",
+    "country": "KR",
+    "roic_symbol": "NYSE:CHE"
+  },
+  "Radiant Opto-Electronics Corp": {
+    "symbol": "",
+    "cusip": "",
+    "country": "TW",
+    "roic_symbol": "NSE:RADIANTCMS"
+  },
+  "Japan Tobacco Inc": {
+    "symbol": "",
+    "cusip": "",
+    "country": "JP",
+    "roic_symbol": "OTC:JAPAF"
+  },
+  "Swisscom AG": {
+    "symbol": "",
+    "cusip": "",
+    "country": "CH",
+    "roic_symbol": "BSEBG:SCOM"
+  },
+  "TIM SA/Brazil": {
+    "symbol": "",
+    "cusip": "",
+    "country": "BR",
+    "roic_symbol": "B3:TIMS3"
+  },
+  "Ono Pharmaceutical Co Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "JP",
+    "roic_symbol": "NASDAQ:PONO"
+  },
+  "Koninklijke Ahold Delhaize NV": {
+    "symbol": "",
+    "cusip": "",
+    "country": "NL",
+    "roic_symbol": "IDX:KONI"
+  },
+  "BCE Inc": {
+    "symbol": "",
+    "cusip": "05534B760",
+    "country": "CA",
+    "roic_symbol": "TSX:BCE"
+  },
+  "Ooredoo QPSC": {
+    "symbol": "",
+    "cusip": "",
+    "country": "QA",
+    "roic_symbol": "KSE:OOREDOO"
+  },
+  "Jardine Cycle & Carriage Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "SG",
+    "roic_symbol": "NGM:CYCLE"
+  },
+  "Coca-Cola HBC AG": {
+    "symbol": "",
+    "cusip": "",
+    "country": "CH",
+    "roic_symbol": "BIST:CCOLA"
+  },
+  "QBE Insurance Group Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "AU",
+    "roic_symbol": "ASX:QBE"
+  },
+  "Zurich Insurance Group AG": {
+    "symbol": "",
+    "cusip": "",
+    "country": "CH",
+    "roic_symbol": "SIX:ZURN"
+  },
+  "Allianz SE": {
+    "symbol": "",
+    "cusip": "",
+    "country": "DE",
+    "roic_symbol": "XETR:ALV"
+  },
+  "BHP Group Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "AU",
+    "roic_symbol": "ASX:BHP"
+  },
+  "Generali": {
+    "symbol": "",
+    "cusip": "",
+    "country": "IT",
+    "roic_symbol": "EURONEXT:GEN"
+  },
+  "Eni SpA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "IT",
+    "roic_symbol": "MIL:ENI"
+  },
+  "Hyundai Motor Co": {
+    "symbol": "",
+    "cusip": "",
+    "country": "KR",
+    "roic_symbol": "LSE:HYUD"
+  },
+  "Bursa Malaysia Bhd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "MY",
+    "roic_symbol": "MYX:BURSA"
+  },
+  "Sun Life Financial Inc": {
+    "symbol": "",
+    "cusip": "866796105",
+    "country": "CA",
+    "roic_symbol": "TSXV:SUN"
+  },
+  "Vinci SA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "FR",
+    "roic_symbol": "HEL:VINCIT"
+  },
+  "Bidvest Group Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "ZA",
+    "roic_symbol": "JSE:BID"
+  },
+  "Cie Generale des Etablissements Michelin SCA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "FR",
+    "roic_symbol": "GPW:CIE"
+  },
+  "United Overseas Bank Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "SG",
+    "roic_symbol": "HEL:UNITED"
+  },
+  "Severstal PAO": {
+    "symbol": "",
+    "cusip": "",
+    "country": "RU",
+    "roic_symbol": "BSE:STAL"
+  },
+  "Genting Singapore Ltd": {
+    "symbol": "",
+    "cusip": "",
+    "country": "SG",
+    "roic_symbol": "MYX:GENTING"
+  },
+  "Deutsche Post AG": {
+    "symbol": "",
+    "cusip": "",
+    "country": "DE",
+    "roic_symbol": "XETR:DHL"
+  },
+  "SGS SA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "CH",
+    "roic_symbol": "SIX:SGSN"
+  },
+  "Vodafone Group PLC": {
+    "symbol": "",
+    "cusip": "",
+    "country": "GB",
+    "roic_symbol": "LSE:VOD"
+  },
+  "Manulife Financial Corp": {
+    "symbol": "",
+    "cusip": "56501R106",
+    "country": "CA",
+    "roic_symbol": "TSXV:MANU"
+  },
+  "Naturgy Energy Group SA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "ES",
+    "roic_symbol": "BME:NAT"
+  },
+  "Kimberly-Clark de Mexico SAB de CV": {
+    "symbol": "",
+    "cusip": "",
+    "country": "MX",
+    "roic_symbol": "BMV:KIMBER/A"
+  },
+  "Ambev SA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "BR",
+    "roic_symbol": "B3:ABEV3"
+  },
+  "iA Financial Corp Inc": {
+    "symbol": "",
+    "cusip": "45075E104",
+    "country": "CA",
+    "roic_symbol": "NASDAQ:IACVV"
+  },
+  "Telenor ASA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "NO",
+    "roic_symbol": "OSL:TEL"
+  },
+  "Mapfre SA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "ES",
+    "roic_symbol": "BME:MAP"
+  },
+  "China Construction Bank Corp": {
+    "symbol": "",
+    "cusip": "",
+    "country": "CN",
+    "roic_symbol": "MYX:CHINHIN"
+  },
+  "Schroders PLC": {
+    "symbol": "",
+    "cusip": "",
+    "country": "GB",
+    "roic_symbol": "LSE:SDR"
+  },
+  "Kuehne + Nagel International AG": {
+    "symbol": "",
+    "cusip": "",
+    "country": "CH",
+    "roic_symbol": "SWX:KNIN"
+  },
+  "TMBThanachart Bank PCL": {
+    "symbol": "",
+    "cusip": "",
+    "country": "TH",
+    "roic_symbol": "SET:TTB"
+  },
+  "Gjensidige Forsikring ASA": {
+    "symbol": "",
+    "cusip": "",
+    "country": "NO",
+    "roic_symbol": "OSL:GJF"
+  }
+}

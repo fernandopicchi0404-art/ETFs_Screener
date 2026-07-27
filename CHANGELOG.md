@@ -21,10 +21,22 @@ Registro das mudanças relevantes do repositório.
   - `09` — Checklist operacional de avaliação de ETF
   - `10` — Armadilhas e limites do método
   - `11` — Glossário e referências
-- `COMO_USAR.md` com o roteiro de leitura e o fluxo de uso do checklist.
-- `CHANGELOG.md`.
+- **Piloto SCHY**: pipeline para extrair composição via SEC N-PORT, mapear empresas na
+  ROIC.ai, calcular métricas por ativo e consolidar ROE, earnings yield, dividend yield e
+  shareholder yield.
+- `PLANO_PROJETO.md`, `FORMATOS_SAIDA.md` e `COMO_USAR.md` com instruções de estudo e de
+  execução do piloto.
+
+### Corrigido
+
+- Mapeamentos manuais ambíguos do SCHY (BOC Hong Kong, Imperial Brands, Kone, Tung Ho,
+  Saudi Telecom, Schroders, Kuehne+Nagel, TMBThanachart, Gjensidige).
+- Retries para timeout de rede na API ROIC; mapeamento continua após erro por ativo.
+- Extração de patrimônio anterior quando a ROIC retorna apenas um exercício.
+- Leitura do peso do N-PORT (`pctVal` já vem em percentual).
 
 ### Notas
 
-- Dados de mercado citados são de julho de 2026 e estão consolidados numa tabela ao final
-  de `estudo/11-glossario-e-referencias.md`, para facilitar a atualização periódica.
+- Dados de mercado citados no material de estudo são de julho de 2026 e estão consolidados
+  numa tabela ao final de `estudo/11-glossario-e-referencias.md`.
+- O piloto SCHY usa dados anuais da ROIC.ai (plano gratuito: ~5 requisições/minuto).

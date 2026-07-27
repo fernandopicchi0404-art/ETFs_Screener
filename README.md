@@ -1,27 +1,31 @@
-# ETFs_Screener
+# ETFs Screener
 
 Base de fundamentos para avaliar e escolher ETFs a partir de dados fundamentalistas —
 sem stock picking, com foco em veículos passivos e diversificados.
 
-O material de estudo está em [`estudo/`](estudo/) e parte de *Stocks for the Long Run*
-(Jeremy Siegel), complementado por Bogle, Buffett, Damodaran, Shiller, Arnott/Asness e a
-base histórica de Dimson–Marsh–Staunton.
+O repositório combina **material de estudo** em português com um **piloto automatizado**
+que extrai composição de ETFs, consulta fundamentos na ROIC.ai e calcula métricas
+agregadas.
 
-**Comece por [`COMO_USAR.md`](COMO_USAR.md)**, ou vá direto para o
-[mapa e a tese central](estudo/00-mapa-e-tese-central.md).
+## Comece aqui
+
+- **Estudo teórico:** [`estudo/00-mapa-e-tese-central.md`](estudo/00-mapa-e-tese-central.md)
+- **Como usar tudo:** [`COMO_USAR.md`](COMO_USAR.md)
+- **Plano do piloto SCHY:** [`PLANO_PROJETO.md`](PLANO_PROJETO.md)
+- **Formatos de saída:** [`FORMATOS_SAIDA.md`](FORMATOS_SAIDA.md)
 
 ## A pergunta que este material responde
 
 > Dado o preço que estou pagando hoje por um pedaço de um mercado inteiro, qual retorno é
 > razoável esperar nos próximos 10 a 20 anos?
 
-Tudo aqui orbita uma identidade — que não é modelo, é aritmética:
+Tudo orbita uma identidade — que não é modelo, é aritmética:
 
 ```
 Retorno  ≈  (dividendos + recompra líquida)  +  crescimento do lucro por ação  ±  Δ(P/L)
 ```
 
-## Conteúdo
+## Conteúdo de estudo
 
 | Arquivo | Assunto |
 | --- | --- |
@@ -37,6 +41,20 @@ Retorno  ≈  (dividendos + recompra líquida)  +  crescimento do lucro por aç�
 | [09](estudo/09-checklist-de-avaliacao-de-etf.md) | Checklist de avaliação |
 | [10](estudo/10-armadilhas-e-limites.md) | Armadilhas e limites |
 | [11](estudo/11-glossario-e-referencias.md) | Glossário e referências |
+
+## Piloto SCHY
+
+O ETF piloto é o **SCHY** (Schwab International Dividend Equity ETF). O pipeline:
+
+1. Extrai composição do arquivo SEC N-PORT
+2. Mapeia empresas para identificadores ROIC.ai
+3. Calcula ROE, earnings yield, dividend yield e shareholder yield por ativo
+4. Gera CSVs consolidados em `data/output/schy/`
+
+```bash
+python3 scripts/build_schy_mapping.py
+python3 scripts/run_schy_pilot.py
+```
 
 Material de estudo, não recomendação de investimento. Dados de mercado citados são de
 julho de 2026.
