@@ -39,9 +39,9 @@ Registro das mudanças relevantes do repositório.
 - Processamento por peso até atingir 90% de cobertura limpa.
 - **30 tickers SCHY corrigidos** (prefixos ROIC errados e empresas mapeadas para ticker
   errado): Roche, Vinci, Michelin, Swisscom, Ahold, Kuehne+Nagel, Generali, Quebecor,
-  Telekom Malaysia, Coca-Cola Femsa, Chipbond, Telstra, AXA, Scotiabank, Endesa, Manulife,
-  PTT E&P, Sun Life, Naturgy, Bidvest, Central Pattana, Chicony, Spark NZ, Ooredoo,
-  Great-West Lifeco, iA Financial, Hyundai Motor, KPN, TIM e Engie Brasil.
+  Telekom Malaysia, Coca-Cola Femsa, Chipbond, Telstra, AXA (`EURONEXT:CS`), Scotiabank,
+  Endesa, Manulife, PTT E&P, Sun Life, Naturgy, Bidvest, Central Pattana, Chicony, Spark NZ,
+  Ooredoo, Great-West Lifeco, iA Financial, Hyundai Motor, KPN, TIM e Engie Brasil.
 - Validação de nome relaxada para equivalentes legais (Koninklijke/Royal) e siglas
   distintivas (KPN, TIM).
 

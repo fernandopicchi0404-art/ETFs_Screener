@@ -3,12 +3,12 @@
   "holdings_total": 105,
   "equities_available": 100,
   "equities_processed": 100,
-  "companies_with_data": 68,
-  "clean_companies": 62,
-  "clean_coverage_pct": 68.77035293904191,
+  "companies_with_data": 94,
+  "clean_companies": 87,
+  "clean_coverage_pct": 85.66192351432909,
   "target_clean_coverage_pct": 90.0,
   "target_clean_coverage_met": false,
   "stopped_early": false,
-  "exceptions": 32,
+  "exceptions": 6,
   "output_dir": "/workspace/data/output/schy"
 }

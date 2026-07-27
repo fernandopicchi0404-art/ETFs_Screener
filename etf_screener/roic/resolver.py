@@ -62,7 +62,7 @@ MANUAL_ROIC_SYMBOLS = {
     "Coca-Cola Femsa SAB de CV": "BMV:KOF/UBL",
     # Correções de ticker errado (tipo 1) ou empresa errada (tipo 2)
     "Telstra Group Ltd": "ASX:TLS",
-    "AXA SA": "EPA:CS",
+    "AXA SA": "EURONEXT:CS",
     "Bank of Nova Scotia/The": "TSX:BNS",
     "Endesa SA": "BME:ELE",
     "Manulife Financial Corp": "TSX:MFC",
