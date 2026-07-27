@@ -12,6 +12,13 @@ def _first(payload: dict[str, Any]) -> dict[str, Any] | None:
     return None
 
 
+def _nth(payload: dict[str, Any], index: int) -> dict[str, Any]:
+    data = payload.get("data")
+    if isinstance(data, list) and len(data) > index:
+        return data[index] or {}
+    return {}
+
+
 def _safe_div(numerator: float | None, denominator: float | None) -> float | None:
     if numerator is None or denominator in (None, 0):
         return None
@@ -38,7 +45,7 @@ def extract_fundamentals(
 ) -> CompanyFundamentals:
     income = _first(income_payload) or {}
     balance = _first(balance_payload) or {}
-    balance_prior = (balance_payload.get("data") or [None, None])[1] or {}
+    balance_prior = _nth(balance_payload, 1)
     cashflow = _first(cashflow_payload) or {}
 
     earnings_for_common = _pick(

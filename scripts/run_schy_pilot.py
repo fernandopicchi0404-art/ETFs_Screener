@@ -206,17 +206,35 @@ def run(limit: int | None = None) -> None:
             )
             continue
 
-        company = extract_fundamentals(
-            etf=ETF,
-            roic_symbol=roic_symbol,
-            company_name=holding.name,
-            country=holding.country,
-            mapping_status=mapping_status,
-            income_payload=income,
-            balance_payload=balance,
-            cashflow_payload=cashflow,
-            price_payload=price,
-        )
+        try:
+            company = extract_fundamentals(
+                etf=ETF,
+                roic_symbol=roic_symbol,
+                company_name=holding.name,
+                country=holding.country,
+                mapping_status=mapping_status,
+                income_payload=income,
+                balance_payload=balance,
+                cashflow_payload=cashflow,
+                price_payload=price,
+            )
+        except Exception as exc:  # noqa: BLE001
+            exceptions.append(
+                ExceptionRecord(
+                    etf=ETF,
+                    symbol=roic_symbol,
+                    date=run_date,
+                    severity="BLOCKER",
+                    tag="EXTRACTION_FAILURE",
+                    stage="metrics",
+                    message=str(exc),
+                    metric_impact="todas",
+                    recommended_action="Revisar dados retornados pela ROIC para este ativo.",
+                    status="pending",
+                )
+            )
+            continue
+
         companies.append(company)
         validations.extend(validate_company(company))
 

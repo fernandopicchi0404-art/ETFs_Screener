@@ -16,6 +16,10 @@ MANUAL_ROIC_SYMBOLS = {
     "Kone Oyj": "HEL:KNEBV",
     "Tung Ho Steel Enterprise Corp": "TWSE:2006",
     "Saudi Telecom Co": "TADAWUL:7010",
+    "Schroders PLC": "LSE:SDR",
+    "Kuehne + Nagel International AG": "SWX:KNIN",
+    "TMBThanachart Bank PCL": "SET:TTB",
+    "Gjensidige Forsikring ASA": "OSL:GJF",
 }
 
 KNOWN_NAME_QUERIES = {
@@ -51,6 +55,10 @@ KNOWN_NAME_QUERIES = {
     "Ambev SA": ["Ambev", "ABEV3"],
     "TIM SA": ["TIM", "TIMS3"],
     "BB Seguridade Participacoes SA": ["BBSE3"],
+    "Schroders PLC": ["SDR", "Schroders"],
+    "Kuehne + Nagel International AG": ["KNIN", "Kuehne Nagel"],
+    "TMBThanachart Bank PCL": ["TTB", "TMBThanachart"],
+    "Gjensidige Forsikring ASA": ["GJF", "Gjensidige"],
 }
 
 
