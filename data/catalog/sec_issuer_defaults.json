@@ -1,0 +1,32 @@
+{
+  "description": "CIK do registrante SEC (trust) por gestora. Usado para localizar o N-PORT certo via seriesName.",
+  "issuers": {
+    "iShares": {
+      "sec_registrant_cik": "0000930667"
+    },
+    "Schwab": {
+      "sec_registrant_cik": "0001454889"
+    },
+    "SPDR": {
+      "sec_registrant_cik": "0001064642"
+    },
+    "Vanguard": {
+      "efts_search": true
+    },
+    "Franklin": {
+      "efts_search": true
+    },
+    "VanEck": {
+      "efts_search": true
+    },
+    "Global X": {
+      "efts_search": true
+    },
+    "Invesco": {
+      "efts_search": true
+    },
+    "Avantis": {
+      "efts_search": true
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "methodology_version": "1.0",
+  "description": "Regras de composição e cálculo. Versão gravada em cada snapshot e run.",
+  "composition": {
+    "equity_asset_categories": ["EC", "EP"],
+    "normalize_equity_weights": true,
+    "consolidate_duplicate_names": true
+  },
+  "fundamentals": {
+    "period_type": "annual",
+    "target_clean_coverage": 0.9,
+    "note": "Métricas fundamentalistas serão implementadas na fase 2."
+  },
+  "prices": {
+    "update_frequency": "monthly",
+    "note": "Preços em tabela histórica separada; atualização recorrente na fase 2."
+  }
+}

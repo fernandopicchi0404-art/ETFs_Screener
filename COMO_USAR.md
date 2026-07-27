@@ -61,6 +61,24 @@ ROIC_API_KEY=sua_chave_aqui
 
 2. Use Python 3.12 ou superior.
 
+### Coleta de composição dos ETFs (fase atual)
+
+Antes das métricas fundamentalistas, sincronize o cadastro e extraia as composições:
+
+```bash
+python3 scripts/sync_etf_registry.py
+python3 scripts/update_holdings.py --priority P1
+```
+
+Para um ETF específico:
+
+```bash
+python3 scripts/update_holdings.py --etf SCHY
+```
+
+Os dados ficam no banco `data/database/etf_screener.sqlite` e em
+`data/exports/compositions/`. Detalhes em [`PLANO_DADOS.md`](PLANO_DADOS.md).
+
 ### 1. Construir o mapeamento de ações
 
 Este passo resolve os nomes das empresas do ETF para os identificadores da ROIC.ai.

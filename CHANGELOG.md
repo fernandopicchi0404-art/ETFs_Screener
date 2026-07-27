@@ -6,6 +6,17 @@ Registro das mudanças relevantes do repositório.
 
 ### Adicionado
 
+- **Pipeline de composição de ETFs** (fase 1 do plano de dados):
+  - Banco SQLite (`etf_screener/database/`) com ETFs, ativos, snapshots, holdings e
+    tabela `prices` reservada para fase 2.
+  - Catálogo em `data/catalog/` (`methodology.json`, `sec_issuer_defaults.json`).
+  - Descoberta e download SEC N-PORT (`sec_discovery`, `sec_fetch`, `nport_metadata`).
+  - Deduplicação de ativos por ISIN/CUSIP/nome (`asset_registry`).
+  - Scripts `sync_etf_registry.py` e `update_holdings.py`.
+  - Documentação em `PLANO_DADOS.md`.
+- **Universo de ETFs para escala do piloto** (`data/etf_universe.md`, `data/etf_universe.json`,
+  `data/etf_universe_full.json`): núcleo curado de **50 ETFs** (sem China, hedges e nichos
+  complexos); lista expandida de 100 mantida como referência.
 - **Base de estudo sobre fundamentos de avaliação de ETFs** (pasta `estudo/`), em 12
   arquivos, partindo de *Stocks for the Long Run* (Siegel) e complementada por Bogle,
   Buffett, Damodaran, Shiller, Arnott/Asness e Dimson–Marsh–Staunton:
