@@ -6,10 +6,9 @@ Registro das mudanças relevantes do repositório.
 
 ### Adicionado
 
-- **Universo de ETFs para escala do piloto** (`data/etf_universe.md` e
-  `data/etf_universe.json`): 100 ETFs US-listed por região, país e tema (amplo,
-  dividendo, valor, small cap), com prioridade P1–P3 e ordem sugerida de expansão após
-  SCHY.
+- **Universo de ETFs para escala do piloto** (`data/etf_universe.md`, `data/etf_universe.json`,
+  `data/etf_universe_full.json`): núcleo curado de **50 ETFs** (sem China, hedges e nichos
+  complexos); lista expandida de 100 mantida como referência.
 - **Base de estudo sobre fundamentos de avaliação de ETFs** (pasta `estudo/`), em 12
   arquivos, partindo de *Stocks for the Long Run* (Siegel) e complementada por Bogle,
   Buffett, Damodaran, Shiller, Arnott/Asness e Dimson–Marsh–Staunton:

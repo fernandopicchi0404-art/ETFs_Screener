@@ -1,255 +1,184 @@
-# Universo de ETFs — levantamento para escala do piloto
+# Universo de ETFs — núcleo de 50 para escala do piloto
 
-Lista de ETFs **listados nos EUA** (fonte de composição via SEC N-PORT), organizados por região, país ou tema. Foco em produtos **grandes, líquidos e representativos** — não em nichos extremos.
+Lista **curada** de 50 ETFs listados nos EUA (composição via SEC N-PORT). Foco em **liquidez, diversificação geográfica e atratividade**, com **menos complexidade operacional** que a lista completa de 100.
 
-**Como usar esta lista**
+A lista expandida (100 ETFs) ficou em `data/etf_universe_full.json` para consulta.
 
-| Prioridade | Significado | Uso na escala |
+---
+
+## Critérios de curadoria
+
+**Mantidos**
+
+- Blocos amplos essenciais (global, desenvolvidos, emergentes, Europa, Ásia, Latam).
+- Países grandes ou com perfil interessante (Japão, Polônia, Índia, Brasil, etc.).
+- Tilts comuns: dividendo internacional, valor/growth EAFE, small cap internacional.
+- Um representante quando havia duplicata (ex.: VEA em vez de EFA + SPDW + IDEV).
+
+**Removidos (50 ETFs da lista anterior)**
+
+| Motivo | Exemplos removidos |
+| --- | --- |
+| China — mapeamento e dados mais difíceis | MCHI, FXI, ASHR, EMXC |
+| Hedge de câmbio — produto diferente do índice local | DXJ, HEWJ, HEDJ |
+| Fronteira / muito nicho | FM, ARGT, GXG, GREK, VNM, UAE, QAT |
+| Duplicata do mesmo bloco | IXUS, SPY, EEM, IEMG, SPEM, IEUR, IPAC |
+| País pequeno ou volátil | TUR, EPU, ENOR, EDEN, EIRL, ENZL, EWH, EPHE |
+| Japão / Europa redundante | FLJP, SCJ, JPXN, IEUS, NORW |
+| Dividendo redundante | DWX, VIGI, VIG |
+| Fatores extras | IMTM, EFAV, SCZ, AVDV, FNDC |
+| Global redundante | ACWI, URTH, ACWX |
+| Setor / RE | GXF |
+
+---
+
+## Prioridade
+
+| Prioridade | Qtd | Uso |
 | --- | --- | --- |
-| **P1** | Núcleo — amplos ou país/região muito relevante | Rodar primeiro após SCHY |
-| **P2** | Importante — país, região ou tilt comum no portfólio | Segunda leva |
-| **P3** | Complementar — menor ou mais específico, mas ainda útil | Terceira leva ou análise pontual |
-
-**Legenda de colunas**
-
-- **Ticker** — símbolo no mercado americano
-- **Nome** — fundo
-- **Índice / metodologia** — referência principal (quando conhecida)
-- **Tema** — ampla, país, dividendo, valor, etc.
+| **P1** | 31 | Rodar primeiro (amplos + países grandes + SCHY) |
+| **P2** | 19 | Segunda leva (países menores, tilts, referências) |
 
 ---
 
-## 1. Global e multi-região
+## 1. Blocos amplos e referência EUA (12)
 
-| Prioridade | Ticker | Nome | Índice / metodologia | Tema |
-| --- | --- | --- | --- | --- |
-| P1 | VT | Vanguard Total World Stock ETF | FTSE Global All Cap | Global (inclui EUA) |
-| P1 | VXUS | Vanguard Total International Stock ETF | FTSE Global All Cap ex-US | Internacional amplo |
-| P1 | IXUS | iShares Core MSCI Total International Stock ETF | MSCI ACWI ex-US | Internacional amplo |
-| P2 | ACWI | iShares MSCI ACWI ETF | MSCI ACWI | Global (inclui EUA) |
-| P2 | URTH | iShares MSCI World ETF | MSCI World | Desenvolvidos global (inclui EUA) |
-| P3 | ACWX | iShares MSCI ACWI ex US ETF | MSCI ACWI ex-US | Internacional amplo (alternativa) |
-
----
-
-## 2. Estados Unidos (referência)
-
-Útil para comparar fundamentos domésticos com o resto do mundo. Não é foco do piloto internacional, mas entra no universo.
-
-| Prioridade | Ticker | Nome | Índice / metodologia | Tema |
-| --- | --- | --- | --- | --- |
-| P1 | VTI | Vanguard Total Stock Market ETF | CRSP US Total Market | EUA amplo |
-| P1 | VOO | Vanguard S&P 500 ETF | S&P 500 | EUA large cap |
-| P2 | SPY | SPDR S&P 500 ETF Trust | S&P 500 | EUA large cap |
-| P2 | QQQ | Invesco QQQ Trust | Nasdaq-100 | EUA growth / tech |
-| P2 | SCHD | Schwab US Dividend Equity ETF | Dow Jones US Dividend 100 | EUA dividendo |
-| P3 | VIG | Vanguard Dividend Appreciation ETF | S&P US Dividend Growers | EUA dividendo crescimento |
+| Prioridade | Ticker | Nome | Tema |
+| --- | --- | --- | --- |
+| P1 | VT | Vanguard Total World Stock ETF | Global |
+| P1 | VXUS | Vanguard Total International Stock ETF | Internacional amplo |
+| P1 | VEA | Vanguard FTSE Developed Markets ETF | Desenvolvidos ex-US |
+| P1 | VWO | Vanguard FTSE Emerging Markets ETF | Emergentes |
+| P1 | VGK | Vanguard FTSE Europe ETF | Europa |
+| P1 | EZU | iShares MSCI EMU ETF | Zona euro |
+| P1 | VPL | Vanguard FTSE Pacific ETF | Pacífico ex-Japão |
+| P1 | AAXJ | iShares MSCI All Country Asia ex Japan ETF | Ásia ex-Japão |
+| P1 | ILF | iShares Latin America 40 ETF | Latam amplo |
+| P1 | VTI | Vanguard Total Stock Market ETF | EUA amplo |
+| P1 | VOO | Vanguard S&P 500 ETF | EUA large cap |
+| P1 | SCHD | Schwab US Dividend Equity ETF | EUA dividendo |
 
 ---
 
-## 3. Desenvolvidos ex-EUA (regional)
+## 2. Europa por país (9)
 
-| Prioridade | Ticker | Nome | Índice / metodologia | Tema |
-| --- | --- | --- | --- | --- |
-| P1 | VEA | Vanguard FTSE Developed Markets ETF | FTSE Developed ex-US | Desenvolvidos ex-US |
-| P1 | IEFA | iShares Core MSCI EAFE ETF | MSCI EAFE | Desenvolvidos ex-US |
-| P1 | SCHF | Schwab International Equity ETF | FTSE Developed ex-US | Desenvolvidos ex-US |
-| P2 | EFA | iShares MSCI EAFE ETF | MSCI EAFE | Desenvolvidos ex-US |
-| P2 | IDEV | iShares Core MSCI International Developed Markets ETF | MSCI World ex-US | Desenvolvidos ex-US |
-| P2 | SPDW | SPDR Portfolio Developed World ex-US ETF | FTSE Developed ex-US | Desenvolvidos ex-US |
-| P3 | GXF | iShares Global Developed Real Estate ETF | FTSE Developed ex-US / RE | Desenvolvidos — RE (tema) |
-
----
-
-## 4. Europa (regional)
-
-| Prioridade | Ticker | Nome | Índice / metodologia | Tema |
-| --- | --- | --- | --- | --- |
-| P1 | VGK | Vanguard FTSE Europe ETF | FTSE Developed Europe All Cap | Europa |
-| P1 | IEUR | iShares Core MSCI Europe ETF | MSCI Europe | Europa |
-| P2 | FEZ | SPDR EURO STOXX 50 ETF | EURO STOXX 50 | Europa — mega caps |
-| P2 | EZU | iShares MSCI EMU ETF | MSCI EMU | Europa — zona euro |
-| P3 | HEDJ | WisdomTree Europe Hedged Equity Fund | WisdomTree Europe Hedged | Europa — hedge FX EUR |
-| P3 | IEUS | iShares MSCI Europe Small-Cap ETF | MSCI Europe Small Cap | Europa — small cap |
+| Prioridade | Ticker | Nome | País |
+| --- | --- | --- | --- |
+| P1 | EWG | iShares MSCI Germany ETF | Alemanha |
+| P1 | EWU | iShares MSCI United Kingdom ETF | Reino Unido |
+| P1 | EPOL | iShares MSCI Poland ETF | Polônia |
+| P1 | EWQ | iShares MSCI France ETF | França |
+| P1 | EWL | iShares MSCI Switzerland ETF | Suíça |
+| P2 | EWI | iShares MSCI Italy ETF | Itália |
+| P2 | EWP | iShares MSCI Spain ETF | Espanha |
+| P2 | EWN | iShares MSCI Netherlands ETF | Holanda |
+| P2 | EWD | iShares MSCI Sweden ETF | Suécia |
 
 ---
 
-## 5. Europa por país
+## 3. Japão, Pacífico e Ásia por país (10)
 
-Países desenvolvidos e **Polônia** (emergente na UE, perfil de crescimento/valor interessante).
-
-| Prioridade | Ticker | Nome | País | Índice / metodologia |
-| --- | --- | --- | --- | --- |
-| P1 | EWG | iShares MSCI Germany ETF | Alemanha | MSCI Germany |
-| P1 | EWU | iShares MSCI United Kingdom ETF | Reino Unido | MSCI UK |
-| P1 | EPOL | iShares MSCI Poland ETF | Polônia | MSCI Poland |
-| P2 | EWQ | iShares MSCI France ETF | França | MSCI France |
-| P2 | EWL | iShares MSCI Switzerland ETF | Suíça | MSCI Switzerland |
-| P2 | EWP | iShares MSCI Spain ETF | Espanha | MSCI Spain |
-| P2 | EWI | iShares MSCI Italy ETF | Itália | MSCI Italy |
-| P2 | EWN | iShares MSCI Netherlands ETF | Holanda | MSCI Netherlands |
-| P2 | EWD | iShares MSCI Sweden ETF | Suécia | MSCI Sweden |
-| P3 | ENOR | iShares MSCI Norway ETF | Noruega | MSCI Norway |
-| P3 | EDEN | iShares MSCI Denmark ETF | Dinamarca | MSCI Denmark |
-| P3 | EIRL | iShares MSCI Ireland ETF | Irlanda | MSCI Ireland |
-| P3 | GREK | Global X MSCI Greece ETF | Grécia | MSCI Greece |
-| P3 | NORW | Global X MSCI Norway ETF | Noruega | MSCI Norway (alternativa) |
+| Prioridade | Ticker | Nome | País / região |
+| --- | --- | --- | --- |
+| P1 | EWJ | iShares MSCI Japan ETF | Japão |
+| P1 | EWA | iShares MSCI Australia ETF | Austrália |
+| P1 | EWC | iShares MSCI Canada ETF | Canadá |
+| P2 | EWS | iShares MSCI Singapore ETF | Singapura |
+| P1 | EWY | iShares MSCI South Korea ETF | Coreia do Sul |
+| P1 | EWT | iShares MSCI Taiwan ETF | Taiwan |
+| P1 | INDA | iShares MSCI India ETF | Índia |
+| P2 | EIDO | iShares MSCI Indonesia ETF | Indonésia |
+| P2 | THD | iShares MSCI Thailand ETF | Tailândia |
+| P2 | EWM | iShares MSCI Malaysia ETF | Malásia |
 
 ---
 
-## 6. Japão
+## 4. Latam, África e Oriente Médio (6)
 
-| Prioridade | Ticker | Nome | Índice / metodologia | Tema |
-| --- | --- | --- | --- | --- |
-| P1 | EWJ | iShares MSCI Japan ETF | MSCI Japan | Japão amplo |
-| P1 | FLJP | Franklin FTSE Japan ETF | FTSE Japan | Japão amplo |
-| P2 | DXJ | WisdomTree Japan Hedged Equity Fund | WisdomTree Japan Hedged | Japão — hedge JPY |
-| P2 | HEWJ | iShares Currency Hedged MSCI Japan ETF | MSCI Japan 100% Hedged | Japão — hedge JPY |
-| P3 | SCJ | iShares MSCI Japan Small-Cap ETF | MSCI Japan Small Cap | Japão — small cap |
-| P3 | JPXN | iShares JPX-Nikkei 400 ETF | JPX-Nikkei 400 | Japão — qualidade |
-
----
-
-## 7. Pacífico desenvolvido (ex-Japão)
-
-| Prioridade | Ticker | Nome | Índice / metodologia | Tema |
-| --- | --- | --- | --- | --- |
-| P1 | VPL | Vanguard FTSE Pacific ETF | FTSE Developed Asia Pacific ex-Japan | Pacífico ex-Japão |
-| P2 | IPAC | iShares Core MSCI Pacific ETF | MSCI Pacific | Pacífico ex-Japão |
-| P2 | EWA | iShares MSCI Australia ETF | MSCI Australia | Austrália |
-| P2 | EWC | iShares MSCI Canada ETF | MSCI Canada | Canadá |
-| P3 | EWH | iShares MSCI Hong Kong ETF | MSCI Hong Kong | Hong Kong |
-| P3 | EWS | iShares MSCI Singapore ETF | MSCI Singapore | Singapura |
-| P3 | ENZL | iShares MSCI New Zealand ETF | MSCI New Zealand | Nova Zelândia |
+| Prioridade | Ticker | Nome | País / região |
+| --- | --- | --- | --- |
+| P1 | EWZ | iShares MSCI Brazil ETF | Brasil |
+| P1 | EWW | iShares MSCI Mexico ETF | México |
+| P2 | ECH | iShares MSCI Chile ETF | Chile |
+| P1 | EZA | iShares MSCI South Africa ETF | África do Sul |
+| P1 | KSA | iShares MSCI Saudi Arabia ETF | Arábia Saudita |
+| P2 | EIS | iShares MSCI Israel ETF | Israel |
 
 ---
 
-## 8. Ásia (regional e por país)
+## 5. Dividendos (4)
 
-| Prioridade | Ticker | Nome | País / região | Índice / metodologia |
-| --- | --- | --- | --- | --- |
-| P1 | AAXJ | iShares MSCI All Country Asia ex Japan ETF | Ásia ex-Japão | MSCI AC Asia ex Japan |
-| P1 | EWY | iShares MSCI South Korea ETF | Coreia do Sul | MSCI South Korea |
-| P1 | EWT | iShares MSCI Taiwan ETF | Taiwan | MSCI Taiwan |
-| P1 | INDA | iShares MSCI India ETF | Índia | MSCI India |
-| P2 | MCHI | iShares MSCI China ETF | China | MSCI China |
-| P2 | FXI | iShares China Large-Cap ETF | China | FTSE China 50 |
-| P2 | VNM | VanEck Vietnam ETF | Vietnã | MVIS Vietnam |
-| P2 | EIDO | iShares MSCI Indonesia ETF | Indonésia | MSCI Indonesia |
-| P2 | THD | iShares MSCI Thailand ETF | Tailândia | MSCI Thailand |
-| P3 | EPHE | iShares MSCI Philippines ETF | Filipinas | MSCI Philippines |
-| P3 | EWM | iShares MSCI Malaysia ETF | Malásia | MSCI Malaysia |
-| P3 | ASHR | Xtrackers Harvest CSI 300 China A-Shares ETF | China A | CSI 300 |
-| P3 | INDY | iShares India 50 ETF | Índia | Nifty 50 |
-| P3 | EIS | iShares MSCI Israel ETF | Israel | MSCI Israel |
+| Prioridade | Ticker | Nome | Tema |
+| --- | --- | --- | --- |
+| P1 | SCHY | Schwab International Dividend Equity ETF | Dividendo internacional |
+| P1 | VYMI | Vanguard International High Dividend Yield ETF | Dividendo internacional |
+| P2 | IDV | iShares International Select Dividend ETF | Dividendo internacional |
+| P2 | DVYE | iShares Emerging Markets Dividend ETF | Dividendo emergentes |
 
 ---
 
-## 9. Emergentes (regional)
+## 6. Valor, growth e small cap internacional (4)
 
-| Prioridade | Ticker | Nome | Índice / metodologia | Tema |
-| --- | --- | --- | --- | --- |
-| P1 | VWO | Vanguard FTSE Emerging Markets ETF | FTSE Emerging | Emergentes amplo |
-| P1 | IEMG | iShares Core MSCI Emerging Markets ETF | MSCI Emerging Markets | Emergentes amplo |
-| P2 | EEM | iShares MSCI Emerging Markets ETF | MSCI Emerging Markets | Emergentes amplo |
-| P2 | SPEM | SPDR Portfolio Emerging Markets ETF | FTSE Emerging | Emergentes amplo |
-| P3 | EMXC | iShares MSCI Emerging Markets ex China ETF | MSCI EM ex China | Emergentes sem China |
-| P3 | FM | iShares MSCI Frontier and Select EM ETF | MSCI Frontier + EM | Fronteira / EM seletivo |
+| Prioridade | Ticker | Nome | Tema |
+| --- | --- | --- | --- |
+| P1 | FNDF | Schwab Fundamental International Large Company Index ETF | Valor internacional |
+| P2 | EFV | iShares MSCI EAFE Value ETF | Valor EAFE |
+| P2 | EFG | iShares MSCI EAFE Growth ETF | Growth EAFE |
+| P1 | VSS | Vanguard FTSE All-World ex-US Small-Cap ETF | Small cap internacional |
 
 ---
 
-## 10. Latam (regional e por país)
+## 7. Complementos líquidos (5)
 
-| Prioridade | Ticker | Nome | País / região | Índice / metodologia |
-| --- | --- | --- | --- | --- |
-| P1 | ILF | iShares Latin America 40 ETF | Latam amplo | S&P Latin America 40 |
-| P1 | EWZ | iShares MSCI Brazil ETF | Brasil | MSCI Brazil |
-| P1 | EWW | iShares MSCI Mexico ETF | México | MSCI Mexico |
-| P2 | ECH | iShares MSCI Chile ETF | Chile | MSCI Chile |
-| P2 | EPU | iShares MSCI Peru ETF | Peru | MSCI Peru |
-| P3 | GXG | Global X MSCI Colombia ETF | Colômbia | MSCI Colombia |
-| P3 | ARGT | Global X MSCI Argentina ETF | Argentina | MSCI Argentina |
+Segunda linha simples, sem China nem hedge.
 
----
-
-## 11. Outros países / regiões
-
-| Prioridade | Ticker | Nome | País / região | Índice / metodologia |
-| --- | --- | --- | --- | --- |
-| P2 | EZA | iShares MSCI South Africa ETF | África do Sul | MSCI South Africa |
-| P2 | TUR | iShares MSCI Turkey ETF | Turquia | MSCI Turkey |
-| P2 | KSA | iShares MSCI Saudi Arabia ETF | Arábia Saudita | MSCI Saudi Arabia |
-| P3 | UAE | iShares MSCI UAE ETF | Emirados Árabes | MSCI UAE |
-| P3 | QAT | iShares MSCI Qatar ETF | Catar | MSCI Qatar |
+| Prioridade | Ticker | Nome | Por que ficou |
+| --- | --- | --- | --- |
+| P2 | FEZ | SPDR EURO STOXX 50 ETF | Mega caps europeias — muito líquido |
+| P2 | SCHF | Schwab International Equity ETF | Par Schwab com SCHY / FNDF |
+| P2 | SCHC | Schwab International Small-Cap Equity ETF | Small cap desenvolvidos (Schwab) |
+| P2 | IEFA | iShares Core MSCI EAFE ETF | Referência MSCI EAFE |
+| P2 | QQQ | Invesco QQQ Trust | Referência EUA growth |
 
 ---
 
-## 12. Dividendos internacionais (tilt — não nichado)
+## 8. Resumo geográfico
 
-| Prioridade | Ticker | Nome | Índice / metodologia | Tema |
-| --- | --- | --- | --- | --- |
-| P1 | SCHY | Schwab International Dividend Equity ETF | Dow Jones International Dividend 100 | Dividendo internacional |
-| P1 | VYMI | Vanguard International High Dividend Yield ETF | FTSE All-World ex-US High Div Yield | Dividendo internacional |
-| P2 | IDV | iShares International Select Dividend ETF | Dow Jones International Dividend | Dividendo internacional |
-| P2 | DWX | SPDR S&P International Dividend ETF | S&P International Dividend Aristocrats | Dividendo internacional |
-| P2 | DVYE | iShares Emerging Markets Dividend ETF | Dow Jones EM Dividend | Dividendo emergentes |
-| P3 | VIGI | Vanguard International Dividend Appreciation ETF | S&P Global ex-US Dividend Growers | Dividendo crescimento intl |
+| Região | ETFs na lista |
+| --- | --- |
+| Global / multi-região | VT, VXUS, VEA, VWO, VGK, EZU, VPL, AAXJ, ILF |
+| EUA (referência) | VTI, VOO, SCHD, QQQ |
+| Europa país | EWG, EWU, EPOL, EWQ, EWL, EWI, EWP, EWN, EWD, FEZ |
+| Japão | EWJ |
+| Pacífico / norte | EWA, EWC, EWS |
+| Ásia emergente | EWY, EWT, INDA, EIDO, THD, EWM |
+| Latam | EWZ, EWW, ECH (+ ILF amplo) |
+| África / Médio Oriente | EZA, KSA, EIS |
+| Tilts | SCHY, VYMI, IDV, DVYE, FNDF, EFV, EFG, VSS, SCHF, SCHC, IEFA |
 
----
-
-## 13. Valor, qualidade e small cap internacional
-
-Tilts comuns em carteiras de longo prazo; não são ultra-nicho.
-
-| Prioridade | Ticker | Nome | Índice / metodologia | Tema |
-| --- | --- | --- | --- | --- |
-| P1 | FNDF | Schwab Fundamental International Large Company Index ETF | RAFI Developed ex-US Large | Valor / fundamental intl |
-| P2 | FNDC | Schwab Fundamental International Small Company Index ETF | RAFI Developed ex-US Small | Small cap valor intl |
-| P2 | AVDV | Avantis International Small Cap Value ETF | multifator small value | Small cap valor intl |
-| P2 | EFV | iShares MSCI EAFE Value ETF | MSCI EAFE Value | Valor EAFE |
-| P2 | EFG | iShares MSCI EAFE Growth ETF | MSCI EAFE Growth | Growth EAFE |
-| P2 | VSS | Vanguard FTSE All-World ex-US Small-Cap ETF | FTSE Global Small Cap ex-US | Small cap internacional |
-| P2 | SCHC | Schwab International Small-Cap Equity ETF | FTSE Developed Small Cap ex-US | Small cap desenvolvidos |
-| P3 | IMTM | iShares MSCI Intl Momentum Factor ETF | MSCI World ex-US Momentum | Momentum intl |
-| P3 | EFAV | iShares MSCI EAFE Min Vol Factor ETF | MSCI EAFE Min Vol | Baixa volatilidade EAFE |
-| P3 | SCZ | iShares MSCI EAFE Small-Cap ETF | MSCI EAFE Small Cap | Small cap EAFE |
+**Sem exposição China** nesta lista — VWO ainda pode ter peso em China via índice FTSE Emerging; isso é o bloco amplo, não um ETF só de China.
 
 ---
 
-## 14. Resumo por prioridade
+## 9. Ordem sugerida para escalar (após SCHY)
 
-| Prioridade | Quantidade | Exemplos |
-| --- | --- | --- |
-| **P1** | 28 | VXUS, VEA, VGK, EWJ, EPOL, EWZ, VWO, SCHY, VYMI |
-| **P2** | 42 | EZU, EWQ, MCHI, INDA, ILF, FNDF, EFV, EWY |
-| **P3** | 30 | GREK, VNM, ASHR, EMXC, UAE, SCZ |
-| **Total** | **100** | — |
+1. **VEA** — desenvolvidos amplos (validar pipeline)
+2. **EWJ** — Japão
+3. **VWO** — emergentes amplos
+4. **EWZ** ou **ILF** — Latam
+5. **EPOL** — Polônia
+6. **VYMI** — comparar tilt de dividendo
+7. **VGK** — Europa regional
+8. **INDA** — Índia
 
----
-
-## 15. Ordem sugerida para escalar o piloto (após SCHY)
-
-1. **Desenvolvidos amplos** — VEA, IEFA ou SCHF (validar pipeline com menos surpresa de mapeamento que SCHY)
-2. **País grande e limpo** — EWJ (Japão) ou EWG (Alemanha)
-3. **Emergentes amplo** — VWO ou IEMG
-4. **Latam** — EWZ ou ILF
-5. **País “interesse especial”** — EPOL (Polônia)
-6. **Segundo tilt de dividendo** — VYMI (comparar com SCHY)
-7. **Europa regional** — VGK ou IEUR
-8. **Ásia país** — INDA, EWY ou MCHI
+Depois seguir **P1** restantes e, por último, **P2**.
 
 ---
 
-## 16. Limitações deste levantamento
+## 10. Arquivos
 
-- Só ETFs **listados nos EUA** (compatível com SEC N-PORT usado no piloto).
-- Não inclui ETFs locais (ex.: fundos na Europa ou Brasil que não negociam em NYSE/Nasdaq).
-- AUM e liquidez mudam; antes de rodar em lote, vale checar tamanho mínimo na ficha do fundo.
-- ETFs de **um único país** com poucas ações grandes podem ter métricas agregadas menos representativas que um fundo amplo (ex.: QAT, UAE).
-- **China A** (ASHR) e **fronteira** (FM) tendem a ter mais exceções no mapeamento ROIC.
-
----
-
-## 17. Arquivo estruturado
-
-A mesma lista está em `data/etf_universe.json` para uso em scripts de escala (`ticker`, região, país, tema, prioridade).
+| Arquivo | Conteúdo |
+| --- | --- |
+| `data/etf_universe.json` | **50 ETFs** — lista operacional |
+| `data/etf_universe_full.json` | 100 ETFs — levantamento original |
+| `data/etf_universe.md` | Este documento |
