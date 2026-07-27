@@ -273,3 +273,9 @@ SCHY,SET:TISCO,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do 
 SCHY,MYX:BURSA,,dividend_presence,,,,,,WARNING,internal,,Nenhum campo de dividendos encontrado na ROIC para este ativo.
 SCHY,MOEX:SBER,,dividend_presence,,,,,,WARNING,internal,,Nenhum campo de dividendos encontrado na ROIC para este ativo.
 SCHY,MOEX:CHMF,,dividend_presence,,,,,,WARNING,internal,,Nenhum campo de dividendos encontrado na ROIC para este ativo.
+SCHY,SIX:RO,2025,eps_reconciliation,16.039850560398506,16.039850560398506,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,SIX:RO,2025,balance_sheet_identity,100703000000,100703000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,SIX:RO,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
+SCHY,EURONEXT:DG,2025,eps_reconciliation,8.646346583595244,8.646346583595244,0.0,0.0,0.05,PASS,internal,,Lucro ordinário dividido por ações diluídas versus EPS reportado.
+SCHY,EURONEXT:DG,2025,balance_sheet_identity,133065000000,133065000000,0,0.0,0.02,PASS,internal,,Ativos devem ser aproximadamente iguais a passivos + patrimônio.
+SCHY,EURONEXT:DG,2025,currency_match,1.0,1.0,0.0,0.0,0.0,PASS,internal,,"Moeda do demonstrativo versus moeda do preço, com conversão de subunidade quando aplicável."
