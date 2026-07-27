@@ -6,6 +6,10 @@ Registro das mudanças relevantes do repositório.
 
 ### Adicionado
 
+- **Levantamento ROIC por prioridade** (`scripts/fetch_p1_assets.py`):
+  - Processa ativos únicos do P1 (ou outra prioridade) com limite de tempo.
+  - Grava status em `asset_fundamental_fetches` e export parcial JSONL.
+  - Respeita throttle do plano gratuito (13s entre chamadas).
 - **Pipeline de composição de ETFs** (fase 1 do plano de dados):
   - Banco SQLite (`etf_screener/database/`) com ETFs, ativos, snapshots, holdings e
     tabela `prices` reservada para fase 2.
