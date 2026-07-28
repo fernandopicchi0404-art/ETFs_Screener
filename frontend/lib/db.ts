@@ -8,6 +8,8 @@ function resolveDbPath(): string {
   const candidates = [
     path.join(process.cwd(), "data", "etf_screener.sqlite"),
     path.join(process.cwd(), "frontend", "data", "etf_screener.sqlite"),
+    path.join(__dirname, "..", "data", "etf_screener.sqlite"),
+    path.join(__dirname, "..", "..", "data", "etf_screener.sqlite"),
   ];
   for (const candidate of candidates) {
     if (fs.existsSync(candidate)) {
