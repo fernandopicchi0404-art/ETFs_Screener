@@ -4,9 +4,10 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any
 
-from etf_screener.database.db import Database
+from etf_screener.models import CompanyFundamentals
 from etf_screener.metrics.fundamentals import extract_fundamentals
 from etf_screener.roic.client import RoicClient
+from etf_screener.roic.symbols import resolve_fetch_symbol, roic_symbol_path
 from etf_screener.roic.identity_resolver import APPROVED_STATUSES
 
 
@@ -123,34 +124,90 @@ def record_fetch(
     )
 
 
+def pending_fetch_retries(db: Database, priority: str = "P1") -> list[AssetWorkItem]:
+    rows = db.fetchall(
+        """
+        SELECT
+            a.asset_id,
+            a.canonical_name,
+            a.country,
+            ai.roic_symbol,
+            ai.mapping_status,
+            MAX(h.weight_normalized) AS max_weight
+        FROM asset_fundamental_fetches aff
+        JOIN assets a ON a.asset_id = aff.asset_id
+        JOIN asset_identities ai ON ai.asset_id = a.asset_id
+        JOIN holdings h ON h.asset_id = a.asset_id
+        JOIN composition_snapshots cs ON cs.snapshot_id = h.snapshot_id
+        JOIN etfs e ON e.etf_id = cs.etf_id
+        WHERE aff.status = 'fetch_error'
+          AND e.priority = ?
+          AND h.included_in_equity_analysis = 1
+          AND ai.mapping_status IN (
+              'verified_isin', 'verified_cusip', 'verified_symbol',
+              'verified_name_match', 'manual_approved'
+          )
+        GROUP BY a.asset_id
+        ORDER BY max_weight DESC, a.canonical_name
+        """,
+        (priority,),
+    )
+    return [
+        AssetWorkItem(
+            asset_id=int(row["asset_id"]),
+            canonical_name=row["canonical_name"],
+            country=row["country"] or "",
+            roic_symbol=row["roic_symbol"],
+            mapping_status=row["mapping_status"],
+            max_weight=float(row["max_weight"] or 0),
+        )
+        for row in rows
+    ]
+
+
 def fetch_asset_fundamentals(
     client: RoicClient,
     item: AssetWorkItem,
-) -> tuple[dict[str, Any] | None, str, str | None, str | None, int, str | None]:
+) -> tuple[dict[str, Any] | None, str, str | None, str | None, int, str | None, CompanyFundamentals | None]:
     """Busca fundamentos apenas para identidade já aprovada."""
     requests_used = 0
-    roic_symbol = item.roic_symbol
+    roic_symbol = resolve_fetch_symbol(item.roic_symbol)
 
     try:
         income = client.get(
-            f"/fundamental/income-statement/{roic_symbol}",
+            roic_symbol_path("/fundamental/income-statement", roic_symbol),
             {"period_type": "annual", "limit": 2, "order": "desc"},
         )
         requests_used += 1
         balance = client.get(
-            f"/fundamental/balance-sheet/{roic_symbol}",
+            roic_symbol_path("/fundamental/balance-sheet", roic_symbol),
             {"period_type": "annual", "limit": 2, "order": "desc"},
         )
         requests_used += 1
         cashflow = client.get(
-            f"/fundamental/cash-flow/{roic_symbol}",
+            roic_symbol_path("/fundamental/cash-flow", roic_symbol),
             {"period_type": "annual", "limit": 1, "order": "desc"},
         )
         requests_used += 1
-        price = client.get(f"/stock-prices/latest/{roic_symbol}")
-        requests_used += 1
+        price: dict[str, Any] = {}
+        try:
+            price = client.get(roic_symbol_path("/stock-prices/latest", roic_symbol))
+            requests_used += 1
+        except Exception:  # noqa: BLE001 — preço ausente não invalida ROE
+            pass
     except Exception as exc:  # noqa: BLE001
-        return None, "fetch_error", roic_symbol, item.mapping_status, requests_used, str(exc)
+        return None, "fetch_error", roic_symbol, item.mapping_status, requests_used, str(exc), None
+
+    if not (income.get("data") or balance.get("data")):
+        return (
+            None,
+            "fetch_error",
+            roic_symbol,
+            item.mapping_status,
+            requests_used,
+            "Demonstrativos financeiros vazios na ROIC.",
+            None,
+        )
 
     company = extract_fundamentals(
         etf="P1_BATCH",
@@ -179,4 +236,4 @@ def fetch_asset_fundamentals(
         "quality": company.quality,
         "tags": company.tags,
     }
-    return payload, "ok", roic_symbol, item.mapping_status, requests_used, None
+    return payload, "ok", roic_symbol, item.mapping_status, requests_used, None, company

@@ -17,9 +17,11 @@ from etf_screener.database.db import Database
 from etf_screener.fundamentals.fetch_worker import (
     _now,
     fetch_asset_fundamentals,
+    pending_fetch_retries,
     pending_verified_fetches,
     record_fetch,
 )
+from etf_screener.metrics.persistence import upsert_asset_fundamentals
 from etf_screener.roic.auth import load_roic_api_key
 from etf_screener.roic.client import RoicClient
 
@@ -34,13 +36,21 @@ def main() -> int:
         help="Tempo máximo de execução (padrão: 7200 = 2 horas).",
     )
     parser.add_argument("--limit", type=int, help="Limita quantidade de ativos nesta execução.")
+    parser.add_argument(
+        "--retry-errors",
+        action="store_true",
+        help="Reprocessa apenas ativos com fetch_error anterior.",
+    )
     args = parser.parse_args()
 
     api_key = load_roic_api_key()
     db = Database()
     db.init_schema()
 
-    queue = pending_verified_fetches(db, priority=args.priority)
+    if args.retry_errors:
+        queue = pending_fetch_retries(db, priority=args.priority)
+    else:
+        queue = pending_verified_fetches(db, priority=args.priority)
     if args.limit is not None:
         queue = queue[:args.limit]
 
@@ -90,7 +100,7 @@ def main() -> int:
             flush=True,
         )
 
-        payload, status, roic_symbol, mapping_status, requests_used, error_message = (
+        payload, status, roic_symbol, mapping_status, requests_used, error_message, company = (
             fetch_asset_fundamentals(client, item)
         )
         fetched_at = _now()
@@ -127,6 +137,8 @@ def main() -> int:
                 requests_used=requests_used,
                 fetched_at=fetched_at,
             )
+            if company is not None:
+                upsert_asset_fundamentals(conn, item.asset_id, company)
             conn.commit()
 
         summary["results"].append(

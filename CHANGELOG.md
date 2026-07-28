@@ -62,6 +62,16 @@ Registro das mudanças relevantes do repositório.
 
 ### Corrigido
 
+- Erros de fetch ROIC para tickers mexicanos com `/` na URL (codificação do símbolo).
+- Preço ROIC opcional quando demonstrativos existem (recupera ROE sem earnings yield).
+- Exclusões de identidade por validação rígida de país da SEC (confiança no ISIN).
+
+### Adicionado (métricas)
+
+- `scripts/sync_fundamentals_db.py` — popula `asset_fundamentals` a partir dos fetches OK.
+- `calculate_etf_metrics.py --priority P1` — calcula agregados em lote.
+- Export em `data/exports/etf_metrics/p1_consolidated.json`.
+
 - Mapeamentos manuais ambíguos do SCHY (BOC Hong Kong, Imperial Brands, Kone, Tung Ho,
   Saudi Telecom, Schroders, Kuehne+Nagel, TMBThanachart, Gjensidige).
 - Retries para timeout de rede na API ROIC; mapeamento continua após erro por ativo.
