@@ -20,6 +20,7 @@ SEC_ISSUER_DEFAULTS_PATH = CATALOG_DIR / "sec_issuer_defaults.json"
 METHODOLOGY_PATH = CATALOG_DIR / "methodology.json"
 
 ROIC_BASE_URL = "https://api.roic.ai/v3.0.0"
+# Intervalo padrão legado (plano gratuito). Produção usa roic/settings.py + .env.
 REQUEST_INTERVAL_SECONDS = 13
 MAX_RETRIES = 4
 
