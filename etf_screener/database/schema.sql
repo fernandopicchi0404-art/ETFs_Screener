@@ -27,6 +27,8 @@ CREATE TABLE IF NOT EXISTS assets (
     cusip TEXT,
     country TEXT,
     roic_symbol TEXT,
+    sector TEXT,
+    exchange TEXT,
     created_at TEXT NOT NULL,
     updated_at TEXT NOT NULL
 );
@@ -133,4 +135,75 @@ CREATE TABLE IF NOT EXISTS asset_identities (
 );
 
 CREATE INDEX IF NOT EXISTS idx_asset_identities_status ON asset_identities(mapping_status);
+
+-- Fase 3: métricas calculadas por ativo (global, reutilizável entre ETFs).
+CREATE TABLE IF NOT EXISTS asset_fundamentals (
+    fundamental_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    asset_id INTEGER NOT NULL UNIQUE REFERENCES assets(asset_id),
+    roic_symbol TEXT,
+    exchange TEXT,
+    sector TEXT,
+    industry TEXT,
+    mapping_status TEXT,
+    fundamental_currency TEXT,
+    price_currency TEXT,
+    fiscal_year INTEGER,
+    fiscal_year_end TEXT,
+    price_date TEXT,
+    price REAL,
+    earnings_for_common REAL,
+    diluted_shares REAL,
+    diluted_eps REAL,
+    common_equity_average REAL,
+    roe REAL,
+    roe_method TEXT,
+    earnings_yield REAL,
+    dividend_yield REAL,
+    gross_buyback_yield REAL,
+    net_buyback_yield REAL,
+    gross_shareholder_yield REAL,
+    net_shareholder_yield REAL,
+    quality TEXT NOT NULL DEFAULT 'OK',
+    tags TEXT,
+    notes TEXT,
+    methodology_version TEXT NOT NULL,
+    calculated_at TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_asset_fundamentals_quality ON asset_fundamentals(quality);
+
+-- Fase 3: métricas consolidadas por ETF e snapshot de composição.
+CREATE TABLE IF NOT EXISTS etf_consolidated_metrics (
+    metric_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    etf_id INTEGER NOT NULL REFERENCES etfs(etf_id),
+    snapshot_id INTEGER NOT NULL REFERENCES composition_snapshots(snapshot_id),
+    equity_positions INTEGER NOT NULL DEFAULT 0,
+    equity_weight_original_pct REAL,
+    non_equity_weight_original_pct REAL,
+    target_clean_coverage_pct REAL,
+    clean_coverage_pct REAL,
+    target_clean_coverage_met INTEGER NOT NULL DEFAULT 0,
+    roe_aggregate REAL,
+    earnings_yield_aggregate REAL,
+    dividend_yield_aggregate REAL,
+    gross_buyback_yield_aggregate REAL,
+    net_buyback_yield_aggregate REAL,
+    gross_shareholder_yield_aggregate REAL,
+    net_shareholder_yield_aggregate REAL,
+    earnings_yield_mean_covered REAL,
+    dividend_yield_mean_covered REAL,
+    gross_buyback_yield_mean_covered REAL,
+    gross_shareholder_yield_mean_covered REAL,
+    coverage_roe_pct REAL,
+    coverage_earnings_yield_pct REAL,
+    coverage_dividend_yield_pct REAL,
+    coverage_buyback_yield_pct REAL,
+    coverage_shareholder_yield_pct REAL,
+    composition_date TEXT,
+    calculated_at TEXT NOT NULL,
+    methodology_version TEXT NOT NULL,
+    UNIQUE(etf_id, snapshot_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_etf_metrics_etf ON etf_consolidated_metrics(etf_id);
 

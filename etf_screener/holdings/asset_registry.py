@@ -71,6 +71,18 @@ def _merge_assets(conn, canonical_id: int, duplicate_ids: list[int]) -> None:
             (canonical_id, dup_id, canonical_id),
         )
         conn.execute("DELETE FROM asset_identities WHERE asset_id = ?", (dup_id,))
+        conn.execute(
+            """
+            UPDATE asset_fundamentals
+            SET asset_id = ?
+            WHERE asset_id = ?
+              AND NOT EXISTS (
+                  SELECT 1 FROM asset_fundamentals af2 WHERE af2.asset_id = ?
+              )
+            """,
+            (canonical_id, dup_id, canonical_id),
+        )
+        conn.execute("DELETE FROM asset_fundamentals WHERE asset_id = ?", (dup_id,))
         conn.execute("DELETE FROM assets WHERE asset_id = ?", (dup_id,))
 
 
