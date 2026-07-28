@@ -20,6 +20,8 @@ def build_asset_key(holding: Holding) -> str:
 
 def upsert_asset(conn, holding: Holding, now: str) -> int:
     asset_key = build_asset_key(holding)
+    cusip = holding.cusip if holding.cusip != INVALID_CUSIP else None
+
     row = conn.execute("SELECT asset_id FROM assets WHERE asset_key = ?", (asset_key,)).fetchone()
     if row:
         asset_id = int(row[0])
@@ -33,7 +35,7 @@ def upsert_asset(conn, holding: Holding, now: str) -> int:
             (
                 holding.name,
                 holding.isin,
-                holding.cusip if holding.cusip != INVALID_CUSIP else None,
+                cusip,
                 holding.country or None,
                 holding.lei,
                 now,
@@ -41,6 +43,53 @@ def upsert_asset(conn, holding: Holding, now: str) -> int:
             ),
         )
         return asset_id
+
+    # Mesmo CUSIP/ISIN pode chegar com chaves diferentes (ex.: NAME antes de ISIN corrigido).
+    if cusip:
+        row = conn.execute("SELECT asset_id FROM assets WHERE cusip = ?", (cusip,)).fetchone()
+        if row:
+            asset_id = int(row[0])
+            conn.execute(
+                """
+                UPDATE assets
+                SET asset_key = ?, canonical_name = ?, isin = COALESCE(?, isin),
+                    country = COALESCE(?, country), lei = COALESCE(?, lei), updated_at = ?
+                WHERE asset_id = ?
+                """,
+                (
+                    asset_key,
+                    holding.name,
+                    holding.isin,
+                    holding.country or None,
+                    holding.lei,
+                    now,
+                    asset_id,
+                ),
+            )
+            return asset_id
+
+    if holding.isin:
+        row = conn.execute("SELECT asset_id FROM assets WHERE isin = ?", (holding.isin,)).fetchone()
+        if row:
+            asset_id = int(row[0])
+            conn.execute(
+                """
+                UPDATE assets
+                SET asset_key = ?, canonical_name = ?, cusip = COALESCE(?, cusip),
+                    country = COALESCE(?, country), lei = COALESCE(?, lei), updated_at = ?
+                WHERE asset_id = ?
+                """,
+                (
+                    asset_key,
+                    holding.name,
+                    cusip,
+                    holding.country or None,
+                    holding.lei,
+                    now,
+                    asset_id,
+                ),
+            )
+            return asset_id
 
     cursor = conn.execute(
         """
@@ -51,7 +100,7 @@ def upsert_asset(conn, holding: Holding, now: str) -> int:
             asset_key,
             holding.name,
             holding.isin,
-            holding.cusip if holding.cusip != INVALID_CUSIP else None,
+            cusip,
             holding.country or None,
             holding.lei,
             now,
