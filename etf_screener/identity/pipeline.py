@@ -100,9 +100,15 @@ def save_identity(conn, asset_id: int, result: IdentityResult, country: str | No
         ),
     )
     if result.roic_symbol and result.mapping_status in APPROVED_STATUSES:
+        updates = ["roic_symbol = ?", "updated_at = ?"]
+        params: list[Any] = [result.roic_symbol, _now()]
+        if result.candidate_name:
+            updates.insert(1, "canonical_name = ?")
+            params.insert(1, result.candidate_name)
+        params.append(asset_id)
         conn.execute(
-            "UPDATE assets SET roic_symbol = ?, updated_at = ? WHERE asset_id = ?",
-            (result.roic_symbol, _now(), asset_id),
+            f"UPDATE assets SET {', '.join(updates)} WHERE asset_id = ?",
+            tuple(params),
         )
 
 

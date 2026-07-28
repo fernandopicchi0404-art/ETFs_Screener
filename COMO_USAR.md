@@ -63,8 +63,18 @@ ROIC_API_KEY=sua_chave_aqui
 
 ### Pipeline P1 completo (recomendado)
 
-Com `ROIC_API_KEY` no `.env`, rode na ordem abaixo. O fluxo garante identidade confiável
-(ISIN/CUSIP validado) **antes** de buscar fundamentos na ROIC:
+Com `ROIC_API_KEY` no `.env`, configure também a taxa do seu plano:
+
+```bash
+ROIC_API_KEY=sua_chave_aqui
+ROIC_REQUESTS_PER_MINUTE=300
+```
+
+Para testar se a API aceita essa velocidade antes de rodar o lote:
+
+```bash
+python3 scripts/test_roic_rate_limit.py --requests 60
+```
 
 ```bash
 python3 scripts/run_p1_pipeline.py --priority P1 --time-limit-seconds 7200
