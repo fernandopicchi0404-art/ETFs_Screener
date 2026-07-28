@@ -97,3 +97,21 @@ CREATE TABLE IF NOT EXISTS prices (
 );
 
 CREATE INDEX IF NOT EXISTS idx_prices_asset_date ON prices(asset_id, price_date);
+
+-- Fase 2: status de levantamento ROIC por ativo (fundamentos + preço latest).
+CREATE TABLE IF NOT EXISTS asset_fundamental_fetches (
+    fetch_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    asset_id INTEGER NOT NULL UNIQUE REFERENCES assets(asset_id),
+    roic_symbol TEXT,
+    mapping_status TEXT,
+    status TEXT NOT NULL,
+    fiscal_year INTEGER,
+    price_date TEXT,
+    fetched_at TEXT NOT NULL,
+    error_tag TEXT,
+    error_message TEXT,
+    requests_used INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE INDEX IF NOT EXISTS idx_asset_fetches_status ON asset_fundamental_fetches(status);
+

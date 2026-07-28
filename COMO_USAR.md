@@ -76,6 +76,18 @@ Para um ETF específico:
 python3 scripts/update_holdings.py --etf SCHY
 ```
 
+### Levantamento ROIC dos ativos (P1)
+
+Com `ROIC_API_KEY` no `.env`:
+
+```bash
+python3 scripts/fetch_p1_assets.py --priority P1 --time-limit-seconds 7200
+```
+
+O script prioriza ativos de maior peso, respeita o limite de tempo e grava progresso no
+banco (`asset_fundamental_fetches`) e em `data/exports/fundamentals/p1/ativos_parciais.jsonl`.
+
+
 Os dados ficam no banco `data/database/etf_screener.sqlite` e em
 `data/exports/compositions/`. Detalhes em [`PLANO_DADOS.md`](PLANO_DADOS.md).
 

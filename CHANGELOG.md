@@ -6,6 +6,13 @@ Registro das mudanças relevantes do repositório.
 
 ### Adicionado
 
+- **Plano de identificação confiável dos ativos** em `PLANO_DADOS.md`: prioridade para
+  ISIN/CUSIP exatos, ticker apenas com bolsa, validação obrigatória e fila de revisão
+  separada da coleta financeira.
+- **Levantamento ROIC por prioridade** (`scripts/fetch_p1_assets.py`):
+  - Processa ativos únicos do P1 (ou outra prioridade) com limite de tempo.
+  - Grava status em `asset_fundamental_fetches` e export parcial JSONL.
+  - Respeita throttle do plano gratuito (13s entre chamadas).
 - **Pipeline de composição de ETFs** (fase 1 do plano de dados):
   - Banco SQLite (`etf_screener/database/`) com ETFs, ativos, snapshots, holdings e
     tabela `prices` reservada para fase 2.
