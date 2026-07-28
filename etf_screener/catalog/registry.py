@@ -48,12 +48,13 @@ def sync_etf_registry(db: Database | None = None) -> int:
     for item in load_etf_universe():
       ticker = item["ticker"].upper()
       sec_cik = resolve_sec_registrant_cik(item.get("issuer"))
+      status = item.get("status", "active")
       conn.execute(
         """
         INSERT INTO etfs (
           ticker, name, issuer, region, country, theme, priority, index_name,
           sec_registrant_cik, sec_series_match, status, created_at, updated_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'active', ?, ?)
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(ticker) DO UPDATE SET
           name = excluded.name,
           issuer = excluded.issuer,
@@ -64,7 +65,7 @@ def sync_etf_registry(db: Database | None = None) -> int:
           index_name = excluded.index_name,
           sec_registrant_cik = COALESCE(excluded.sec_registrant_cik, etfs.sec_registrant_cik),
           sec_series_match = excluded.sec_series_match,
-          status = 'active',
+          status = excluded.status,
           updated_at = excluded.updated_at
         """,
         (
@@ -78,6 +79,7 @@ def sync_etf_registry(db: Database | None = None) -> int:
           item.get("index"),
           sec_cik,
           item["name"],
+          status,
           now,
           now,
         ),
