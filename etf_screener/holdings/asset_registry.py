@@ -27,7 +27,7 @@ def upsert_asset(conn, holding: Holding, now: str) -> int:
             """
             UPDATE assets
             SET canonical_name = ?, isin = COALESCE(?, isin), cusip = COALESCE(?, cusip),
-                country = COALESCE(?, country), updated_at = ?
+                country = COALESCE(?, country), lei = COALESCE(?, lei), updated_at = ?
             WHERE asset_id = ?
             """,
             (
@@ -35,6 +35,7 @@ def upsert_asset(conn, holding: Holding, now: str) -> int:
                 holding.isin,
                 holding.cusip if holding.cusip != INVALID_CUSIP else None,
                 holding.country or None,
+                holding.lei,
                 now,
                 asset_id,
             ),
@@ -43,8 +44,8 @@ def upsert_asset(conn, holding: Holding, now: str) -> int:
 
     cursor = conn.execute(
         """
-        INSERT INTO assets (asset_key, canonical_name, isin, cusip, country, roic_symbol, created_at, updated_at)
-        VALUES (?, ?, ?, ?, ?, NULL, ?, ?)
+        INSERT INTO assets (asset_key, canonical_name, isin, cusip, country, lei, roic_symbol, created_at, updated_at)
+        VALUES (?, ?, ?, ?, ?, ?, NULL, ?, ?)
         """,
         (
             asset_key,
@@ -52,6 +53,7 @@ def upsert_asset(conn, holding: Holding, now: str) -> int:
             holding.isin,
             holding.cusip if holding.cusip != INVALID_CUSIP else None,
             holding.country or None,
+            holding.lei,
             now,
             now,
         ),
@@ -61,7 +63,7 @@ def upsert_asset(conn, holding: Holding, now: str) -> int:
 
 def link_holdings_to_assets(conn, snapshot_id: int, now: str) -> int:
     rows = conn.execute(
-        "SELECT holding_id, name_raw, country, cusip, isin FROM holdings WHERE snapshot_id = ?",
+        "SELECT holding_id, name_raw, country, cusip, isin, lei, sec_ticker, other_id FROM holdings WHERE snapshot_id = ?",
         (snapshot_id,),
     ).fetchall()
     linked = 0
@@ -76,6 +78,9 @@ def link_holdings_to_assets(conn, snapshot_id: int, now: str) -> int:
             weight_original=0.0,
             cusip=row["cusip"],
             isin=row["isin"],
+            lei=row["lei"],
+            sec_ticker=row["sec_ticker"],
+            other_id=row["other_id"],
             included_in_equity_analysis=True,
         )
         asset_id = upsert_asset(conn, holding, now)

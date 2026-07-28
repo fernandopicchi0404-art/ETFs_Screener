@@ -4,6 +4,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from etf_screener.config import EQUITY_ASSET_CATEGORIES
+from etf_screener.holdings.nport_identifiers import parse_identifiers
 from etf_screener.models import Holding
 
 NS = {"n": "http://www.sec.gov/edgar/nport"}
@@ -14,6 +15,8 @@ ASSET_TYPE_LABELS = {
     "DE": "derivative",
     "STIV": "cash",
 }
+
+INVALID_CUSIP = "000000000"
 
 
 def _asset_type(asset_category: str) -> str:
@@ -30,9 +33,12 @@ def parse_nport_holdings(xml_path: Path, etf: str) -> list[Holding]:
         weight = float(node.findtext("n:pctVal", default="0", namespaces=NS) or 0)
         market_value = node.findtext("n:valUSD", default=None, namespaces=NS)
         country = node.findtext("n:invCountry", default="", namespaces=NS) or ""
-        cusip = node.findtext("n:cusip", default=None, namespaces=NS)
-        isin_node = node.find("n:identifiers/n:isin", NS)
-        isin = isin_node.text if isin_node is not None and isin_node.text else None
+        cusip_raw = node.findtext("n:cusip", default=None, namespaces=NS)
+        cusip = cusip_raw if cusip_raw and cusip_raw != INVALID_CUSIP else None
+        lei = node.findtext("n:lei", default=None, namespaces=NS)
+        identifiers = parse_identifiers(node.find("n:identifiers", NS))
+        isin = identifiers["isin"]
+        sec_ticker = identifiers["ticker"]
 
         included = asset_category in EQUITY_ASSET_CATEGORIES
         holding = Holding(
@@ -44,8 +50,11 @@ def parse_nport_holdings(xml_path: Path, etf: str) -> list[Holding]:
             country=country,
             weight_original=weight,
             market_value_usd=float(market_value) if market_value else None,
-            cusip=cusip if cusip and cusip != "000000000" else None,
+            cusip=cusip,
             isin=isin,
+            lei=lei,
+            sec_ticker=sec_ticker,
+            other_id=identifiers["other_id"],
             included_in_equity_analysis=included,
             exclusion_reason=None if included else f"asset_category={asset_category}",
         )

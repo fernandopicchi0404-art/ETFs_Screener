@@ -17,7 +17,7 @@ from etf_screener.database.db import Database
 from etf_screener.fundamentals.fetch_worker import (
     _now,
     fetch_asset_fundamentals,
-    pending_assets,
+    pending_verified_fetches,
     record_fetch,
 )
 from etf_screener.roic.auth import load_roic_api_key
@@ -40,12 +40,12 @@ def main() -> int:
     db = Database()
     db.init_schema()
 
-    queue = pending_assets(db, priority=args.priority)
+    queue = pending_verified_fetches(db, priority=args.priority)
     if args.limit is not None:
         queue = queue[:args.limit]
 
     if not queue:
-        print("Nenhum ativo pendente para esta prioridade.")
+        print("Nenhum ativo verificado pendente para esta prioridade.")
         return 0
 
     started = time.monotonic()
@@ -53,12 +53,13 @@ def main() -> int:
     run_id = _now().replace(":", "-")
     run_dir = RUNS_DIR / f"fetch_{args.priority.lower()}_{run_id}"
     run_dir.mkdir(parents=True, exist_ok=True)
-    export_path = EXPORTS_DIR / "fundamentals" / args.priority.lower() / "ativos_parciais.jsonl"
+    export_path = EXPORTS_DIR / "fundamentals" / args.priority.lower() / "ativos_verificados.jsonl"
     export_path.parent.mkdir(parents=True, exist_ok=True)
 
     client = RoicClient(api_key)
     summary = {
         "priority": args.priority,
+        "mode": "verified_only",
         "started_at": _now(),
         "time_limit_seconds": args.time_limit_seconds,
         "queue_size": len(queue),
@@ -72,7 +73,7 @@ def main() -> int:
     }
 
     print(
-        f"Iniciando levantamento {args.priority}: {len(queue)} ativos pendentes, "
+        f"Iniciando fundamentos {args.priority} (somente verificados): {len(queue)} ativos, "
         f"limite {args.time_limit_seconds}s (plano gratuito).",
         flush=True,
     )
@@ -99,10 +100,7 @@ def main() -> int:
         fiscal_year = payload.get("fiscal_year") if payload else None
         price_date = payload.get("price_date") if payload else None
         error_tag = None
-        if status == "mapping_failed":
-            summary["mapping_failed"] += 1
-            error_tag = "MAPPING_NOT_FOUND"
-        elif status == "fetch_error":
+        if status == "fetch_error":
             summary["fetch_error"] += 1
             error_tag = "API_FETCH_FAILURE"
         else:

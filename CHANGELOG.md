@@ -6,6 +6,12 @@ Registro das mudanças relevantes do repositório.
 
 ### Adicionado
 
+- **Pipeline de identidade confiável** antes da ROIC:
+  - Correção de leitura de ISIN/ticker no N-PORT (`nport_identifiers`, `sec_nport`).
+  - Resolução por ISIN → CUSIP → ticker+bolsa com validação (`identity_resolver`).
+  - Tabela `asset_identities` e scripts `reprocess_compositions.py`,
+    `resolve_asset_identities.py`, `run_p1_pipeline.py`.
+  - Fundamentos só para ativos verificados (`fetch_p1_assets.py`).
 - **Plano de identificação confiável dos ativos** em `PLANO_DADOS.md`: prioridade para
   ISIN/CUSIP exatos, ticker apenas com bolsa, validação obrigatória e fila de revisão
   separada da coleta financeira.

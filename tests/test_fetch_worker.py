@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from etf_screener.fundamentals.fetch_worker import pending_assets
+from etf_screener.fundamentals.fetch_worker import pending_verified_fetches
 from etf_screener.database.db import Database
 
 
@@ -57,14 +57,24 @@ def test_pending_assets_excludes_completed(tmp_path: Path):
         )
         conn.execute(
             """
+            INSERT INTO asset_identities (
+                asset_id, roic_symbol, mapping_method, mapping_status, validated_at,
+                methodology_version, match_isin, match_cusip, match_country, candidate_name,
+                error_message, requests_used
+            ) VALUES (?, 'SIX:NESN', 'isin', 'verified_isin', ?, '1.0', 'CH1', NULL, 'CH', 'Nestle SA', NULL, 1)
+            """,
+            (asset_id, now),
+        )
+        conn.execute(
+            """
             INSERT INTO asset_fundamental_fetches (
                 asset_id, roic_symbol, mapping_status, status, fiscal_year, price_date,
                 fetched_at, error_tag, error_message, requests_used
-            ) VALUES (?, 'SIX:NESN', 'mapped', 'ok', 2025, '2026-07-01', ?, NULL, NULL, 4)
+            ) VALUES (?, 'SIX:NESN', 'verified_isin', 'ok', 2025, '2026-07-01', ?, NULL, NULL, 4)
             """,
             (asset_id, now),
         )
         conn.commit()
 
-    pending = pending_assets(db, priority="P1")
+    pending = pending_verified_fetches(db, priority="P1")
     assert pending == []

@@ -24,6 +24,26 @@ class Database:
         schema_path = Path(__file__).with_name("schema.sql")
         with self.connect() as conn:
             conn.executescript(schema_path.read_text(encoding="utf-8"))
+            self._migrate(conn)
+            conn.commit()
+
+    def _migrate(self, conn: sqlite3.Connection) -> None:
+        """Adiciona colunas novas em bancos já existentes."""
+        holding_cols = {row[1] for row in conn.execute("PRAGMA table_info(holdings)").fetchall()}
+        for col, ddl in [
+            ("lei", "ALTER TABLE holdings ADD COLUMN lei TEXT"),
+            ("sec_ticker", "ALTER TABLE holdings ADD COLUMN sec_ticker TEXT"),
+            ("other_id", "ALTER TABLE holdings ADD COLUMN other_id TEXT"),
+        ]:
+            if col not in holding_cols:
+                conn.execute(ddl)
+
+        asset_cols = {row[1] for row in conn.execute("PRAGMA table_info(assets)").fetchall()}
+        for col, ddl in [
+            ("lei", "ALTER TABLE assets ADD COLUMN lei TEXT"),
+        ]:
+            if col not in asset_cols:
+                conn.execute(ddl)
 
     def execute(self, sql: str, params: tuple[Any, ...] | list[Any] = ()) -> None:
         with self.connect() as conn:
