@@ -47,7 +47,10 @@ def main() -> int:
 
     summary = run_holdings_extraction(db, etf_rows, force=args.force)
     print(json.dumps(summary, indent=2, ensure_ascii=False))
-    return 0 if summary["failed"] == 0 else 2
+    hard_failures = sum(
+        1 for item in summary["results"] if item.get("status") == "error"
+    )
+    return 0 if hard_failures == 0 else 2
 
 
 if __name__ == "__main__":
