@@ -163,40 +163,57 @@ Os arquivos são gerados em `data/output/schy/`:
 
 ## Parte 3 — Painel web (prova de conceito)
 
-Interface para acompanhar ETFs, ativos e métricas consolidadas a partir do banco SQLite.
+Interface para acompanhar ETFs, ativos e métricas consolidadas. Pode rodar **localmente** ou **na Vercel** (sem instalar nada no PC).
 
-### Pré-requisitos
+---
 
-1. Python 3.12+ com dependências da API:
+### Opção A — Publicar na Vercel (recomendado)
+
+O painel roda inteiro na Vercel: site + API + banco de dados (SQLite embutido). Você só precisa de uma conta gratuita.
+
+#### Passo a passo
+
+1. Acesse [vercel.com](https://vercel.com) e faça login com sua conta GitHub.
+2. Clique em **Add New → Project**.
+3. Selecione o repositório **ETFs_Screener**.
+4. Em **Root Directory**, clique em *Edit* e escolha a pasta **`frontend`**.
+5. Deixe as demais opções como estão (Framework: Next.js, Build: `npm run build`).
+6. Clique em **Deploy**.
+
+Em 1–2 minutos você recebe um link tipo `https://etf-screener-xxxx.vercel.app`.
+
+#### Atualizar os dados depois
+
+Quando novos ETFs forem processados localmente:
 
 ```bash
-pip install -r requirements.txt
+python3 scripts/seed_schy_pilot.py          # ou pipeline completo no futuro
+python3 scripts/calculate_etf_metrics.py --etf SCHY
+cp data/database/etf_screener.sqlite frontend/data/
+git add frontend/data/etf_screener.sqlite
+git commit -m "Update dashboard database"
+git push
 ```
 
-2. Node.js 18+ (para o front-end).
+A Vercel republica automaticamente a cada push no GitHub.
 
-### 1. Carregar dados do piloto SCHY no banco
+---
 
-Importa os CSVs do piloto para o SQLite e calcula as métricas consolidadas:
+### Opção B — Rodar no seu computador
+
+#### Pré-requisitos
+
+1. Python 3.12+ (só se for regenerar o banco)
+2. Node.js 18+
+
+#### 1. Carregar dados do piloto SCHY (se ainda não tiver o banco)
 
 ```bash
 python3 scripts/seed_schy_pilot.py
 python3 scripts/calculate_etf_metrics.py --etf SCHY --auto-validate-schy
 ```
 
-O segundo comando valida os números contra `exports/schy_piloto_2026-07-27/etf_consolidado.csv`.
-
-### 2. Subir a API
-
-```bash
-python3 scripts/run_api.py
-```
-
-A API fica em `http://127.0.0.1:8000`. Documentação interativa: `http://127.0.0.1:8000/docs`.
-
-### 3. Subir o painel
-
-Em outro terminal:
+#### 2. Subir o painel
 
 ```bash
 cd frontend
@@ -205,6 +222,8 @@ npm run dev
 ```
 
 Abra `http://localhost:3000`.
+
+> A API Python (`scripts/run_api.py`) não é mais necessária para o painel — tudo roda dentro do Next.js.
 
 ### O que você vê no painel
 
@@ -222,7 +241,8 @@ ETFs sem métricas calculadas aparecem na lista com "—" nos números.
 | --- | --- |
 | `scripts/seed_schy_pilot.py` | Importa piloto SCHY (CSV → banco) |
 | `scripts/calculate_etf_metrics.py` | Calcula e grava agregados por ETF |
-| `scripts/run_api.py` | Sobe a API REST local |
+| `frontend/scripts/prepare-db.mjs` | Copia o banco para o deploy (roda no build) |
+| `scripts/run_api.py` | API Python local (opcional; Vercel usa a API do Next.js) |
 
 ---
 

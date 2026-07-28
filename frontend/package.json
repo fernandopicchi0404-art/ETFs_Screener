@@ -3,17 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "prepare-db": "node scripts/prepare-db.mjs",
+    "dev": "npm run prepare-db && next dev",
+    "build": "npm run prepare-db && next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "better-sqlite3": "^11.7.0",
     "next": "^15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
     "@types/node": "^22.10.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",

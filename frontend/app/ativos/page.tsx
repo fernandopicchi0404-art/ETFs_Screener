@@ -1,11 +1,11 @@
 import AssetListClient from "@/components/AssetListClient";
-import { getAssets, getSectors } from "@/lib/api";
+import { listAssets, listSectors } from "@/lib/queries";
 
-export default async function AssetsPage() {
-  const [assets, sectorsData] = await Promise.all([
-    getAssets().catch(() => []),
-    getSectors().catch(() => ({ sectors: [] })),
-  ]);
+export const dynamic = "force-dynamic";
+
+export default function AssetsPage() {
+  const assets = listAssets();
+  const sectors = listSectors();
 
   return (
     <div className="space-y-6">
@@ -15,7 +15,7 @@ export default async function AssetsPage() {
           Lista alfabética de empresas com métricas fundamentais coletadas.
         </p>
       </div>
-      <AssetListClient initialAssets={assets} sectors={sectorsData.sectors} />
+      <AssetListClient initialAssets={assets} sectors={sectors} />
     </div>
   );
 }

@@ -1,11 +1,11 @@
 import EtfListClient from "@/components/EtfListClient";
-import { getEtfs, getRegions } from "@/lib/api";
+import { listEtfSummaries, listRegions } from "@/lib/queries";
 
-export default async function HomePage() {
-  const [etfs, regionsData] = await Promise.all([
-    getEtfs().catch(() => []),
-    getRegions().catch(() => ({ regions: [] })),
-  ]);
+export const dynamic = "force-dynamic";
+
+export default function HomePage() {
+  const etfs = listEtfSummaries();
+  const regions = listRegions();
 
   return (
     <div className="space-y-6">
@@ -15,7 +15,7 @@ export default async function HomePage() {
           Compare ROE, earnings yield e dividend yield dos ETFs do universo curado.
         </p>
       </div>
-      <EtfListClient initialEtfs={etfs} regions={regionsData.regions} />
+      <EtfListClient initialEtfs={etfs} regions={regions} />
     </div>
   );
 }

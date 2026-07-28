@@ -9,9 +9,10 @@ Registro das mudanças relevantes do repositório.
 - **Painel web (prova de conceito)** com API REST e front-end Next.js:
   - Tabelas `asset_fundamentals` e `etf_consolidated_metrics` no SQLite.
   - Scripts `seed_schy_pilot.py`, `calculate_etf_metrics.py` e `run_api.py`.
-  - API FastAPI (`etf_screener/api/`) com endpoints de ETFs, holdings e ativos.
+  - API integrada ao Next.js (`frontend/app/api/`) para deploy na Vercel.
+  - Banco SQLite embutido em `frontend/data/` para publicação sem servidor próprio.
   - Front-end em `frontend/` com resumo de ETFs, detalhe do ETF e lista de ativos.
-  - Dependências em `requirements.txt` (FastAPI, Uvicorn).
+  - Dependências em `requirements.txt` (FastAPI, Uvicorn) para uso local opcional.
 - **Pipeline de identidade confiável** antes da ROIC:
   - Correção de leitura de ISIN/ticker no N-PORT (`nport_identifiers`, `sec_nport`).
   - Resolução por ISIN → CUSIP → ticker+bolsa com validação (`identity_resolver`).

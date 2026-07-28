@@ -1,10 +1,12 @@
 import Link from "next/link";
 import DataTable, { Column } from "@/components/DataTable";
 import { MetricCard } from "@/components/MetricCard";
-import { getEtf, getHoldings } from "@/lib/api";
+import { getEtfDetail, listEtfHoldings } from "@/lib/queries";
 import { formatPct, qualityBadge, regionLabel } from "@/lib/format";
 import { HoldingItem } from "@/lib/api";
 import { notFound } from "next/navigation";
+
+export const dynamic = "force-dynamic";
 
 interface Props {
   params: Promise<{ ticker: string }>;
@@ -12,17 +14,10 @@ interface Props {
 
 export default async function EtfDetailPage({ params }: Props) {
   const { ticker } = await params;
+  const etf = getEtfDetail(ticker.toUpperCase());
+  if (!etf) notFound();
 
-  let etf;
-  let holdings: HoldingItem[] = [];
-  try {
-    [etf, holdings] = await Promise.all([
-      getEtf(ticker.toUpperCase()),
-      getHoldings(ticker.toUpperCase(), 10),
-    ]);
-  } catch {
-    notFound();
-  }
+  const holdings = listEtfHoldings(ticker.toUpperCase(), 10);
 
   const columns: Column<HoldingItem>[] = [
     { key: "position", label: "#", align: "right" },
