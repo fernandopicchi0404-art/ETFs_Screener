@@ -13,7 +13,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from etf_screener.catalog.registry import get_etf_by_ticker
+from etf_screener.catalog.registry import get_etf_by_ticker, list_etfs
 from etf_screener.database.db import Database
 from etf_screener.holdings.selection import consolidate_equity_holdings, renormalize_consolidated_holdings
 from etf_screener.metrics.fundamentals import aggregate_etf
@@ -109,7 +109,9 @@ def validate_against_csv(aggregate: dict, reference_csv: Path, tolerance: float 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Calcula métricas consolidadas de ETFs.")
-    parser.add_argument("--etf", default="SCHY", help="Ticker do ETF (padrão: SCHY).")
+    parser.add_argument("--etf", help="Ticker do ETF (ex.: SCHY).")
+    parser.add_argument("--priority", help="Calcula todos os ETFs da prioridade (ex.: P1).")
+    parser.add_argument("--all", action="store_true", help="Calcula todos os ETFs ativos com snapshot.")
     parser.add_argument(
         "--target-clean-coverage",
         type=float,
@@ -129,30 +131,55 @@ def main() -> int:
     )
     args = parser.parse_args()
 
+    if not args.etf and not args.priority and not args.all:
+        parser.error("Use --etf, --priority ou --all.")
+
     db = Database()
     db.init_schema()
 
-    aggregate = calculate_etf_metrics(
-        db,
-        args.etf,
-        target_clean_coverage=args.target_clean_coverage,
+    if args.all:
+        etf_rows = list_etfs(db)
+    elif args.priority:
+        etf_rows = list_etfs(db, priority=args.priority)
+    else:
+        etf_rows = [{"ticker": args.etf.upper()}]
+
+    results: list[dict] = []
+    errors: list[dict] = []
+    for row in etf_rows:
+        ticker = row["ticker"]
+        try:
+            aggregate = calculate_etf_metrics(
+                db,
+                ticker,
+                target_clean_coverage=args.target_clean_coverage,
+            )
+            results.append(aggregate)
+            print(json.dumps(aggregate, indent=2, default=str))
+
+            reference = args.validate
+            if args.auto_validate_schy and reference is None and ticker.upper() == "SCHY":
+                reference = DEFAULT_REFERENCE_CSV
+            if reference is not None:
+                if not reference.exists():
+                    print(f"Arquivo de referência não encontrado: {reference}", file=sys.stderr)
+                    return 1
+                validation = validate_against_csv(aggregate, reference)
+                print(json.dumps(validation, indent=2))
+                if not validation["ok"]:
+                    return 1
+        except Exception as exc:  # noqa: BLE001
+            errors.append({"ticker": ticker, "error": str(exc)})
+
+    export_dir = PROJECT_ROOT / "data" / "exports" / "etf_metrics"
+    export_dir.mkdir(parents=True, exist_ok=True)
+    summary_path = export_dir / "p1_consolidated.json"
+    summary_path.write_text(
+        json.dumps({"ok": results, "errors": errors}, indent=2, default=str),
+        encoding="utf-8",
     )
-    print(json.dumps(aggregate, indent=2, default=str))
-
-    reference = args.validate
-    if args.auto_validate_schy and reference is None and args.etf.upper() == "SCHY":
-        reference = DEFAULT_REFERENCE_CSV
-
-    if reference is not None:
-        if not reference.exists():
-            print(f"Arquivo de referência não encontrado: {reference}", file=sys.stderr)
-            return 1
-        validation = validate_against_csv(aggregate, reference)
-        print(json.dumps(validation, indent=2))
-        if not validation["ok"]:
-            return 1
-
-    return 0
+    print(json.dumps({"calculated": len(results), "errors": len(errors), "export": str(summary_path)}, indent=2))
+    return 0 if not errors else 2
 
 
 if __name__ == "__main__":

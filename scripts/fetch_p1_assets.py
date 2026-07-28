@@ -21,6 +21,7 @@ from etf_screener.fundamentals.fetch_worker import (
     pending_verified_fetches,
     record_fetch,
 )
+from etf_screener.metrics.persistence import upsert_asset_fundamentals
 from etf_screener.roic.auth import load_roic_api_key
 from etf_screener.roic.client import RoicClient
 
@@ -99,7 +100,7 @@ def main() -> int:
             flush=True,
         )
 
-        payload, status, roic_symbol, mapping_status, requests_used, error_message = (
+        payload, status, roic_symbol, mapping_status, requests_used, error_message, company = (
             fetch_asset_fundamentals(client, item)
         )
         fetched_at = _now()
@@ -136,6 +137,8 @@ def main() -> int:
                 requests_used=requests_used,
                 fetched_at=fetched_at,
             )
+            if company is not None:
+                upsert_asset_fundamentals(conn, item.asset_id, company)
             conn.commit()
 
         summary["results"].append(

@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any
 
-from etf_screener.database.db import Database
+from etf_screener.models import CompanyFundamentals
 from etf_screener.metrics.fundamentals import extract_fundamentals
 from etf_screener.roic.client import RoicClient
 from etf_screener.roic.symbols import resolve_fetch_symbol, roic_symbol_path
@@ -168,7 +168,7 @@ def pending_fetch_retries(db: Database, priority: str = "P1") -> list[AssetWorkI
 def fetch_asset_fundamentals(
     client: RoicClient,
     item: AssetWorkItem,
-) -> tuple[dict[str, Any] | None, str, str | None, str | None, int, str | None]:
+) -> tuple[dict[str, Any] | None, str, str | None, str | None, int, str | None, CompanyFundamentals | None]:
     """Busca fundamentos apenas para identidade já aprovada."""
     requests_used = 0
     roic_symbol = resolve_fetch_symbol(item.roic_symbol)
@@ -196,7 +196,7 @@ def fetch_asset_fundamentals(
         except Exception:  # noqa: BLE001 — preço ausente não invalida ROE
             pass
     except Exception as exc:  # noqa: BLE001
-        return None, "fetch_error", roic_symbol, item.mapping_status, requests_used, str(exc)
+        return None, "fetch_error", roic_symbol, item.mapping_status, requests_used, str(exc), None
 
     if not (income.get("data") or balance.get("data")):
         return (
@@ -206,6 +206,7 @@ def fetch_asset_fundamentals(
             item.mapping_status,
             requests_used,
             "Demonstrativos financeiros vazios na ROIC.",
+            None,
         )
 
     company = extract_fundamentals(
@@ -235,4 +236,4 @@ def fetch_asset_fundamentals(
         "quality": company.quality,
         "tags": company.tags,
     }
-    return payload, "ok", roic_symbol, item.mapping_status, requests_used, None
+    return payload, "ok", roic_symbol, item.mapping_status, requests_used, None, company
