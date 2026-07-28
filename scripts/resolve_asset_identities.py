@@ -25,6 +25,11 @@ def main() -> int:
         action="store_true",
         help="Apaga identidades e fetches anteriores antes de recomeçar.",
     )
+    parser.add_argument(
+        "--retry-excluded",
+        action="store_true",
+        help="Reprocessa apenas ativos rejeitados, em revisão ou não encontrados.",
+    )
     args = parser.parse_args()
 
     db = Database()
@@ -35,6 +40,7 @@ def main() -> int:
         time_limit_seconds=args.time_limit_seconds,
         limit=args.limit,
         reset=args.reset,
+        retry_excluded=args.retry_excluded,
     )
     print(json.dumps(summary, indent=2, ensure_ascii=False))
     return 0

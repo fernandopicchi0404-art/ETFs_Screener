@@ -80,7 +80,23 @@ MANUAL_ROIC_SYMBOLS = {
     # Ticker certo, mas validação de nome falhava
     "Koninklijke KPN NV": "EURONEXT:KPN",
     "TIM SA/Brazil": "B3:TIMS3",
-    "Engie Brasil Energia SA": "B3:ENGI3",
+    "Engie Brasil Energia SA": "B3:EGIE3",
+    # Exclusões P1 — ISIN errado na ROIC ou nomes divergentes
+    "Eternal Ltd": "NSE:ETERNAL",
+    "Marzetti Company/The": "NASDAQ:LANC",
+    "Naspers Ltd": "JSE:NPN",
+    "Embraer SA": "NYSE:ERJ",
+    "Energisa S/A": "B3:ENGI3",
+    "Hesai Group": "NASDAQ:HSAI",
+    "Klabin SA": "B3:KLBN4",
+    "Loblaw Cos Ltd": "TSX:L",
+    "Equatorial Energia SA": "B3:EQTL3",
+    "Alaseel Co": "TADAWUL:6013",
+    "China Construction Bank Corp": "HKEX:939",
+    "Saudi Electricity Co": "TADAWUL:5110",
+    "NCSoft Corp": "KRX:036570",
+    "Valterra Platinum Limited": "JSE:VAL",
+    "HonPrecision Inc": "TWSE:3296",
 }
 
 KNOWN_NAME_QUERIES = {

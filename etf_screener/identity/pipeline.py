@@ -63,6 +63,23 @@ def pending_identity_assets(db: Database, priority: str = "P1") -> list[dict[str
     return [row for row in list_assets_for_identity(db, priority) if int(row["asset_id"]) not in approved]
 
 
+def excluded_identity_assets(db: Database, priority: str = "P1") -> list[dict[str, Any]]:
+    excluded_ids = {
+        int(row["asset_id"])
+        for row in db.fetchall(
+            """
+            SELECT asset_id FROM asset_identities
+            WHERE mapping_status IN ('rejected', 'review_required', 'not_found')
+            """
+        )
+    }
+    return [
+        row
+        for row in list_assets_for_identity(db, priority)
+        if int(row["asset_id"]) in excluded_ids
+    ]
+
+
 def save_identity(conn, asset_id: int, result: IdentityResult, country: str | None = None) -> None:
     conn.execute(
         """
@@ -118,6 +135,7 @@ def run_identity_resolution(
     time_limit_seconds: int = 7200,
     limit: int | None = None,
     reset: bool = False,
+    retry_excluded: bool = False,
 ) -> dict[str, Any]:
     if reset:
         db.execute("DELETE FROM asset_identities")
@@ -125,7 +143,10 @@ def run_identity_resolution(
 
     api_key = load_roic_api_key()
     client = RoicClient(api_key)
-    queue = pending_identity_assets(db, priority)
+    if retry_excluded:
+        queue = excluded_identity_assets(db, priority)
+    else:
+        queue = pending_identity_assets(db, priority)
     if limit is not None:
         queue = queue[:limit]
 
@@ -145,6 +166,7 @@ def run_identity_resolution(
         "review_required": 0,
         "not_found": 0,
         "rejected": 0,
+        "retry_excluded": retry_excluded,
         "requests_used": 0,
         "stopped_reason": None,
     }
