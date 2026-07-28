@@ -18,21 +18,80 @@ def build_asset_key(holding: Holding) -> str:
     return f"NAME:{country}:{name}"
 
 
+def _collect_matching_asset_ids(
+    conn,
+    asset_key: str,
+    cusip: str | None,
+    isin: str | None,
+) -> list[int]:
+    ids: set[int] = set()
+    row = conn.execute("SELECT asset_id FROM assets WHERE asset_key = ?", (asset_key,)).fetchone()
+    if row:
+        ids.add(int(row[0]))
+    if cusip:
+        row = conn.execute("SELECT asset_id FROM assets WHERE cusip = ?", (cusip,)).fetchone()
+        if row:
+            ids.add(int(row[0]))
+    if isin:
+        row = conn.execute("SELECT asset_id FROM assets WHERE isin = ?", (isin,)).fetchone()
+        if row:
+            ids.add(int(row[0]))
+    return sorted(ids)
+
+
+def _merge_assets(conn, canonical_id: int, duplicate_ids: list[int]) -> None:
+    for dup_id in duplicate_ids:
+        if dup_id == canonical_id:
+            continue
+        conn.execute(
+            "UPDATE holdings SET asset_id = ? WHERE asset_id = ?",
+            (canonical_id, dup_id),
+        )
+        conn.execute(
+            """
+            UPDATE asset_fundamental_fetches
+            SET asset_id = ?
+            WHERE asset_id = ?
+              AND NOT EXISTS (
+                  SELECT 1 FROM asset_fundamental_fetches af2 WHERE af2.asset_id = ?
+              )
+            """,
+            (canonical_id, dup_id, canonical_id),
+        )
+        conn.execute("DELETE FROM asset_fundamental_fetches WHERE asset_id = ?", (dup_id,))
+        conn.execute(
+            """
+            UPDATE asset_identities
+            SET asset_id = ?
+            WHERE asset_id = ?
+              AND NOT EXISTS (
+                  SELECT 1 FROM asset_identities ai2 WHERE ai2.asset_id = ?
+              )
+            """,
+            (canonical_id, dup_id, canonical_id),
+        )
+        conn.execute("DELETE FROM asset_identities WHERE asset_id = ?", (dup_id,))
+        conn.execute("DELETE FROM assets WHERE asset_id = ?", (dup_id,))
+
+
 def upsert_asset(conn, holding: Holding, now: str) -> int:
     asset_key = build_asset_key(holding)
     cusip = holding.cusip if holding.cusip != INVALID_CUSIP else None
+    matching_ids = _collect_matching_asset_ids(conn, asset_key, cusip, holding.isin)
 
-    row = conn.execute("SELECT asset_id FROM assets WHERE asset_key = ?", (asset_key,)).fetchone()
-    if row:
-        asset_id = int(row[0])
+    if matching_ids:
+        asset_id = matching_ids[0]
+        if len(matching_ids) > 1:
+            _merge_assets(conn, asset_id, matching_ids[1:])
         conn.execute(
             """
             UPDATE assets
-            SET canonical_name = ?, isin = COALESCE(?, isin), cusip = COALESCE(?, cusip),
+            SET asset_key = ?, canonical_name = ?, isin = COALESCE(?, isin), cusip = COALESCE(?, cusip),
                 country = COALESCE(?, country), lei = COALESCE(?, lei), updated_at = ?
             WHERE asset_id = ?
             """,
             (
+                asset_key,
                 holding.name,
                 holding.isin,
                 cusip,
@@ -43,53 +102,6 @@ def upsert_asset(conn, holding: Holding, now: str) -> int:
             ),
         )
         return asset_id
-
-    # Mesmo CUSIP/ISIN pode chegar com chaves diferentes (ex.: NAME antes de ISIN corrigido).
-    if cusip:
-        row = conn.execute("SELECT asset_id FROM assets WHERE cusip = ?", (cusip,)).fetchone()
-        if row:
-            asset_id = int(row[0])
-            conn.execute(
-                """
-                UPDATE assets
-                SET asset_key = ?, canonical_name = ?, isin = COALESCE(?, isin),
-                    country = COALESCE(?, country), lei = COALESCE(?, lei), updated_at = ?
-                WHERE asset_id = ?
-                """,
-                (
-                    asset_key,
-                    holding.name,
-                    holding.isin,
-                    holding.country or None,
-                    holding.lei,
-                    now,
-                    asset_id,
-                ),
-            )
-            return asset_id
-
-    if holding.isin:
-        row = conn.execute("SELECT asset_id FROM assets WHERE isin = ?", (holding.isin,)).fetchone()
-        if row:
-            asset_id = int(row[0])
-            conn.execute(
-                """
-                UPDATE assets
-                SET asset_key = ?, canonical_name = ?, cusip = COALESCE(?, cusip),
-                    country = COALESCE(?, country), lei = COALESCE(?, lei), updated_at = ?
-                WHERE asset_id = ?
-                """,
-                (
-                    asset_key,
-                    holding.name,
-                    cusip,
-                    holding.country or None,
-                    holding.lei,
-                    now,
-                    asset_id,
-                ),
-            )
-            return asset_id
 
     cursor = conn.execute(
         """
