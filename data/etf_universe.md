@@ -32,7 +32,25 @@ A lista expandida (100 ETFs) ficou em `data/etf_universe_full.json` para consult
 
 ---
 
-## Prioridade
+## Prioridade (atualizado jul/2026)
+
+| Prioridade | Qtd ativa | Uso |
+| --- | --- | --- |
+| **P1** | **10** | ETFs com composição SEC e cobertura ≥ ~90% |
+| **P2** | 19 | Segunda leva (países menores, tilts, referências) |
+| **Pausados** | 21 | Fora dos pipelines por enquanto (ver abaixo) |
+
+### ETFs pausados (não rodam nos scripts)
+
+**Sem composição SEC (13):** VT, VXUS, VEA, VWO, VGK, EZU, VPL, VTI, VOO, VYMI, FNDF, VSS, EWJ
+
+**Cobertura de fundamentos baixa (8):** ILF, EWC, EPOL, AAXJ, EWL, EWU, EWA, INDA
+
+Permanecem em `etf_universe.json` com `"status": "paused"` para reativar depois.
+
+---
+
+## Prioridade (histórico)
 
 | Prioridade | Qtd | Uso |
 | --- | --- | --- |

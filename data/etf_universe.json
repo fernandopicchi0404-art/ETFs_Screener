@@ -1,6 +1,6 @@
 {
   "version": "2026-07-27",
-  "description": "Núcleo de 50 ETFs US-listed para escala do piloto — curado para baixa complexidade operacional (sem China, hedges, fronteira). Lista completa em etf_universe_full.json.",
+  "description": "Núcleo curado para o piloto. ETFs pausados (sem SEC ou cobertura <90%) permanecem no arquivo mas não entram nos pipelines ativos.",
   "pilot_completed": [
     "SCHY"
   ],
@@ -13,7 +13,9 @@
       "theme": "broad",
       "issuer": "Vanguard",
       "index": "FTSE Global All Cap",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "sem_composicao_sec"
     },
     {
       "ticker": "VXUS",
@@ -23,7 +25,9 @@
       "theme": "broad",
       "issuer": "Vanguard",
       "index": "FTSE Global All Cap ex-US",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "sem_composicao_sec"
     },
     {
       "ticker": "VEA",
@@ -33,7 +37,9 @@
       "theme": "broad",
       "issuer": "Vanguard",
       "index": "FTSE Developed ex-US",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "sem_composicao_sec"
     },
     {
       "ticker": "VWO",
@@ -43,7 +49,9 @@
       "theme": "broad",
       "issuer": "Vanguard",
       "index": "FTSE Emerging",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "sem_composicao_sec"
     },
     {
       "ticker": "VGK",
@@ -53,7 +61,9 @@
       "theme": "broad",
       "issuer": "Vanguard",
       "index": "FTSE Developed Europe All Cap",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "sem_composicao_sec"
     },
     {
       "ticker": "EZU",
@@ -63,7 +73,9 @@
       "theme": "broad",
       "issuer": "iShares",
       "index": "MSCI EMU",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "sem_composicao_sec"
     },
     {
       "ticker": "VPL",
@@ -73,7 +85,9 @@
       "theme": "broad",
       "issuer": "Vanguard",
       "index": "FTSE Developed Asia Pacific ex-Japan",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "sem_composicao_sec"
     },
     {
       "ticker": "AAXJ",
@@ -83,7 +97,9 @@
       "theme": "broad",
       "issuer": "iShares",
       "index": "MSCI AC Asia ex Japan",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "cobertura_baixa"
     },
     {
       "ticker": "ILF",
@@ -93,7 +109,9 @@
       "theme": "broad",
       "issuer": "iShares",
       "index": "S&P Latin America 40",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "cobertura_baixa"
     },
     {
       "ticker": "VTI",
@@ -103,7 +121,9 @@
       "theme": "broad",
       "issuer": "Vanguard",
       "index": "CRSP US Total Market",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "sem_composicao_sec"
     },
     {
       "ticker": "VOO",
@@ -113,7 +133,9 @@
       "theme": "broad",
       "issuer": "Vanguard",
       "index": "S&P 500",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "sem_composicao_sec"
     },
     {
       "ticker": "SCHD",
@@ -143,7 +165,9 @@
       "theme": "country",
       "issuer": "iShares",
       "index": "MSCI UK",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "cobertura_baixa"
     },
     {
       "ticker": "EPOL",
@@ -153,7 +177,9 @@
       "theme": "country",
       "issuer": "iShares",
       "index": "MSCI Poland",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "cobertura_baixa"
     },
     {
       "ticker": "EWQ",
@@ -173,7 +199,9 @@
       "theme": "country",
       "issuer": "iShares",
       "index": "MSCI Switzerland",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "cobertura_baixa"
     },
     {
       "ticker": "EWI",
@@ -223,7 +251,9 @@
       "theme": "country",
       "issuer": "iShares",
       "index": "MSCI Japan",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "sem_composicao_sec"
     },
     {
       "ticker": "EWA",
@@ -233,7 +263,9 @@
       "theme": "country",
       "issuer": "iShares",
       "index": "MSCI Australia",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "cobertura_baixa"
     },
     {
       "ticker": "EWC",
@@ -243,7 +275,9 @@
       "theme": "country",
       "issuer": "iShares",
       "index": "MSCI Canada",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "cobertura_baixa"
     },
     {
       "ticker": "EWS",
@@ -283,7 +317,9 @@
       "theme": "country",
       "issuer": "iShares",
       "index": "MSCI India",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "cobertura_baixa"
     },
     {
       "ticker": "EIDO",
@@ -373,7 +409,9 @@
       "theme": "dividend",
       "issuer": "Vanguard",
       "index": "FTSE All-World ex-US High Div Yield",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "sem_composicao_sec"
     },
     {
       "ticker": "IDV",
@@ -403,7 +441,9 @@
       "theme": "value",
       "issuer": "Schwab",
       "index": "RAFI Developed ex-US Large",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "sem_composicao_sec"
     },
     {
       "ticker": "EFV",
@@ -433,7 +473,9 @@
       "theme": "small_cap",
       "issuer": "Vanguard",
       "index": "FTSE Global Small Cap ex-US",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "paused",
+      "pause_reason": "sem_composicao_sec"
     },
     {
       "ticker": "FEZ",
@@ -505,5 +547,7 @@
       "index": "MSCI Malaysia",
       "priority": "P2"
     }
-  ]
+  ],
+  "paused_count": 21,
+  "active_p1_count": 10
 }

@@ -71,6 +71,12 @@ Registro das mudanças relevantes do repositório.
 - `scripts/sync_fundamentals_db.py` — popula `asset_fundamentals` a partir dos fetches OK.
 - `calculate_etf_metrics.py --priority P1` — calcula agregados em lote.
 - Export em `data/exports/etf_metrics/p1_consolidated.json`.
+- Campo `status` no universo de ETFs (`active` / `paused`); sync respeita pausa.
+
+### Alterado
+
+- **21 ETFs pausados** no universo P1 (sem composição SEC ou cobertura < 90%).
+  P1 ativo reduzido para **10 ETFs**: EWG, EWQ, EWT, EWW, EWY, EWZ, EZA, KSA, SCHD, SCHY.
 
 - Mapeamentos manuais ambíguos do SCHY (BOC Hong Kong, Imperial Brands, Kone, Tung Ho,
   Saudi Telecom, Schroders, Kuehne+Nagel, TMBThanachart, Gjensidige).
