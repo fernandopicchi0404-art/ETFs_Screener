@@ -126,9 +126,9 @@ def extract_etf_holdings(
                 """
                 INSERT INTO holdings (
                     snapshot_id, asset_id, position, name_raw, asset_category, asset_type, country,
-                    cusip, isin, weight_original, weight_normalized, market_value_usd,
-                    included_in_equity_analysis, exclusion_reason
-                ) VALUES (?, NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    cusip, isin, lei, sec_ticker, other_id, weight_original, weight_normalized,
+                    market_value_usd, included_in_equity_analysis, exclusion_reason
+                ) VALUES (?, NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     snapshot_id,
@@ -139,6 +139,9 @@ def extract_etf_holdings(
                     holding.country,
                     holding.cusip,
                     holding.isin,
+                    holding.lei,
+                    holding.sec_ticker,
+                    holding.other_id,
                     holding.weight_original,
                     holding.weight_normalized,
                     holding.market_value_usd,

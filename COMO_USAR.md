@@ -61,16 +61,34 @@ ROIC_API_KEY=sua_chave_aqui
 
 2. Use Python 3.12 ou superior.
 
-### Coleta de composição dos ETFs (fase atual)
+### Pipeline P1 completo (recomendado)
 
-Antes das métricas fundamentalistas, sincronize o cadastro e extraia as composições:
+Com `ROIC_API_KEY` no `.env`, rode na ordem abaixo. O fluxo garante identidade confiável
+(ISIN/CUSIP validado) **antes** de buscar fundamentos na ROIC:
+
+```bash
+python3 scripts/run_p1_pipeline.py --priority P1 --time-limit-seconds 7200
+```
+
+Isso executa, em sequência:
+
+1. `sync_etf_registry.py` — cadastra ETFs do universo
+2. `update_holdings.py` — baixa composições SEC que ainda faltam
+3. `reprocess_compositions.py` — corrige ISIN/ticker nos snapshots já salvos
+4. `resolve_asset_identities.py` — mapeia cada ativo na ROIC (com validação)
+5. `fetch_p1_assets.py` — busca fundamentos **somente** de ativos verificados
+
+Para rodar etapas separadas:
 
 ```bash
 python3 scripts/sync_etf_registry.py
 python3 scripts/update_holdings.py --priority P1
+python3 scripts/reprocess_compositions.py --priority P1
+python3 scripts/resolve_asset_identities.py --priority P1 --reset --time-limit-seconds 7200
+python3 scripts/fetch_p1_assets.py --priority P1 --time-limit-seconds 7200
 ```
 
-Para um ETF específico:
+Para um ETF específico na coleta de composição:
 
 ```bash
 python3 scripts/update_holdings.py --etf SCHY
@@ -78,14 +96,10 @@ python3 scripts/update_holdings.py --etf SCHY
 
 ### Levantamento ROIC dos ativos (P1)
 
-Com `ROIC_API_KEY` no `.env`:
-
-```bash
-python3 scripts/fetch_p1_assets.py --priority P1 --time-limit-seconds 7200
-```
-
-O script prioriza ativos de maior peso, respeita o limite de tempo e grava progresso no
-banco (`asset_fundamental_fetches`) e em `data/exports/fundamentals/p1/ativos_parciais.jsonl`.
+O passo de fundamentos só processa ativos com identidade aprovada (`verified_isin`,
+`verified_cusip`, `verified_symbol` ou `manual_approved`). Progresso fica no banco
+(`asset_identities`, `asset_fundamental_fetches`) e em
+`data/exports/fundamentals/p1/ativos_parciais.jsonl`.
 
 
 Os dados ficam no banco `data/database/etf_screener.sqlite` e em

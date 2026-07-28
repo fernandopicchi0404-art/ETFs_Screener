@@ -115,3 +115,22 @@ CREATE TABLE IF NOT EXISTS asset_fundamental_fetches (
 
 CREATE INDEX IF NOT EXISTS idx_asset_fetches_status ON asset_fundamental_fetches(status);
 
+-- Identidade ROIC validada (global por ativo).
+CREATE TABLE IF NOT EXISTS asset_identities (
+    identity_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    asset_id INTEGER NOT NULL UNIQUE REFERENCES assets(asset_id),
+    roic_symbol TEXT,
+    mapping_method TEXT NOT NULL,
+    mapping_status TEXT NOT NULL,
+    validated_at TEXT NOT NULL,
+    methodology_version TEXT NOT NULL,
+    match_isin TEXT,
+    match_cusip TEXT,
+    match_country TEXT,
+    candidate_name TEXT,
+    error_message TEXT,
+    requests_used INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE INDEX IF NOT EXISTS idx_asset_identities_status ON asset_identities(mapping_status);
+

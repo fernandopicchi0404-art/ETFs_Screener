@@ -17,6 +17,9 @@ class Holding:
     cusip: str | None = None
     symbol: str | None = None
     isin: str | None = None
+    lei: str | None = None
+    sec_ticker: str | None = None
+    other_id: str | None = None
     included_in_equity_analysis: bool = False
     weight_normalized: float | None = None
     exclusion_reason: str | None = None
