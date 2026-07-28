@@ -17,6 +17,7 @@ from etf_screener.database.db import Database
 from etf_screener.fundamentals.fetch_worker import (
     _now,
     fetch_asset_fundamentals,
+    pending_fetch_retries,
     pending_verified_fetches,
     record_fetch,
 )
@@ -34,13 +35,21 @@ def main() -> int:
         help="Tempo máximo de execução (padrão: 7200 = 2 horas).",
     )
     parser.add_argument("--limit", type=int, help="Limita quantidade de ativos nesta execução.")
+    parser.add_argument(
+        "--retry-errors",
+        action="store_true",
+        help="Reprocessa apenas ativos com fetch_error anterior.",
+    )
     args = parser.parse_args()
 
     api_key = load_roic_api_key()
     db = Database()
     db.init_schema()
 
-    queue = pending_verified_fetches(db, priority=args.priority)
+    if args.retry_errors:
+        queue = pending_fetch_retries(db, priority=args.priority)
+    else:
+        queue = pending_verified_fetches(db, priority=args.priority)
     if args.limit is not None:
         queue = queue[:args.limit]
 
