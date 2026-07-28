@@ -1,27 +1,72 @@
 from __future__ import annotations
 
 import re
+import unicodedata
 from typing import Any
 
 LEGAL_SUFFIXES = re.compile(
-    r"\b(Ltd\.?|Limited|PLC|PL|SA|S\.A\.|AG|Inc\.?|Corp\.?|Co\.?|PJSC|NV|SE|SpA)\b",
+    r"\b(Ltd\.?|Limited|PLC|PL|SA|S\.A\.|AG|Inc\.?|Corp\.?|Co\.?|PJSC|NV|SE|SpA|"
+    r"Pvt\.?|Private|JSC|QPSC|Bhd|Tbk|PCL|KGaA|AB|ASA|Oyj|SAB|de CV)\b",
     re.IGNORECASE,
 )
 
-# Nomes legais equivalentes entre países (ex.: Koninklijke = Royal em holandês).
+CLASS_SHARE_SUFFIX = re.compile(
+    r"\b(class [a-z0-9]+|ordinary shares?|common stock|unsponsored adr|adr)\b",
+    re.IGNORECASE,
+)
+
 LEGAL_NAME_EQUIVALENTS = {
     "koninklijke": "royal",
     "societe": "company",
     "compagnie": "company",
+    "cie": "company",
+    "muenchen": "munchen",
+    "private": "pvt",
+    "companies": "cos",
+    "giga device": "gigadevice",
+    "hon precision": "honprecision",
 }
 
 
 def _normalize_name(name: str) -> str:
-    cleaned = LEGAL_SUFFIXES.sub("", name).strip(" ,")
-    normalized = re.sub(r"\s+", " ", cleaned).casefold()
+    """Normaliza nomes legais para comparar SEC vs ROIC."""
+    cleaned = unicodedata.normalize("NFKD", name)
+    cleaned = cleaned.encode("ascii", "ignore").decode("ascii")
+    cleaned = cleaned.casefold()
+    cleaned = cleaned.replace("&", " and ")
+    cleaned = re.sub(r"\bthe\b", " ", cleaned)
+    cleaned = CLASS_SHARE_SUFFIX.sub(" ", cleaned)
+    cleaned = re.sub(r"[^\w\s]", " ", cleaned)
+    cleaned = LEGAL_SUFFIXES.sub(" ", cleaned)
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
     for source, target in LEGAL_NAME_EQUIVALENTS.items():
-        normalized = re.sub(rf"\b{source}\b", target, normalized)
-    return normalized
+        cleaned = re.sub(rf"\b{source}\b", target, cleaned)
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+    return cleaned
+
+
+def names_are_compatible(company_name: str, candidate_name: str) -> bool:
+    target = _normalize_name(company_name)
+    candidate = _normalize_name(candidate_name)
+    if not target or not candidate:
+        return False
+    if target in candidate or candidate in target:
+        return True
+
+    target_tokens = [token for token in target.split() if len(token) > 2]
+    if not target_tokens:
+        return False
+
+    overlap = sum(1 for token in target_tokens[:4] if token in candidate)
+    if overlap >= 2:
+        return True
+
+    distinctive_tokens = [
+        token
+        for token in target_tokens
+        if token.isalpha() and (len(token) <= 4 or token.isupper())
+    ]
+    return any(token in candidate for token in distinctive_tokens)
 
 
 def validate_ticker_match(
@@ -29,6 +74,8 @@ def validate_ticker_match(
     country: str,
     candidate: dict[str, Any] | None,
     roic_symbol: str,
+    *,
+    match_source: str = "default",
 ) -> tuple[bool, str]:
     """Valida se o ticker ROIC parece ser a empresa correta."""
     if not roic_symbol:
@@ -37,35 +84,31 @@ def validate_ticker_match(
     if candidate is None:
         return True, ""
 
-    listing_country = candidate.get("listing_country_code") or ""
-    if listing_country and listing_country != country:
+    # ISIN/CUSIP exato é prova mais forte que invCountry da SEC (muitas vezes sede legal).
+    if match_source not in {"isin", "cusip"}:
+        listing_country = candidate.get("listing_country_code") or ""
+        if listing_country and listing_country != country:
+            return False, (
+                f"País do ticker ({listing_country}) diferente do país do ETF ({country})."
+            )
+
+    if names_are_compatible(company_name, candidate.get("name") or ""):
+        if candidate.get("type") == "fund":
+            return False, f"Ticker {roic_symbol} não é ação ordinária."
+        return True, ""
+
+    if candidate.get("type") == "fund":
+        return False, f"Ticker {roic_symbol} não é ação ordinária."
+
+    # ISIN exato: aceita ADR/DR; rejeita só fundos e nomes incompatíveis.
+    if match_source in {"isin", "cusip", "manual"}:
         return False, (
-            f"País do ticker ({listing_country}) diferente do país do ETF ({country})."
+            f"Nome do ticker ({candidate.get('name')}) não combina com {company_name}."
         )
-
-    candidate_name = _normalize_name(candidate.get("name") or "")
-    target_name = _normalize_name(company_name)
-    if not candidate_name or not target_name:
-        return True, ""
-
-    if target_name in candidate_name or candidate_name in target_name:
-        return True, ""
-
-    target_tokens = [token for token in target_name.split() if len(token) > 2]
-    overlap = sum(1 for token in target_tokens[:3] if token in candidate_name)
-    if overlap >= 2:
-        return True, ""
-
-    # Aceita siglas distintivas compartilhadas (ex.: KPN, TIM).
-    distinctive_tokens = [
-        token
-        for token in target_tokens
-        if token.isalpha() and (token.isupper() or len(token) <= 4)
-    ]
-    if any(token in candidate_name for token in distinctive_tokens):
-        return True, ""
 
     if candidate.get("type") in {"dr", "fund"}:
         return False, f"Ticker {roic_symbol} não é ação ordinária."
 
-    return False, f"Nome do ticker ({candidate.get('name')}) não combina com {company_name}."
+    return False, (
+        f"Nome do ticker ({candidate.get('name')}) não combina com {company_name}."
+    )

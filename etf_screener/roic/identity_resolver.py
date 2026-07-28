@@ -6,16 +6,18 @@ from typing import Any
 from etf_screener.roic.client import RoicClient
 from etf_screener.roic.exchange_map import infer_roic_symbol
 from etf_screener.roic.resolver import MANUAL_ROIC_SYMBOLS, _candidate_queries, _score_candidate
-from etf_screener.validation.ticker import validate_ticker_match
+from etf_screener.validation.ticker import names_are_compatible, validate_ticker_match
 
 APPROVED_STATUSES = {
     "verified_isin",
     "verified_cusip",
     "verified_symbol",
+    "verified_name_match",
     "manual_approved",
 }
 
 MIN_NAME_SCORE = 15
+HIGH_CONFIDENCE_NAME_SCORE = 25
 AMBIGUITY_GAP = 3
 
 
@@ -71,8 +73,16 @@ def _validate_candidate(
     country: str,
     candidate: dict[str, Any],
     roic_symbol: str,
+    *,
+    match_source: str = "default",
 ) -> tuple[bool, str]:
-    return validate_ticker_match(company_name, country, candidate, roic_symbol)
+    return validate_ticker_match(
+        company_name,
+        country,
+        candidate,
+        roic_symbol,
+        match_source=match_source,
+    )
 
 
 def _verify_symbol(
@@ -86,12 +96,16 @@ def _verify_symbol(
     requests_used: int,
     isin: str | None,
     cusip: str | None,
+    trust_identifier: bool = False,
 ) -> IdentityResult:
     candidates, used = _search_exact(client, symbol, "symbol")
     requests_used += used
+    match_source = "manual" if trust_identifier or mapping_status == "manual_approved" else "default"
     for candidate in candidates:
         if candidate.get("symbol") == symbol:
-            ok, message = _validate_candidate(company_name, country, candidate, symbol)
+            ok, message = _validate_candidate(
+                company_name, country, candidate, symbol, match_source=match_source
+            )
             if ok:
                 return IdentityResult(
                     roic_symbol=symbol,
@@ -186,7 +200,9 @@ def resolve_asset_identity(
         if match:
             symbol = match.get("symbol")
             if symbol:
-                ok, message = _validate_candidate(company_name, country, match, symbol)
+                ok, message = _validate_candidate(
+                    company_name, country, match, symbol, match_source="isin"
+                )
                 if ok:
                     return IdentityResult(
                         roic_symbol=symbol,
@@ -216,7 +232,9 @@ def resolve_asset_identity(
         if match:
             symbol = match.get("symbol")
             if symbol:
-                ok, message = _validate_candidate(company_name, country, match, symbol)
+                ok, message = _validate_candidate(
+                    company_name, country, match, symbol, match_source="cusip"
+                )
                 if ok:
                     return IdentityResult(
                         roic_symbol=symbol,
@@ -251,6 +269,7 @@ def resolve_asset_identity(
             requests_used=requests_used,
             isin=isin,
             cusip=cusip,
+            trust_identifier=bool(isin or cusip),
         )
 
     if sec_ticker and ":" in sec_ticker:
@@ -265,6 +284,7 @@ def resolve_asset_identity(
             requests_used=requests_used,
             isin=isin,
             cusip=cusip,
+            trust_identifier=bool(isin or cusip),
         )
 
     # Nome: apenas candidato para revisão — nunca aprova automaticamente.
@@ -309,6 +329,23 @@ def resolve_asset_identity(
             candidate_name=best_name,
             requests_used=requests_used,
             error_message=f"Candidato ambíguo ou fraco (score={best_score}).",
+            match_isin=_normalize_id(isin),
+            match_cusip=_normalize_id(cusip),
+        )
+
+    if (
+        isin
+        and best_score >= HIGH_CONFIDENCE_NAME_SCORE
+        and best_name
+        and names_are_compatible(company_name, best_name)
+    ):
+        return IdentityResult(
+            roic_symbol=best_symbol,
+            mapping_method="verified_name_match",
+            mapping_status="verified_name_match",
+            candidate_name=best_name,
+            requests_used=requests_used,
+            error_message=None,
             match_isin=_normalize_id(isin),
             match_cusip=_normalize_id(cusip),
         )
