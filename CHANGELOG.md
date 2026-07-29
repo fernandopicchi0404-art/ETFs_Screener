@@ -4,6 +4,14 @@ Registro das mudanças relevantes do repositório.
 
 ## [Não publicado]
 
+### Adicionado
+
+- **Projeção de retorno por ETF no painel**: inputs editáveis de inflação (padrão 3%) e
+  crescimento real (padrão 2%), salvos no navegador (`localStorage`). Campos calculados:
+  retorno esperado = (earnings yield × payout) + crescimento, com
+  payout = 1 − (crescimento ÷ ROE); retorno real esperado = retorno esperado − inflação.
+  Aparece na lista (`/`) e na ficha (`/etf/[ticker]`).
+
 ### Alterado
 
 - **Shareholder yield no painel passou a ser o líquido** (dividendo + recompra líquida),

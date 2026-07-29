@@ -1,4 +1,5 @@
 import Link from "next/link";
+import EtfExpectedReturnPanel from "@/components/EtfExpectedReturnPanel";
 import EtfHoldingsTable from "@/components/EtfHoldingsTable";
 import { MetricCard } from "@/components/MetricCard";
 import { getEtfDetail, listEtfHoldings } from "@/lib/queries";
@@ -62,6 +63,11 @@ export default async function EtfDetailPage({ params }: Props) {
             <MetricCard label="ROE agregado" value={formatPct(etf.roe_pct)} />
             <MetricCard label="Earnings yield" value={formatPct(etf.earnings_yield_pct)} />
           </div>
+          <EtfExpectedReturnPanel
+            ticker={normalized}
+            roePct={etf.roe_pct}
+            earningsYieldPct={etf.earnings_yield_pct}
+          />
         </div>
       ) : (
         <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-amber-900">

@@ -2,9 +2,12 @@
 
 import { useMemo, useState } from "react";
 import DataTable, { Column } from "@/components/DataTable";
+import { PremiseInput } from "@/components/EtfPremisesControls";
 import { CoverageBar } from "@/components/MetricCard";
 import { EtfSummary } from "@/lib/api";
+import { calculateExpectedReturn } from "@/lib/expectedReturn";
 import { formatPct, regionLabel } from "@/lib/format";
+import { useEtfPremises } from "@/lib/useEtfPremises";
 
 interface Props {
   initialEtfs: EtfSummary[];
@@ -16,6 +19,7 @@ export default function EtfListClient({ initialEtfs, regions }: Props) {
   const [region, setRegion] = useState("");
   const [sortBy, setSortBy] = useState("ticker");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
+  const { getPremises, setPremises } = useEtfPremises();
 
   const filtered = useMemo(() => {
     let rows = [...initialEtfs];
@@ -43,6 +47,20 @@ export default function EtfListClient({ initialEtfs, regions }: Props) {
         if (sortBy === "dividend_yield") return row.dividend_yield_pct ?? -1;
         if (sortBy === "buyback_yield") return row.buyback_yield_pct ?? -1;
         if (sortBy === "coverage") return row.clean_coverage_pct ?? -1;
+        if (sortBy === "inflation" || sortBy === "real_growth") {
+          const premises = getPremises(row.ticker);
+          return sortBy === "inflation" ? premises.inflationPct : premises.realGrowthPct;
+        }
+        if (sortBy === "expected_return" || sortBy === "expected_real_return") {
+          const result = calculateExpectedReturn(
+            row.roe_pct,
+            row.earnings_yield_pct,
+            getPremises(row.ticker),
+          );
+          return sortBy === "expected_return"
+            ? (result.expectedReturnPct ?? -1)
+            : (result.expectedRealReturnPct ?? -1);
+        }
         return row.ticker;
       };
       const left = getValue(a);
@@ -56,7 +74,7 @@ export default function EtfListClient({ initialEtfs, regions }: Props) {
     });
 
     return rows;
-  }, [initialEtfs, region, search, sortBy, sortDir]);
+  }, [getPremises, initialEtfs, region, search, sortBy, sortDir]);
 
   const columns: Column<EtfSummary>[] = [
     { key: "ticker", label: "Ticker", sortable: true },
@@ -110,6 +128,60 @@ export default function EtfListClient({ initialEtfs, regions }: Props) {
       render: (row) => formatPct(row.buyback_yield_pct),
     },
     {
+      key: "inflation",
+      label: "Inflação",
+      sortable: true,
+      align: "right",
+      render: (row) => (
+        <PremiseInput
+          value={getPremises(row.ticker).inflationPct}
+          ariaLabel={`Inflação de ${row.ticker}`}
+          onChange={(inflationPct) => setPremises(row.ticker, { inflationPct })}
+        />
+      ),
+    },
+    {
+      key: "real_growth",
+      label: "Cresc. real",
+      sortable: true,
+      align: "right",
+      render: (row) => (
+        <PremiseInput
+          value={getPremises(row.ticker).realGrowthPct}
+          ariaLabel={`Crescimento real de ${row.ticker}`}
+          onChange={(realGrowthPct) => setPremises(row.ticker, { realGrowthPct })}
+        />
+      ),
+    },
+    {
+      key: "expected_return",
+      label: "Retorno esp.",
+      sortable: true,
+      align: "right",
+      render: (row) => {
+        const result = calculateExpectedReturn(
+          row.roe_pct,
+          row.earnings_yield_pct,
+          getPremises(row.ticker),
+        );
+        return formatPct(result.expectedReturnPct);
+      },
+    },
+    {
+      key: "expected_real_return",
+      label: "Retorno real esp.",
+      sortable: true,
+      align: "right",
+      render: (row) => {
+        const result = calculateExpectedReturn(
+          row.roe_pct,
+          row.earnings_yield_pct,
+          getPremises(row.ticker),
+        );
+        return formatPct(result.expectedRealReturnPct);
+      },
+    },
+    {
       key: "coverage",
       label: "Cobertura",
       sortable: true,
@@ -141,6 +213,12 @@ export default function EtfListClient({ initialEtfs, regions }: Props) {
           ))}
         </select>
       </div>
+
+      <p className="text-xs text-slate-500">
+        Inflação e crescimento real padrão: 3% e 2%. Edite por ETF — o valor fica salvo neste
+        navegador. Retorno esperado = (earnings yield × payout) + crescimento, com payout =
+        1 − (crescimento ÷ ROE).
+      </p>
 
       <DataTable
         columns={columns}

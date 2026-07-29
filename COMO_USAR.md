@@ -277,8 +277,8 @@ Abra `http://localhost:3000`.
 
 | Tela | Caminho | Conteúdo |
 | --- | --- | --- |
-| Resumo dos ETFs | `/` | Lista com filtro, ordenação e clique para detalhe |
-| Detalhe do ETF | `/etf/VOO` | Shareholder yield líquido em destaque, dividend e buyback ao lado; ativos (10 iniciais; botão para +50) |
+| Resumo dos ETFs | `/` | Lista com filtro, ordenação, premissas editáveis e retorno esperado |
+| Detalhe do ETF | `/etf/VOO` | Yields, ROE/EY, projeção de retorno e ativos (10 iniciais; botão para +50) |
 | Todos os ativos | `/ativos` | Empresas em ordem alfabética com métricas |
 
 O site **só lista ETFs com cobertura limpa ≥ 70%** (barra amarela ou verde). Os demais
@@ -294,6 +294,23 @@ carrega mais posições de 50 em 50 até acabar a composição.
 
 **Shareholder yield no painel** = dividend yield + buyback yield **líquido**
 (recompras − emissões). O buyback mostrado ao lado também é o líquido.
+
+### Projeção de retorno (premissas por ETF)
+
+Na lista e na ficha de cada ETF você pode editar **inflação** e **crescimento real**
+(padrão **3%** e **2%**). O valor editado fica salvo **neste navegador** (não no servidor).
+
+A conta:
+
+```
+crescimento = inflação + crescimento real
+payout = 1 − (crescimento ÷ ROE)
+retorno esperado = (earnings yield × payout) + crescimento
+retorno real esperado = retorno esperado − inflação
+```
+
+Se faltar ROE/earnings yield, ou se o crescimento for maior ou igual ao ROE, o retorno
+aparece como "—" (a conta deixa de fazer sentido econômico).
 
 ### Scripts úteis
 
