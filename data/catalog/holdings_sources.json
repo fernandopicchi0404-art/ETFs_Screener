@@ -4,10 +4,10 @@
   "source_priority_default": ["sec_nport"],
   "adapters": {
     "vanguard_api": {
-      "status": "validated",
+      "status": "implemented",
       "endpoint_template": "https://investor.vanguard.com/investment-products/etfs/profile/api/{ticker_lower}/portfolio-holding/stock?start={start}&count={count}",
       "identifiers": ["isin", "cusip", "sedol", "ticker"],
-      "notes": "Paginado. Testado jul/2026 para VT/VOO/VXUS/VEA/VWO/VGK/VPL/VTI/VYMI/VSS/VEU/VNQ/VNQI."
+      "notes": "Implementado em etf_screener/holdings/vanguard_api.py. Paginado."
     },
     "ishares_csv": {
       "status": "validated",

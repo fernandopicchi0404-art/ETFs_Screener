@@ -6,6 +6,12 @@ Registro das mudanças relevantes do repositório.
 
 ### Adicionado
 
+- **Adapter Vanguard API** para composição de holdings:
+  - `etf_screener/holdings/vanguard_api.py` baixa posições com ISIN/CUSIP/SEDOL.
+  - Pipeline escolhe fonte via `holdings_sources.json` (Vanguard → SEC).
+  - Script `update_holdings.py` aceita `--source` e `--include-paused`.
+  - Reativados 10 ETFs Vanguard que estavam pausados por falta de N-PORT
+    (VT, VXUS, VEA, VWO, VGK, VPL, VTI, VOO, VYMI, VSS).
 - **Plano de extração de composições via gestoras** (`PLANO_EXTRACAO_COMPOSICOES.md`):
   pesquisa de fontes (Vanguard API, iShares CSV, SPDR XLSX), mapeamento dos temas
   pedidos (All World, VOO, World ex-USA, Europa, Japão, dividendos/valor, REITs) e

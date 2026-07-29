@@ -1,6 +1,6 @@
 {
-  "version": "2026-07-27",
-  "description": "Núcleo curado para o piloto. ETFs pausados (sem SEC ou cobertura <90%) permanecem no arquivo mas não entram nos pipelines ativos.",
+  "version": "2026-07-29",
+  "description": "Núcleo curado para o piloto. ETFs pausados (cobertura baixa ou sem fonte) permanecem no arquivo mas não entram nos pipelines ativos. Composições Vanguard via API da gestora (jul/2026).",
   "pilot_completed": [
     "SCHY"
   ],
@@ -14,8 +14,7 @@
       "issuer": "Vanguard",
       "index": "FTSE Global All Cap",
       "priority": "P1",
-      "status": "paused",
-      "pause_reason": "sem_composicao_sec"
+      "status": "active"
     },
     {
       "ticker": "VXUS",
@@ -26,8 +25,7 @@
       "issuer": "Vanguard",
       "index": "FTSE Global All Cap ex-US",
       "priority": "P1",
-      "status": "paused",
-      "pause_reason": "sem_composicao_sec"
+      "status": "active"
     },
     {
       "ticker": "VEA",
@@ -38,8 +36,7 @@
       "issuer": "Vanguard",
       "index": "FTSE Developed ex-US",
       "priority": "P1",
-      "status": "paused",
-      "pause_reason": "sem_composicao_sec"
+      "status": "active"
     },
     {
       "ticker": "VWO",
@@ -50,8 +47,7 @@
       "issuer": "Vanguard",
       "index": "FTSE Emerging",
       "priority": "P1",
-      "status": "paused",
-      "pause_reason": "sem_composicao_sec"
+      "status": "active"
     },
     {
       "ticker": "VGK",
@@ -62,8 +58,7 @@
       "issuer": "Vanguard",
       "index": "FTSE Developed Europe All Cap",
       "priority": "P1",
-      "status": "paused",
-      "pause_reason": "sem_composicao_sec"
+      "status": "active"
     },
     {
       "ticker": "EZU",
@@ -86,8 +81,7 @@
       "issuer": "Vanguard",
       "index": "FTSE Developed Asia Pacific ex-Japan",
       "priority": "P1",
-      "status": "paused",
-      "pause_reason": "sem_composicao_sec"
+      "status": "active"
     },
     {
       "ticker": "AAXJ",
@@ -122,8 +116,7 @@
       "issuer": "Vanguard",
       "index": "CRSP US Total Market",
       "priority": "P1",
-      "status": "paused",
-      "pause_reason": "sem_composicao_sec"
+      "status": "active"
     },
     {
       "ticker": "VOO",
@@ -134,8 +127,7 @@
       "issuer": "Vanguard",
       "index": "S&P 500",
       "priority": "P1",
-      "status": "paused",
-      "pause_reason": "sem_composicao_sec"
+      "status": "active"
     },
     {
       "ticker": "SCHD",
@@ -410,8 +402,7 @@
       "issuer": "Vanguard",
       "index": "FTSE All-World ex-US High Div Yield",
       "priority": "P1",
-      "status": "paused",
-      "pause_reason": "sem_composicao_sec"
+      "status": "active"
     },
     {
       "ticker": "IDV",
@@ -474,8 +465,7 @@
       "issuer": "Vanguard",
       "index": "FTSE Global Small Cap ex-US",
       "priority": "P1",
-      "status": "paused",
-      "pause_reason": "sem_composicao_sec"
+      "status": "active"
     },
     {
       "ticker": "FEZ",
