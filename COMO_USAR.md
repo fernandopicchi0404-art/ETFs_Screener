@@ -285,6 +285,10 @@ O site **só lista ETFs com cobertura limpa ≥ 70%** (barra amarela ou verde). 
 continuam no banco e no pipeline, mas não aparecem na home nem na ficha até a cobertura
 melhorar.
 
+Hoje entram os **Vanguard** da última rodada de cobertura e os **MSCI/iShares e Schwab**
+que já tinham métricas (EWT, KSA, EWY, SCHD, EZA, EWQ, EWZ, EWW, SCHY, EWG), restaurados
+no banco do painel.
+
 Na ficha do ETF, a tabela começa com os **10 maiores ativos**. O botão **“Mostrar mais 50”**
 carrega mais posições de 50 em 50 até acabar a composição.
 
