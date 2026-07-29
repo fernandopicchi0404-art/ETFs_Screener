@@ -278,7 +278,7 @@ Abra `http://localhost:3000`.
 | Tela | Caminho | Conteúdo |
 | --- | --- | --- |
 | Resumo dos ETFs | `/` | Lista com filtro, ordenação e clique para detalhe |
-| Detalhe do ETF | `/etf/VOO` | Métricas consolidadas e ativos (10 iniciais; botão para +50) |
+| Detalhe do ETF | `/etf/VOO` | Shareholder yield líquido em destaque, dividend e buyback ao lado; ativos (10 iniciais; botão para +50) |
 | Todos os ativos | `/ativos` | Empresas em ordem alfabética com métricas |
 
 O site **só lista ETFs com cobertura limpa ≥ 70%** (barra amarela ou verde). Os demais

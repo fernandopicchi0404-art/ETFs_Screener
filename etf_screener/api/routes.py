@@ -27,7 +27,7 @@ def get_etfs(
     region: str | None = None,
     priority: str | None = None,
     search: str | None = None,
-    sort_by: str = Query("ticker", pattern="^(ticker|name|region|equity_positions|roe|earnings_yield|dividend_yield|coverage)$"),
+    sort_by: str = Query("ticker", pattern="^(ticker|name|region|equity_positions|roe|earnings_yield|shareholder_yield|dividend_yield|buyback_yield|coverage)$"),
     sort_dir: str = Query("asc", pattern="^(asc|desc)$"),
 ) -> list[dict]:
     return list_etf_summaries(

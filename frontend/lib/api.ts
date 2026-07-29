@@ -10,8 +10,11 @@ export interface EtfSummary {
   equity_positions: number | null;
   roe_pct: number | null;
   earnings_yield_pct: number | null;
-  dividend_yield_pct: number | null;
+  /** Shareholder yield líquido = dividend + recompra líquida. */
   shareholder_yield_pct: number | null;
+  dividend_yield_pct: number | null;
+  /** Buyback yield líquido (recompras − emissões). */
+  buyback_yield_pct: number | null;
   clean_coverage_pct: number | null;
   composition_date: string | null;
   has_metrics: boolean;
@@ -36,8 +39,9 @@ export interface HoldingItem {
   weight_pct: number | null;
   roe_pct: number | null;
   earnings_yield_pct: number | null;
-  dividend_yield_pct: number | null;
   shareholder_yield_pct: number | null;
+  dividend_yield_pct: number | null;
+  buyback_yield_pct: number | null;
   quality: string | null;
   roic_symbol: string | null;
 }
@@ -49,8 +53,9 @@ export interface AssetItem {
   sector: string | null;
   roe_pct: number | null;
   earnings_yield_pct: number | null;
-  dividend_yield_pct: number | null;
   shareholder_yield_pct: number | null;
+  dividend_yield_pct: number | null;
+  buyback_yield_pct: number | null;
   quality: string | null;
   roic_symbol: string | null;
   etf_count: number;
