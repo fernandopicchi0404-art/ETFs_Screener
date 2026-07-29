@@ -292,6 +292,9 @@ no banco do painel.
 Na ficha do ETF, a tabela começa com os **10 maiores ativos**. O botão **“Mostrar mais 50”**
 carrega mais posições de 50 em 50 até acabar a composição.
 
+**Shareholder yield no painel** = dividend yield + buyback yield **líquido**
+(recompras − emissões). O buyback mostrado ao lado também é o líquido.
+
 ### Scripts úteis
 
 | Script | Função |
