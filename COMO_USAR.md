@@ -278,10 +278,15 @@ Abra `http://localhost:3000`.
 | Tela | Caminho | Conteúdo |
 | --- | --- | --- |
 | Resumo dos ETFs | `/` | Lista com filtro, ordenação e clique para detalhe |
-| Detalhe do ETF | `/etf/SCHY` | Métricas consolidadas e top 10 ativos |
+| Detalhe do ETF | `/etf/VOO` | Métricas consolidadas e ativos (10 iniciais; botão para +50) |
 | Todos os ativos | `/ativos` | Empresas em ordem alfabética com métricas |
 
-ETFs sem métricas calculadas aparecem na lista com "—" nos números.
+O site **só lista ETFs com cobertura limpa ≥ 70%** (barra amarela ou verde). Os demais
+continuam no banco e no pipeline, mas não aparecem na home nem na ficha até a cobertura
+melhorar.
+
+Na ficha do ETF, a tabela começa com os **10 maiores ativos**. O botão **“Mostrar mais 50”**
+carrega mais posições de 50 em 50 até acabar a composição.
 
 ### Scripts úteis
 

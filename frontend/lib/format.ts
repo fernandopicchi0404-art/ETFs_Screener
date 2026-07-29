@@ -1,3 +1,6 @@
+/** Cobertura limpa mínima para o ETF aparecer no site (barra amarela ou verde). */
+export const MIN_SITE_COVERAGE_PCT = 70;
+
 export function formatPct(value: number | null | undefined, digits = 1): string {
   if (value === null || value === undefined) return "—";
   return `${value.toFixed(digits)}%`;

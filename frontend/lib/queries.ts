@@ -1,5 +1,6 @@
 import { getDb, pct } from "./db";
 import type { AssetItem, EtfDetail, EtfSummary, HoldingItem } from "./api";
+import { MIN_SITE_COVERAGE_PCT } from "./format";
 
 type Row = Record<string, unknown>;
 
@@ -48,8 +49,9 @@ export function listEtfSummaries(options: {
         WHERE m2.etf_id = e.etf_id
       )
     WHERE e.status = 'active'
+      AND m.clean_coverage_pct >= ?
   `;
-  const params: unknown[] = [];
+  const params: unknown[] = [MIN_SITE_COVERAGE_PCT];
 
   if (region) {
     sql += " AND e.region = ?";
