@@ -200,3 +200,5 @@ Depois seguir **P1** restantes e, por último, **P2**.
 | `data/etf_universe.json` | **50 ETFs** — lista operacional |
 | `data/etf_universe_full.json` | 100 ETFs — levantamento original |
 | `data/etf_universe.md` | Este documento |
+| `data/catalog/holdings_sources.json` | Fonte preferencial de composição por ticker |
+| `PLANO_EXTRACAO_COMPOSICOES.md` | Plano para gestoras + expansão (All World, RSP, REITs, etc.) |

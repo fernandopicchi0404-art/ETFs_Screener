@@ -1,0 +1,100 @@
+{
+  "version": "2026-07-29",
+  "description": "Fontes preferenciais de composição por ETF. Usado pelo plano de adapters (gestora → SEC). IDs iShares precisam ser confirmados no download real antes de produção.",
+  "source_priority_default": ["sec_nport"],
+  "adapters": {
+    "vanguard_api": {
+      "status": "validated",
+      "endpoint_template": "https://investor.vanguard.com/investment-products/etfs/profile/api/{ticker_lower}/portfolio-holding/stock?start={start}&count={count}",
+      "identifiers": ["isin", "cusip", "sedol", "ticker"],
+      "notes": "Paginado. Testado jul/2026 para VT/VOO/VXUS/VEA/VWO/VGK/VPL/VTI/VYMI/VSS/VEU/VNQ/VNQI."
+    },
+    "ishares_csv": {
+      "status": "validated",
+      "endpoint_template": "https://www.ishares.com/us/products/{product_id}/{slug}/latest-holdings.csv",
+      "identifiers": ["ticker", "name", "location", "exchange"],
+      "notes": "Sem ISIN no CSV atual. product_id+slug precisam bater exatamente com a página do produto."
+    },
+    "spdr_xlsx": {
+      "status": "partial",
+      "endpoint_template": "https://www.ssga.com/library-content/products/fund-data/etfs/us/holdings-daily-us-en-{ticker_lower}.xlsx",
+      "identifiers": ["cusip", "sedol", "ticker"],
+      "notes": "SPY ok. RSP ainda sem URL confirmada."
+    },
+    "sec_nport": {
+      "status": "implemented",
+      "identifiers": ["isin", "cusip", "lei", "ticker"],
+      "notes": "Fonte atual do pipeline."
+    }
+  },
+  "etfs": {
+    "VT": {"preferred_source": "vanguard_api", "fallback_sources": ["sec_nport"], "theme_note": "FTSE All World / global all-cap proxy US-listed"},
+    "VEU": {"preferred_source": "vanguard_api", "fallback_sources": ["sec_nport"], "theme_note": "FTSE All-World ex-US"},
+    "VOO": {"preferred_source": "vanguard_api", "fallback_sources": ["sec_nport"], "theme_note": "S&P 500"},
+    "VTI": {"preferred_source": "vanguard_api", "fallback_sources": ["sec_nport"]},
+    "VXUS": {"preferred_source": "vanguard_api", "fallback_sources": ["sec_nport"]},
+    "VEA": {"preferred_source": "vanguard_api", "fallback_sources": ["sec_nport"], "theme_note": "Developed ex-US (FTSE)"},
+    "VWO": {"preferred_source": "vanguard_api", "fallback_sources": ["sec_nport"]},
+    "VGK": {"preferred_source": "vanguard_api", "fallback_sources": ["sec_nport"]},
+    "VPL": {"preferred_source": "vanguard_api", "fallback_sources": ["sec_nport"]},
+    "VYMI": {"preferred_source": "vanguard_api", "fallback_sources": ["sec_nport"], "theme_note": "International high dividend"},
+    "VSS": {"preferred_source": "vanguard_api", "fallback_sources": ["sec_nport"]},
+    "VYM": {"preferred_source": "vanguard_api", "fallback_sources": ["sec_nport"], "theme_note": "US high dividend — candidato expansão"},
+    "VIG": {"preferred_source": "vanguard_api", "fallback_sources": ["sec_nport"], "theme_note": "US dividend appreciation — candidato expansão"},
+    "VNQ": {"preferred_source": "vanguard_api", "fallback_sources": ["sec_nport"], "theme_note": "US REIT"},
+    "VNQI": {"preferred_source": "vanguard_api", "fallback_sources": ["sec_nport"], "theme_note": "Global ex-US real estate"},
+
+    "EWJ": {
+      "preferred_source": "ishares_csv",
+      "fallback_sources": ["sec_nport"],
+      "ishares": {"product_id": "239665", "slug": "ishares-msci-japan-etf"},
+      "theme_note": "Japan core — SEC não encontrou"
+    },
+    "EFV": {
+      "preferred_source": "ishares_csv",
+      "fallback_sources": ["sec_nport"],
+      "ishares": {"product_id": "239628", "slug": "ishares-msci-eafe-value-etf"},
+      "theme_note": "EAFE value"
+    },
+    "IFGL": {
+      "preferred_source": "ishares_csv",
+      "fallback_sources": ["sec_nport"],
+      "ishares": {"product_id": "239540", "slug": "ishares-international-developed-real-estate-etf"},
+      "theme_note": "Intl developed real estate"
+    },
+    "EZU": {"preferred_source": "ishares_csv", "fallback_sources": ["sec_nport"], "ishares": {"product_id": null, "slug": null}, "theme_note": "EMU — product_id a confirmar"},
+    "IDEV": {"preferred_source": "ishares_csv", "fallback_sources": ["sec_nport"], "ishares": {"product_id": null, "slug": null}, "theme_note": "MSCI World ex-USA"},
+    "IEUR": {"preferred_source": "sec_nport", "fallback_sources": ["ishares_csv"], "theme_note": "Europe broad"},
+    "URTH": {"preferred_source": "sec_nport", "fallback_sources": ["ishares_csv"], "theme_note": "MSCI World"},
+    "ACWX": {"preferred_source": "sec_nport", "fallback_sources": ["ishares_csv"], "theme_note": "ACWI ex-US (dev+EM)"},
+    "SCJ": {"preferred_source": "ishares_csv", "fallback_sources": ["sec_nport"], "theme_note": "Japan small cap — product_id a confirmar"},
+    "REET": {"preferred_source": "ishares_csv", "fallback_sources": ["sec_nport"], "theme_note": "Global REIT — product_id a confirmar"},
+
+    "RSP": {"preferred_source": "spdr_xlsx", "fallback_sources": ["sec_nport"], "theme_note": "S&P 500 Equal Weight — URL XLSX a confirmar"},
+    "FEZ": {"preferred_source": "spdr_xlsx", "fallback_sources": ["sec_nport"]},
+    "SPY": {"preferred_source": "spdr_xlsx", "fallback_sources": ["sec_nport"]},
+
+    "SCHD": {"preferred_source": "sec_nport", "fallback_sources": []},
+    "SCHY": {"preferred_source": "sec_nport", "fallback_sources": []},
+    "SCHF": {"preferred_source": "sec_nport", "fallback_sources": []},
+    "SCHH": {"preferred_source": "sec_nport", "fallback_sources": [], "theme_note": "US REIT — candidato expansão"},
+    "FNDF": {"preferred_source": "sec_nport", "fallback_sources": [], "theme_note": "Fundamental intl value — reativar se composição voltar"}
+  },
+  "expansion_candidates": {
+    "description": "ETFs sugeridos para entrar no universo operacional após Fase A/B",
+    "by_theme": {
+      "ftse_all_world_global": ["VT", "VEU", "ACWI"],
+      "us_large_and_equal_weight": ["VOO", "VTI", "RSP"],
+      "msci_world_ex_usa": ["IDEV", "VEA", "SCHF"],
+      "europe_developed": ["VGK", "IEUR", "EZU", "FEZ"],
+      "japan": ["EWJ", "FLJP", "SCJ", "BBJP"],
+      "dividend_value": ["VYMI", "SCHY", "IDV", "DVYE", "EFV", "FNDF", "VYM", "AVDV"],
+      "reits": ["VNQ", "SCHH", "VNQI", "IFGL", "REET"]
+    },
+    "defer": {
+      "ucits_europe": ["VWCE"],
+      "fx_hedged": ["DXJ", "HEWJ", "HEDJ"],
+      "china_frontier": ["MCHI", "FXI", "FM", "VNM"]
+    }
+  }
+}

@@ -115,6 +115,10 @@ O passo de fundamentos só processa ativos com identidade aprovada (`verified_is
 Os dados ficam no banco `data/database/etf_screener.sqlite` e em
 `data/exports/compositions/`. Detalhes em [`PLANO_DADOS.md`](PLANO_DADOS.md).
 
+Hoje a composição ativa ainda vem da SEC. Vanguard e alguns iShares ficaram de fora.
+O plano para passar a usar CSV/API das gestoras (e expandir o universo) está em
+[`PLANO_EXTRACAO_COMPOSICOES.md`](PLANO_EXTRACAO_COMPOSICOES.md).
+
 ### 1. Construir o mapeamento de ações
 
 Este passo resolve os nomes das empresas do ETF para os identificadores da ROIC.ai.
