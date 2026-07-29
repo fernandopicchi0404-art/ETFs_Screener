@@ -76,6 +76,29 @@ Para testar se a API aceita essa velocidade antes de rodar o lote:
 python3 scripts/test_roic_rate_limit.py --requests 60
 ```
 
+Antes de gastar cota ROIC nos ETFs grandes, semeie o que já existe no dashboard e
+limite a fila à meta de **90% do peso**:
+
+```bash
+python3 scripts/seed_identities_from_db.py --priority P1 --coverage-target 0.90 \
+  --etf VT --etf VXUS --etf VEA --etf VWO --etf VGK --etf VPL \
+  --etf VTI --etf VOO --etf VYMI --etf VSS --etf EWJ --etf EZU
+
+python3 scripts/resolve_asset_identities.py --priority P1 --coverage-target 0.90 \
+  --etf VT --etf VXUS --etf VEA --etf VWO --etf VGK --etf VPL \
+  --etf VTI --etf VOO --etf VYMI --etf VSS --etf EWJ --etf EZU \
+  --time-limit-seconds 7200
+
+python3 scripts/fetch_p1_assets.py --priority P1 --coverage-target 0.90 \
+  --etf VT --etf VXUS --etf VEA --etf VWO --etf VGK --etf VPL \
+  --etf VTI --etf VOO --etf VYMI --etf VSS --etf EWJ --etf EZU \
+  --time-limit-seconds 7200
+```
+
+Tempo estimado de API (300 req/min, só ativos da faixa de 90%): cerca de
+**15–30 min** de identidade + **50–70 min** de fundamentos (~1–1,5 h no total).
+ETFs “achatados” como VSS pedem bem mais nomes para chegar a 90%.
+
 ```bash
 python3 scripts/run_p1_pipeline.py --priority P1 --time-limit-seconds 7200
 ```

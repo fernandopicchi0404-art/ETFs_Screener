@@ -6,6 +6,12 @@ Registro das mudanças relevantes do repositório.
 
 ### Adicionado
 
+- **Cobertura por peso (meta 90%)** na fila de identidade/fundamentos:
+  - `etf_screener/holdings/coverage.py` seleciona só os maiores holdings até a meta.
+  - Scripts `resolve_asset_identities.py` e `fetch_p1_assets.py` aceitam
+    `--coverage-target` (padrão 0.90) e `--etf`.
+- **Semeadura por ISIN** (`scripts/seed_identities_from_db.py`) a partir do SQLite do
+  dashboard, para reaproveitar identidades/fundamentos já resolvidos sem gastar cota ROIC.
 - **Adapter Vanguard API** para composição de holdings:
   - `etf_screener/holdings/vanguard_api.py` baixa posições com ISIN/CUSIP/SEDOL.
   - Pipeline escolhe fonte via `holdings_sources.json` (Vanguard → SEC).
