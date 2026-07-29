@@ -4,16 +4,16 @@
   "source_priority_default": ["sec_nport"],
   "adapters": {
     "vanguard_api": {
-      "status": "validated",
+      "status": "implemented",
       "endpoint_template": "https://investor.vanguard.com/investment-products/etfs/profile/api/{ticker_lower}/portfolio-holding/stock?start={start}&count={count}",
       "identifiers": ["isin", "cusip", "sedol", "ticker"],
-      "notes": "Paginado. Testado jul/2026 para VT/VOO/VXUS/VEA/VWO/VGK/VPL/VTI/VYMI/VSS/VEU/VNQ/VNQI."
+      "notes": "Implementado em etf_screener/holdings/vanguard_api.py. Paginado."
     },
     "ishares_csv": {
-      "status": "validated",
+      "status": "implemented",
       "endpoint_template": "https://www.ishares.com/us/products/{product_id}/{slug}/latest-holdings.csv",
       "identifiers": ["ticker", "name", "location", "exchange"],
-      "notes": "Sem ISIN no CSV atual. product_id+slug precisam bater exatamente com a página do produto."
+      "notes": "Implementado em etf_screener/holdings/ishares_csv.py. Sem ISIN no CSV atual."
     },
     "spdr_xlsx": {
       "status": "partial",
@@ -62,7 +62,12 @@
       "ishares": {"product_id": "239540", "slug": "ishares-international-developed-real-estate-etf"},
       "theme_note": "Intl developed real estate"
     },
-    "EZU": {"preferred_source": "ishares_csv", "fallback_sources": ["sec_nport"], "ishares": {"product_id": null, "slug": null}, "theme_note": "EMU — product_id a confirmar"},
+    "EZU": {
+      "preferred_source": "ishares_csv",
+      "fallback_sources": ["sec_nport"],
+      "ishares": {"product_id": "239644", "slug": "ishares-msci-emu-etf"},
+      "theme_note": "EMU / Eurozone — SEC não encontrou"
+    },
     "IDEV": {"preferred_source": "ishares_csv", "fallback_sources": ["sec_nport"], "ishares": {"product_id": null, "slug": null}, "theme_note": "MSCI World ex-USA"},
     "IEUR": {"preferred_source": "sec_nport", "fallback_sources": ["ishares_csv"], "theme_note": "Europe broad"},
     "URTH": {"preferred_source": "sec_nport", "fallback_sources": ["ishares_csv"], "theme_note": "MSCI World"},

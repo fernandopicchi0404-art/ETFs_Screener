@@ -115,9 +115,20 @@ O passo de fundamentos só processa ativos com identidade aprovada (`verified_is
 Os dados ficam no banco `data/database/etf_screener.sqlite` e em
 `data/exports/compositions/`. Detalhes em [`PLANO_DADOS.md`](PLANO_DADOS.md).
 
-Hoje a composição ativa ainda vem da SEC. Vanguard e alguns iShares ficaram de fora.
-O plano para passar a usar CSV/API das gestoras (e expandir o universo) está em
-[`PLANO_EXTRACAO_COMPOSICOES.md`](PLANO_EXTRACAO_COMPOSICOES.md).
+Hoje a composição usa **SEC N-PORT** e, para Vanguard, a **API pública da gestora**
+(ver `data/catalog/holdings_sources.json`). EWJ/EZU ainda aguardam o adapter iShares
+(`PLANO_EXTRACAO_COMPOSICOES.md`).
+
+Exemplos:
+
+```bash
+# Um ETF Vanguard (força a API da gestora)
+python3 scripts/update_holdings.py --etf VOO --source vanguard_api
+
+# Lote P1 (escolhe a fonte automaticamente)
+python3 scripts/update_holdings.py --priority P1
+```
+
 
 ### 1. Construir o mapeamento de ações
 

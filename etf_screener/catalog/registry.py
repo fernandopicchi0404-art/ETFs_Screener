@@ -99,9 +99,18 @@ def list_etfs(
   db: Database,
   priority: str | None = None,
   tickers: list[str] | None = None,
+  include_paused: bool = False,
 ) -> list[dict[str, Any]]:
-  sql = "SELECT * FROM etfs WHERE status = 'active'"
-  params: list[Any] = []
+  # Ticker explícito ignora status para permitir reprocessar pausados.
+  if tickers:
+    sql = "SELECT * FROM etfs WHERE 1=1"
+    params: list[Any] = []
+  elif include_paused:
+    sql = "SELECT * FROM etfs WHERE 1=1"
+    params = []
+  else:
+    sql = "SELECT * FROM etfs WHERE status = 'active'"
+    params = []
   if priority:
     sql += " AND priority = ?"
     params.append(priority)

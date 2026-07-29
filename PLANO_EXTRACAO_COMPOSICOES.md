@@ -185,21 +185,19 @@ Para CSV iShares **sem ISIN**: a resolução ROIC usa ticker + bolsa/país (já 
 
 ## Fases de execução (ordem recomendada)
 
-### Fase A — Destravar Vanguard (maior impacto)
+### Fase A — Destravar Vanguard (maior impacto) ✅ implementada
 
-1. Implementar `vanguard_api.py` (paginação, stock + short-term-reserve se precisar).
-2. Mapear no catálogo: VT, VXUS, VEA, VWO, VGK, VPL, VTI, VOO, VYMI, VSS, VEU, VNQ, VNQI.
-3. Rodar só esses tickers → gravar snapshots → exportar CSV.
-4. Reativar no `etf_universe.json` (`status: active`, limpar `pause_reason`).
-5. Seguir identidade → fundamentos → métricas nos P1 reativados.
+1. ~~Implementar `vanguard_api.py`~~ — feito (`etf_screener/holdings/vanguard_api.py`).
+2. ~~Mapear no catálogo~~ — `holdings_sources.json` + universo reativado.
+3. Rodar tickers Vanguard → gravar snapshots → exportar CSV.
+4. ~~Reativar no `etf_universe.json`~~ — VT, VXUS, VEA, VWO, VGK, VPL, VTI, VOO, VYMI, VSS.
+5. Seguir identidade → fundamentos → métricas nos P1 reativados (próximo passo operacional).
 
-**Por quê primeiro:** um adapter só libera ~10–13 ETFs centrais que hoje estão pausados.
+### Fase B — iShares onde a SEC falhou + gaps ✅ (EWJ/EZU)
 
-### Fase B — iShares onde a SEC falhou + gaps
-
-1. Implementar `ishares_csv.py` + tabela `product_id`/`slug` por ticker.
-2. Prioridade: **EWJ**, **EZU**, e qualquer active ainda sem snapshot (EFV, FEZ, QQQ se necessário).
-3. Reativar EWJ/EZU; rodar identidade/fundamentos.
+1. ~~Implementar `ishares_csv.py` + tabela `product_id`/`slug`~~ — feito.
+2. ~~Prioridade: **EWJ**, **EZU**~~ — extraídos e reativados.
+3. FNDF e outros gaps (EFV/FEZ/QQQ se SEC falhar) ficam para a sequência.
 
 ### Fase C — Expandir o universo (os temas que faltam)
 

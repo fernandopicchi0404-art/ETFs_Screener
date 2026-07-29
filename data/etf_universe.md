@@ -36,17 +36,21 @@ A lista expandida (100 ETFs) ficou em `data/etf_universe_full.json` para consult
 
 | Prioridade | Qtd ativa | Uso |
 | --- | --- | --- |
-| **P1** | **10** | ETFs com composição SEC e cobertura ≥ ~90% |
+| **P1** | ampliado (Vanguard reativado) | Composição via gestora/SEC + cobertura |
 | **P2** | 19 | Segunda leva (países menores, tilts, referências) |
-| **Pausados** | 21 | Fora dos pipelines por enquanto (ver abaixo) |
+| **Pausados** | 11 | Sem fonte ainda (EWJ/EZU/FNDF) ou cobertura baixa |
 
 ### ETFs pausados (não rodam nos scripts)
 
-**Sem composição SEC (13):** VT, VXUS, VEA, VWO, VGK, EZU, VPL, VTI, VOO, VYMI, FNDF, VSS, EWJ
+**Sem composição SEC — reativados via Vanguard API (jul/2026):** VT, VXUS, VEA, VWO, VGK, VPL, VTI, VOO, VYMI, VSS
+
+**Ainda sem composição (próximo: FNDF / Schwab ou SEC):** FNDF
 
 **Cobertura de fundamentos baixa (8):** ILF, EWC, EPOL, AAXJ, EWL, EWU, EWA, INDA
 
 Permanecem em `etf_universe.json` com `"status": "paused"` para reativar depois.
+Fontes preferenciais: `data/catalog/holdings_sources.json` e
+[`PLANO_EXTRACAO_COMPOSICOES.md`](../PLANO_EXTRACAO_COMPOSICOES.md).
 
 ---
 

@@ -69,9 +69,9 @@ python3 scripts/update_holdings.py --etf SCHY --force
 
 ## Fluxo da extração
 
-1. Localiza o N-PORT mais recente na SEC (por CIK da gestora ou busca pelo nome).
-2. Baixa o XML bruto em `data/raw/sec/{ticker}/`.
-3. Extrai posições, classifica ações (EC/EP) e normaliza pesos.
+1. Escolhe a fonte (`holdings_sources.json`: Vanguard API → SEC, etc.).
+2. Baixa o bruto em `data/raw/vanguard/` ou `data/raw/sec/`.
+3. Extrai posições, classifica ações e normaliza pesos.
 4. Grava snapshot + holdings no banco.
 5. Deduplica empresas em `assets` (ISIN → CUSIP → nome+país).
 6. Exporta CSV para consulta.
@@ -81,9 +81,9 @@ python3 scripts/update_holdings.py --etf SCHY --force
 - ETFs sem N-PORT encontrado ficam com status `not_found` no resumo (ex.: gestoras sem
   CIK mapeado). Ajuste em `data/catalog/sec_issuer_defaults.json`.
 - Gestoras com muitos fundos (iShares) usam busca por nome além do CIK.
-- **Vanguard e alguns iShares (EWJ, EZU) não saem pela SEC hoje.** O plano para
-  complementar com CSV/API das gestoras está em
-  [`PLANO_EXTRACAO_COMPOSICOES.md`](PLANO_EXTRACAO_COMPOSICOES.md) e no catálogo
+- **Vanguard** usa a API do site da gestora (ISIN/CUSIP). **EWJ/EZU** ainda dependem
+  do adapter iShares CSV — ver
+  [`PLANO_EXTRACAO_COMPOSICOES.md`](PLANO_EXTRACAO_COMPOSICOES.md) e
   `data/catalog/holdings_sources.json`.
 
 ## Identificação confiável dos ativos antes da ROIC
