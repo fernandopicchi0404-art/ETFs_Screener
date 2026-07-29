@@ -17,8 +17,13 @@ class EtfSummary(BaseModel):
     equity_positions: int | None = None
     roe_pct: float | None = Field(None, description="ROE agregado em percentual (ex.: 16.9)")
     earnings_yield_pct: float | None = None
+    shareholder_yield_pct: float | None = Field(
+        None, description="Shareholder yield líquido (dividendo + recompra líquida), em %"
+    )
     dividend_yield_pct: float | None = None
-    shareholder_yield_pct: float | None = None
+    buyback_yield_pct: float | None = Field(
+        None, description="Buyback yield líquido (recompras − emissões), em %"
+    )
     clean_coverage_pct: float | None = None
     composition_date: str | None = None
     has_metrics: bool = False
@@ -43,8 +48,9 @@ class HoldingItem(BaseModel):
     weight_pct: float | None = None
     roe_pct: float | None = None
     earnings_yield_pct: float | None = None
-    dividend_yield_pct: float | None = None
     shareholder_yield_pct: float | None = None
+    dividend_yield_pct: float | None = None
+    buyback_yield_pct: float | None = None
     quality: str | None = None
     roic_symbol: str | None = None
 
@@ -56,8 +62,9 @@ class AssetItem(BaseModel):
     sector: str | None = None
     roe_pct: float | None = None
     earnings_yield_pct: float | None = None
-    dividend_yield_pct: float | None = None
     shareholder_yield_pct: float | None = None
+    dividend_yield_pct: float | None = None
+    buyback_yield_pct: float | None = None
     quality: str | None = None
     roic_symbol: str | None = None
     etf_count: int = 0

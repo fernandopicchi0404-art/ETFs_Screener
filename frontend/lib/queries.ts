@@ -36,7 +36,8 @@ export function listEtfSummaries(options: {
       m.roe_aggregate,
       m.earnings_yield_aggregate,
       m.dividend_yield_aggregate,
-      m.gross_shareholder_yield_aggregate,
+      m.net_shareholder_yield_aggregate,
+      m.net_buyback_yield_aggregate,
       m.clean_coverage_pct,
       m.composition_date,
       m.calculated_at,
@@ -74,7 +75,9 @@ export function listEtfSummaries(options: {
     equity_positions: "m.equity_positions",
     roe: "m.roe_aggregate",
     earnings_yield: "m.earnings_yield_aggregate",
+    shareholder_yield: "m.net_shareholder_yield_aggregate",
     dividend_yield: "m.dividend_yield_aggregate",
+    buyback_yield: "m.net_buyback_yield_aggregate",
     coverage: "m.clean_coverage_pct",
   };
   const sortCol = allowedSort[sortBy] ?? "e.ticker";
@@ -94,8 +97,9 @@ export function listEtfSummaries(options: {
     equity_positions: asNumber(row.equity_positions),
     roe_pct: pct(asNumber(row.roe_aggregate)),
     earnings_yield_pct: pct(asNumber(row.earnings_yield_aggregate)),
+    shareholder_yield_pct: pct(asNumber(row.net_shareholder_yield_aggregate)),
     dividend_yield_pct: pct(asNumber(row.dividend_yield_aggregate)),
-    shareholder_yield_pct: pct(asNumber(row.gross_shareholder_yield_aggregate)),
+    buyback_yield_pct: pct(asNumber(row.net_buyback_yield_aggregate)),
     clean_coverage_pct: asNumber(row.clean_coverage_pct),
     composition_date: asString(row.composition_date),
     has_metrics: Boolean(row.has_metrics),
@@ -131,8 +135,9 @@ export function getEtfDetail(ticker: string): EtfDetail | null {
     equity_positions: asNumber(row.equity_positions),
     roe_pct: pct(asNumber(row.roe_aggregate)),
     earnings_yield_pct: pct(asNumber(row.earnings_yield_aggregate)),
+    shareholder_yield_pct: pct(asNumber(row.net_shareholder_yield_aggregate)),
     dividend_yield_pct: pct(asNumber(row.dividend_yield_aggregate)),
-    shareholder_yield_pct: pct(asNumber(row.gross_shareholder_yield_aggregate)),
+    buyback_yield_pct: pct(asNumber(row.net_buyback_yield_aggregate)),
     clean_coverage_pct: asNumber(row.clean_coverage_pct),
     composition_date: asString(row.composition_date),
     has_metrics: row.metric_id != null,
@@ -156,7 +161,7 @@ export function listEtfHoldings(ticker: string, limit: number | null = 10): Hold
   let sql = `
     SELECT h.position, a.canonical_name AS company_name, COALESCE(af.sector, a.sector) AS sector,
       h.country, h.weight_normalized, af.roe, af.earnings_yield, af.dividend_yield,
-      af.gross_shareholder_yield, af.quality, af.roic_symbol
+      af.net_shareholder_yield, af.net_buyback_yield, af.quality, af.roic_symbol
     FROM holdings h
     JOIN composition_snapshots cs ON cs.snapshot_id = h.snapshot_id
     JOIN etfs e ON e.etf_id = cs.etf_id
@@ -182,8 +187,9 @@ export function listEtfHoldings(ticker: string, limit: number | null = 10): Hold
       row.weight_normalized != null ? Math.round(Number(row.weight_normalized) * 100) / 100 : null,
     roe_pct: pct(asNumber(row.roe)),
     earnings_yield_pct: pct(asNumber(row.earnings_yield)),
+    shareholder_yield_pct: pct(asNumber(row.net_shareholder_yield)),
     dividend_yield_pct: pct(asNumber(row.dividend_yield)),
-    shareholder_yield_pct: pct(asNumber(row.gross_shareholder_yield)),
+    buyback_yield_pct: pct(asNumber(row.net_buyback_yield)),
     quality: asString(row.quality),
     roic_symbol: asString(row.roic_symbol),
   }));
@@ -201,7 +207,7 @@ export function listAssets(options: {
   let sql = `
     SELECT a.asset_id, a.canonical_name AS company_name, a.country,
       COALESCE(af.sector, a.sector) AS sector, af.roe, af.earnings_yield, af.dividend_yield,
-      af.gross_shareholder_yield, af.quality, af.roic_symbol,
+      af.net_shareholder_yield, af.net_buyback_yield, af.quality, af.roic_symbol,
       (SELECT COUNT(DISTINCT cs.etf_id) FROM holdings h2
         JOIN composition_snapshots cs ON cs.snapshot_id = h2.snapshot_id
         WHERE h2.asset_id = a.asset_id AND h2.included_in_equity_analysis = 1) AS etf_count
@@ -249,8 +255,9 @@ export function listAssets(options: {
     sector: asString(row.sector),
     roe_pct: pct(asNumber(row.roe)),
     earnings_yield_pct: pct(asNumber(row.earnings_yield)),
+    shareholder_yield_pct: pct(asNumber(row.net_shareholder_yield)),
     dividend_yield_pct: pct(asNumber(row.dividend_yield)),
-    shareholder_yield_pct: pct(asNumber(row.gross_shareholder_yield)),
+    buyback_yield_pct: pct(asNumber(row.net_buyback_yield)),
     quality: asString(row.quality),
     roic_symbol: asString(row.roic_symbol),
     etf_count: Number(row.etf_count ?? 0),

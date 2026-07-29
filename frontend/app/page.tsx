@@ -12,7 +12,8 @@ export default function HomePage() {
       <div>
         <h2 className="text-2xl font-semibold text-slate-900">Resumo dos ETFs</h2>
         <p className="mt-1 text-slate-600">
-          Compare ROE, earnings yield e dividend yield dos ETFs do universo curado.
+          Compare shareholder yield líquido, dividend yield e buyback yield dos ETFs
+          com cobertura ok.
         </p>
       </div>
       <EtfListClient initialEtfs={etfs} regions={regions} />

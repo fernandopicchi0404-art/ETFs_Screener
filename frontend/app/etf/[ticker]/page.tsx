@@ -43,15 +43,25 @@ export default async function EtfDetailPage({ params }: Props) {
       </div>
 
       {etf.has_metrics ? (
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <MetricCard label="ROE agregado" value={formatPct(etf.roe_pct)} />
-          <MetricCard label="Earnings yield" value={formatPct(etf.earnings_yield_pct)} />
-          <MetricCard label="Dividend yield" value={formatPct(etf.dividend_yield_pct)} />
-          <MetricCard
-            label="Shareholder yield"
-            value={formatPct(etf.shareholder_yield_pct)}
-            hint={`Cobertura limpa: ${formatPct(etf.clean_coverage_pct, 0)}`}
-          />
+        <div className="space-y-4">
+          {/* Shareholder yield líquido em destaque; dividend e buyback líquido ao lado. */}
+          <div className="grid gap-4 md:grid-cols-3">
+            <MetricCard
+              label="Shareholder yield"
+              value={formatPct(etf.shareholder_yield_pct)}
+              hint={`Líquido · Cobertura: ${formatPct(etf.clean_coverage_pct, 0)}`}
+            />
+            <MetricCard label="Dividend yield" value={formatPct(etf.dividend_yield_pct)} />
+            <MetricCard
+              label="Buyback yield"
+              value={formatPct(etf.buyback_yield_pct)}
+              hint="Recompra líquida"
+            />
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            <MetricCard label="ROE agregado" value={formatPct(etf.roe_pct)} />
+            <MetricCard label="Earnings yield" value={formatPct(etf.earnings_yield_pct)} />
+          </div>
         </div>
       ) : (
         <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-amber-900">

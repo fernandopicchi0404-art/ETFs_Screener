@@ -40,7 +40,8 @@ def list_etf_summaries(
             m.roe_aggregate,
             m.earnings_yield_aggregate,
             m.dividend_yield_aggregate,
-            m.gross_shareholder_yield_aggregate,
+            m.net_shareholder_yield_aggregate,
+            m.net_buyback_yield_aggregate,
             m.clean_coverage_pct,
             m.composition_date,
             m.calculated_at,
@@ -75,7 +76,9 @@ def list_etf_summaries(
         "equity_positions": "m.equity_positions",
         "roe": "m.roe_aggregate",
         "earnings_yield": "m.earnings_yield_aggregate",
+        "shareholder_yield": "m.net_shareholder_yield_aggregate",
         "dividend_yield": "m.dividend_yield_aggregate",
+        "buyback_yield": "m.net_buyback_yield_aggregate",
         "coverage": "m.clean_coverage_pct",
     }
     sort_col = allowed_sort.get(sort_by, "e.ticker")
@@ -88,8 +91,9 @@ def list_etf_summaries(
         item = dict(row)
         item["roe_pct"] = _pct(row["roe_aggregate"])
         item["earnings_yield_pct"] = _pct(row["earnings_yield_aggregate"])
+        item["shareholder_yield_pct"] = _pct(row["net_shareholder_yield_aggregate"])
         item["dividend_yield_pct"] = _pct(row["dividend_yield_aggregate"])
-        item["shareholder_yield_pct"] = _pct(row["gross_shareholder_yield_aggregate"])
+        item["buyback_yield_pct"] = _pct(row["net_buyback_yield_aggregate"])
         item["has_metrics"] = bool(row["has_metrics"])
         result.append(item)
     return result
@@ -125,8 +129,9 @@ def get_etf_detail(db: Database, ticker: str) -> dict[str, Any] | None:
     item = dict(row)
     item["roe_pct"] = _pct(item.get("roe_aggregate"))
     item["earnings_yield_pct"] = _pct(item.get("earnings_yield_aggregate"))
+    item["shareholder_yield_pct"] = _pct(item.get("net_shareholder_yield_aggregate"))
     item["dividend_yield_pct"] = _pct(item.get("dividend_yield_aggregate"))
-    item["shareholder_yield_pct"] = _pct(item.get("gross_shareholder_yield_aggregate"))
+    item["buyback_yield_pct"] = _pct(item.get("net_buyback_yield_aggregate"))
     item["gross_buyback_yield_pct"] = _pct(item.get("gross_buyback_yield_aggregate"))
     item["net_buyback_yield_pct"] = _pct(item.get("net_buyback_yield_aggregate"))
     item["equity_weight_pct"] = item.get("equity_weight_original_pct")
@@ -155,7 +160,8 @@ def list_etf_holdings(
             af.roe,
             af.earnings_yield,
             af.dividend_yield,
-            af.gross_shareholder_yield,
+            af.net_shareholder_yield,
+            af.net_buyback_yield,
             af.quality,
             af.roic_symbol
         FROM holdings h
@@ -184,8 +190,9 @@ def list_etf_holdings(
         item["weight_pct"] = round(row["weight_normalized"], 2) if row["weight_normalized"] is not None else None
         item["roe_pct"] = _pct(row["roe"])
         item["earnings_yield_pct"] = _pct(row["earnings_yield"])
+        item["shareholder_yield_pct"] = _pct(row["net_shareholder_yield"])
         item["dividend_yield_pct"] = _pct(row["dividend_yield"])
-        item["shareholder_yield_pct"] = _pct(row["gross_shareholder_yield"])
+        item["buyback_yield_pct"] = _pct(row["net_buyback_yield"])
         result.append(item)
     return result
 
@@ -209,7 +216,8 @@ def list_assets(
             af.roe,
             af.earnings_yield,
             af.dividend_yield,
-            af.gross_shareholder_yield,
+            af.net_shareholder_yield,
+            af.net_buyback_yield,
             af.quality,
             af.roic_symbol,
             (
@@ -257,8 +265,9 @@ def list_assets(
         item = dict(row)
         item["roe_pct"] = _pct(row["roe"])
         item["earnings_yield_pct"] = _pct(row["earnings_yield"])
+        item["shareholder_yield_pct"] = _pct(row["net_shareholder_yield"])
         item["dividend_yield_pct"] = _pct(row["dividend_yield"])
-        item["shareholder_yield_pct"] = _pct(row["gross_shareholder_yield"])
+        item["buyback_yield_pct"] = _pct(row["net_buyback_yield"])
         result.append(item)
     return result
 

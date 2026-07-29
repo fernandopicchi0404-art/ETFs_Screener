@@ -39,7 +39,9 @@ export default function EtfListClient({ initialEtfs, regions }: Props) {
         if (sortBy === "equity_positions") return row.equity_positions ?? -1;
         if (sortBy === "roe") return row.roe_pct ?? -1;
         if (sortBy === "earnings_yield") return row.earnings_yield_pct ?? -1;
+        if (sortBy === "shareholder_yield") return row.shareholder_yield_pct ?? -1;
         if (sortBy === "dividend_yield") return row.dividend_yield_pct ?? -1;
+        if (sortBy === "buyback_yield") return row.buyback_yield_pct ?? -1;
         if (sortBy === "coverage") return row.clean_coverage_pct ?? -1;
         return row.ticker;
       };
@@ -87,11 +89,25 @@ export default function EtfListClient({ initialEtfs, regions }: Props) {
       render: (row) => formatPct(row.earnings_yield_pct),
     },
     {
+      key: "shareholder_yield",
+      label: "Shareholder Yield",
+      sortable: true,
+      align: "right",
+      render: (row) => formatPct(row.shareholder_yield_pct),
+    },
+    {
       key: "dividend_yield",
       label: "Dividend Yield",
       sortable: true,
       align: "right",
       render: (row) => formatPct(row.dividend_yield_pct),
+    },
+    {
+      key: "buyback_yield",
+      label: "Buyback Yield",
+      sortable: true,
+      align: "right",
+      render: (row) => formatPct(row.buyback_yield_pct),
     },
     {
       key: "coverage",

@@ -38,10 +38,22 @@ const columns: Column<HoldingItem>[] = [
     render: (row) => formatPct(row.earnings_yield_pct),
   },
   {
+    key: "shareholder_yield_pct",
+    label: "Shareholder Yield",
+    align: "right",
+    render: (row) => formatPct(row.shareholder_yield_pct),
+  },
+  {
     key: "dividend_yield_pct",
     label: "Dividend Yield",
     align: "right",
     render: (row) => formatPct(row.dividend_yield_pct),
+  },
+  {
+    key: "buyback_yield_pct",
+    label: "Buyback Yield",
+    align: "right",
+    render: (row) => formatPct(row.buyback_yield_pct),
   },
   {
     key: "quality",

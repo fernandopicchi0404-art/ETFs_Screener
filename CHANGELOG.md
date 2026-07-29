@@ -6,6 +6,9 @@ Registro das mudanças relevantes do repositório.
 
 ### Alterado
 
+- **Shareholder yield no painel passou a ser o líquido** (dividendo + recompra líquida),
+  não mais o bruto. Na ficha do ETF: shareholder yield em destaque, com dividend yield
+  e buyback yield (líquido) ao lado; ROE e earnings yield abaixo.
 - **Site só mostra ETFs com cobertura limpa ≥ 70%** (`MIN_SITE_COVERAGE_PCT`):
   lista e ficha escondem ETFs sem métricas ou com cobertura fraca; o pipeline
   continua processando esses tickers normalmente.

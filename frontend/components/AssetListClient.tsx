@@ -33,7 +33,9 @@ export default function AssetListClient({ initialAssets, sectors }: Props) {
         if (sortBy === "sector") return row.sector ?? "";
         if (sortBy === "roe") return row.roe_pct ?? -1;
         if (sortBy === "earnings_yield") return row.earnings_yield_pct ?? -1;
+        if (sortBy === "shareholder_yield") return row.shareholder_yield_pct ?? -1;
         if (sortBy === "dividend_yield") return row.dividend_yield_pct ?? -1;
+        if (sortBy === "buyback_yield") return row.buyback_yield_pct ?? -1;
         if (sortBy === "etf_count") return row.etf_count;
         return row.company_name;
       };
@@ -74,6 +76,13 @@ export default function AssetListClient({ initialAssets, sectors }: Props) {
       render: (row) => formatPct(row.earnings_yield_pct),
     },
     {
+      key: "shareholder_yield",
+      label: "Shareholder Yield",
+      sortable: true,
+      align: "right",
+      render: (row) => formatPct(row.shareholder_yield_pct),
+    },
+    {
       key: "dividend_yield",
       label: "Dividend Yield",
       sortable: true,
@@ -81,10 +90,11 @@ export default function AssetListClient({ initialAssets, sectors }: Props) {
       render: (row) => formatPct(row.dividend_yield_pct),
     },
     {
-      key: "shareholder_yield_pct",
-      label: "Shareholder Yield",
+      key: "buyback_yield",
+      label: "Buyback Yield",
+      sortable: true,
       align: "right",
-      render: (row) => formatPct(row.shareholder_yield_pct),
+      render: (row) => formatPct(row.buyback_yield_pct),
     },
     {
       key: "etf_count",
