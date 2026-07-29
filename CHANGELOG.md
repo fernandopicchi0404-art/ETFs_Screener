@@ -11,6 +11,9 @@ Registro das mudanças relevantes do repositório.
   continua processando esses tickers normalmente.
 - **Ficha do ETF: expandir ativos de 50 em 50** após os 10 iniciais
   (`EtfHoldingsTable` + `/api/etfs/.../holdings?limit=`).
+- **Banco do painel mesclado**: métricas/composições dos ETFs MSCI/iShares e Schwab
+  (EWT, KSA, EWY, SCHD, EZA, EWQ, EWZ, EWW, SCHY, EWG) restauradas junto com os
+  Vanguard da rodada de cobertura — a sobrescrita anterior tinha removido esses dados.
 
 ### Adicionado
 
