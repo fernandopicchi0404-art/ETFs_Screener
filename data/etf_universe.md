@@ -44,7 +44,7 @@ A lista expandida (100 ETFs) ficou em `data/etf_universe_full.json` para consult
 
 **Sem composição SEC — reativados via Vanguard API (jul/2026):** VT, VXUS, VEA, VWO, VGK, VPL, VTI, VOO, VYMI, VSS
 
-**Ainda sem composição (SEC falhou; próximo: iShares CSV):** EZU, EWJ, FNDF
+**Ainda sem composição (próximo: FNDF / Schwab ou SEC):** FNDF
 
 **Cobertura de fundamentos baixa (8):** ILF, EWC, EPOL, AAXJ, EWL, EWU, EWA, INDA
 

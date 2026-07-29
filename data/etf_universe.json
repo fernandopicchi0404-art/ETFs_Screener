@@ -69,8 +69,7 @@
       "issuer": "iShares",
       "index": "MSCI EMU",
       "priority": "P1",
-      "status": "paused",
-      "pause_reason": "sem_composicao_sec"
+      "status": "active"
     },
     {
       "ticker": "VPL",
@@ -244,8 +243,7 @@
       "issuer": "iShares",
       "index": "MSCI Japan",
       "priority": "P1",
-      "status": "paused",
-      "pause_reason": "sem_composicao_sec"
+      "status": "active"
     },
     {
       "ticker": "EWA",

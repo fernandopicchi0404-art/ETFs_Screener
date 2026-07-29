@@ -27,7 +27,7 @@ def main() -> int:
     parser.add_argument("--limit", type=int, help="Limita quantidade de ETFs no lote.")
     parser.add_argument(
         "--source",
-        choices=["auto", "vanguard_api", "sec_nport"],
+        choices=["auto", "vanguard_api", "ishares_csv", "sec_nport"],
         default="auto",
         help="Força uma fonte (padrão: auto pelo catálogo holdings_sources.json).",
     )

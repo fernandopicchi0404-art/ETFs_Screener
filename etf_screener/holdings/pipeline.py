@@ -10,6 +10,7 @@ from etf_screener.database.db import Database
 from etf_screener.export.csv_writer import HOLDING_FIELDS, write_csv
 from etf_screener.holdings.asset_registry import link_holdings_to_assets
 from etf_screener.holdings.composition import CompositionPayload
+from etf_screener.holdings.ishares_csv import ISharesHoldingsError, fetch_ishares_composition
 from etf_screener.holdings.sec_discovery import find_latest_nport_filing
 from etf_screener.holdings.sec_fetch import download_nport_xml
 from etf_screener.holdings.sec_nport import normalize_equity_weights, parse_nport_holdings
@@ -69,9 +70,11 @@ def _fetch_composition(
     ticker = etf_row["ticker"]
     if source == "vanguard_api":
         return fetch_vanguard_composition(ticker)
+    if source == "ishares_csv":
+        return fetch_ishares_composition(ticker)
     if source == "sec_nport":
         return _fetch_sec_composition(etf_row)
-    # Adapters futuros (iShares/SPDR) entram aqui sem mudar o restante do pipeline.
+    # Adapters futuros (SPDR) entram aqui sem mudar o restante do pipeline.
     raise ValueError(f"Fonte de composição não implementada: {source}")
 
 
@@ -218,6 +221,9 @@ def extract_etf_holdings(
         try:
             payload = _fetch_composition(etf_row, candidate)
         except VanguardHoldingsError as exc:
+            errors.append(f"{candidate}: {exc}")
+            continue
+        except ISharesHoldingsError as exc:
             errors.append(f"{candidate}: {exc}")
             continue
         except ValueError as exc:
