@@ -2,7 +2,7 @@ import Link from "next/link";
 import EtfHoldingsTable from "@/components/EtfHoldingsTable";
 import { MetricCard } from "@/components/MetricCard";
 import { getEtfDetail, listEtfHoldings } from "@/lib/queries";
-import { formatPct, regionLabel } from "@/lib/format";
+import { formatPct, MIN_SITE_COVERAGE_PCT, regionLabel } from "@/lib/format";
 import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
@@ -16,8 +16,11 @@ export default async function EtfDetailPage({ params }: Props) {
   const normalized = ticker.toUpperCase();
   const etf = getEtfDetail(normalized);
   if (!etf) notFound();
+  // Esconde fichas com cobertura abaixo do mínimo do site.
+  if ((etf.clean_coverage_pct ?? 0) < MIN_SITE_COVERAGE_PCT) notFound();
 
   const holdings = listEtfHoldings(normalized, 10);
+  const totalCount = etf.equity_positions ?? holdings.length;
 
   return (
     <div className="space-y-6">
@@ -56,10 +59,11 @@ export default async function EtfDetailPage({ params }: Props) {
         </div>
       )}
 
-      <div>
-        <h3 className="mb-3 text-lg font-semibold text-slate-900">Top 10 ativos</h3>
-        <EtfHoldingsTable holdings={holdings} />
-      </div>
+      <EtfHoldingsTable
+        ticker={normalized}
+        initialHoldings={holdings}
+        totalCount={totalCount}
+      />
     </div>
   );
 }

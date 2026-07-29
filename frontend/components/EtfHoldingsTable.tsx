@@ -1,11 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import DataTable, { Column } from "@/components/DataTable";
-import { HoldingItem } from "@/lib/api";
+import { getHoldings, HoldingItem } from "@/lib/api";
 import { formatPct, qualityBadge } from "@/lib/format";
 
+const INITIAL_LIMIT = 10;
+const EXPAND_STEP = 50;
+
 interface Props {
-  holdings: HoldingItem[];
+  ticker: string;
+  initialHoldings: HoldingItem[];
+  totalCount: number;
 }
 
 const columns: Column<HoldingItem>[] = [
@@ -48,12 +54,56 @@ const columns: Column<HoldingItem>[] = [
   },
 ];
 
-export default function EtfHoldingsTable({ holdings }: Props) {
+export default function EtfHoldingsTable({ ticker, initialHoldings, totalCount }: Props) {
+  const [holdings, setHoldings] = useState(initialHoldings);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const [hasMore, setHasMore] = useState(initialHoldings.length < totalCount);
+  const visible = holdings.length;
+
+  async function handleExpand() {
+    const nextLimit = Math.min(visible + EXPAND_STEP, totalCount);
+    setLoading(true);
+    setError(null);
+    try {
+      const next = await getHoldings(ticker, nextLimit);
+      setHoldings(next);
+      // Para se já mostrou tudo ou a API devolveu menos que o pedido.
+      setHasMore(next.length < totalCount && next.length >= nextLimit);
+    } catch {
+      setError("Não foi possível carregar mais ativos. Tente de novo.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const title =
+    totalCount <= INITIAL_LIMIT
+      ? `Ativos (${visible})`
+      : `Ativos (${visible} de ${totalCount})`;
+
   return (
-    <DataTable
-      columns={columns}
-      rows={holdings}
-      emptyMessage="Nenhum ativo com dados para este ETF."
-    />
+    <div>
+      <h3 className="mb-3 text-lg font-semibold text-slate-900">{title}</h3>
+      <DataTable
+        columns={columns}
+        rows={holdings}
+        emptyMessage="Nenhum ativo com dados para este ETF."
+      />
+      {hasMore && (
+        <div className="mt-4 flex flex-col items-start gap-2">
+          <button
+            type="button"
+            onClick={handleExpand}
+            disabled={loading}
+            className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {loading ? "Carregando…" : "Mostrar mais 50"}
+          </button>
+          {error && <p className="text-sm text-rose-600">{error}</p>}
+        </div>
+      )}
+    </div>
   );
 }

@@ -6,6 +6,10 @@ from typing import Any
 
 from etf_screener.database.db import Database
 
+# Cobertura limpa mínima para o ETF aparecer no site (barra amarela ou verde).
+# Manter alinhado com frontend/lib/format.ts → MIN_SITE_COVERAGE_PCT.
+MIN_SITE_COVERAGE_PCT = 70
+
 
 def _pct(value: float | None) -> float | None:
     if value is None:
@@ -49,8 +53,9 @@ def list_etf_summaries(
                 WHERE m2.etf_id = e.etf_id
             )
         WHERE e.status = 'active'
+          AND m.clean_coverage_pct >= ?
     """
-    params: list[Any] = []
+    params: list[Any] = [MIN_SITE_COVERAGE_PCT]
 
     if region:
         sql += " AND e.region = ?"

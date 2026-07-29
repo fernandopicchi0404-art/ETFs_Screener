@@ -4,6 +4,14 @@ Registro das mudanças relevantes do repositório.
 
 ## [Não publicado]
 
+### Alterado
+
+- **Site só mostra ETFs com cobertura limpa ≥ 70%** (`MIN_SITE_COVERAGE_PCT`):
+  lista e ficha escondem ETFs sem métricas ou com cobertura fraca; o pipeline
+  continua processando esses tickers normalmente.
+- **Ficha do ETF: expandir ativos de 50 em 50** após os 10 iniciais
+  (`EtfHoldingsTable` + `/api/etfs/.../holdings?limit=`).
+
 ### Adicionado
 
 - **Cobertura por peso (meta 90%)** na fila de identidade/fundamentos:
