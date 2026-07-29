@@ -6,6 +6,12 @@ Registro das mudanças relevantes do repositório.
 
 ### Adicionado
 
+- **Plano de extração de composições via gestoras** (`PLANO_EXTRACAO_COMPOSICOES.md`):
+  pesquisa de fontes (Vanguard API, iShares CSV, SPDR XLSX), mapeamento dos temas
+  pedidos (All World, VOO, World ex-USA, Europa, Japão, dividendos/valor, REITs) e
+  fases A–E para integrar no pipeline sem abandonar a SEC.
+- **Catálogo de fontes** (`data/catalog/holdings_sources.json`) com fonte preferencial
+  por ticker e candidatos de expansão por tema.
 - **Painel web (prova de conceito)** com API REST e front-end Next.js:
   - Tabelas `asset_fundamentals` e `etf_consolidated_metrics` no SQLite.
   - Scripts `seed_schy_pilot.py`, `calculate_etf_metrics.py` e `run_api.py`.

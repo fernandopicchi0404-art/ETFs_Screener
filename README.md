@@ -12,6 +12,7 @@ agregadas.
 - **Estudo teórico:** [`estudo/00-mapa-e-tese-central.md`](estudo/00-mapa-e-tese-central.md)
 - **Como usar tudo:** [`COMO_USAR.md`](COMO_USAR.md)
 - **Plano do piloto SCHY:** [`PLANO_PROJETO.md`](PLANO_PROJETO.md)
+- **Plano de composições (gestoras + SEC):** [`PLANO_EXTRACAO_COMPOSICOES.md`](PLANO_EXTRACAO_COMPOSICOES.md)
 - **Formatos de saída:** [`FORMATOS_SAIDA.md`](FORMATOS_SAIDA.md)
 
 ## A pergunta que este material responde

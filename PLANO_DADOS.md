@@ -81,7 +81,10 @@ python3 scripts/update_holdings.py --etf SCHY --force
 - ETFs sem N-PORT encontrado ficam com status `not_found` no resumo (ex.: gestoras sem
   CIK mapeado). Ajuste em `data/catalog/sec_issuer_defaults.json`.
 - Gestoras com muitos fundos (iShares) usam busca por nome além do CIK.
-- Fundamentos e preços ainda não são coletados nesta fase.
+- **Vanguard e alguns iShares (EWJ, EZU) não saem pela SEC hoje.** O plano para
+  complementar com CSV/API das gestoras está em
+  [`PLANO_EXTRACAO_COMPOSICOES.md`](PLANO_EXTRACAO_COMPOSICOES.md) e no catálogo
+  `data/catalog/holdings_sources.json`.
 
 ## Identificação confiável dos ativos antes da ROIC
 
