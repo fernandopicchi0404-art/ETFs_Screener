@@ -6,6 +6,7 @@ from typing import Any
 
 from etf_screener.models import CompanyFundamentals
 from etf_screener.metrics.fundamentals import extract_fundamentals
+from etf_screener.holdings.coverage import asset_ids_for_weight_coverage
 from etf_screener.roic.client import RoicClient
 from etf_screener.roic.symbols import resolve_fetch_symbol, roic_symbol_path
 from etf_screener.roic.identity_resolver import APPROVED_STATUSES
@@ -25,10 +26,14 @@ def _now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
 
-def list_verified_assets(db: Database, priority: str = "P1") -> list[AssetWorkItem]:
+def list_verified_assets(
+    db: Database,
+    priority: str = "P1",
+    tickers: list[str] | None = None,
+    coverage_target: float | None = None,
+) -> list[AssetWorkItem]:
     placeholders = ",".join("?" for _ in APPROVED_STATUSES)
-    rows = db.fetchall(
-        f"""
+    sql = f"""
         SELECT
             a.asset_id,
             a.canonical_name,
@@ -50,12 +55,18 @@ def list_verified_assets(db: Database, priority: str = "P1") -> list[AssetWorkIt
               FROM composition_snapshots cs2
               WHERE cs2.etf_id = e.etf_id
           )
+    """
+    params: list[Any] = [priority, *APPROVED_STATUSES]
+    if tickers:
+        ticker_ph = ",".join("?" for _ in tickers)
+        sql += f" AND e.ticker IN ({ticker_ph})"
+        params.extend(t.upper() for t in tickers)
+    sql += """
         GROUP BY a.asset_id
         ORDER BY max_weight DESC, a.canonical_name
-        """,
-        (priority, *APPROVED_STATUSES),
-    )
-    return [
+    """
+    rows = db.fetchall(sql, tuple(params))
+    items = [
         AssetWorkItem(
             asset_id=int(row["asset_id"]),
             canonical_name=row["canonical_name"],
@@ -66,10 +77,26 @@ def list_verified_assets(db: Database, priority: str = "P1") -> list[AssetWorkIt
         )
         for row in rows
     ]
+    if coverage_target is None:
+        return items
+    allowed = asset_ids_for_weight_coverage(
+        db,
+        priority=priority,
+        tickers=tickers,
+        coverage_target=coverage_target,
+    )
+    return [item for item in items if item.asset_id in allowed]
 
 
-def pending_verified_fetches(db: Database, priority: str = "P1") -> list[AssetWorkItem]:
-    items = list_verified_assets(db, priority=priority)
+def pending_verified_fetches(
+    db: Database,
+    priority: str = "P1",
+    tickers: list[str] | None = None,
+    coverage_target: float | None = None,
+) -> list[AssetWorkItem]:
+    items = list_verified_assets(
+        db, priority=priority, tickers=tickers, coverage_target=coverage_target
+    )
     done = {
         int(row["asset_id"])
         for row in db.fetchall(

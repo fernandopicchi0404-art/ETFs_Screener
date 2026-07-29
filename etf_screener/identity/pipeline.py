@@ -7,6 +7,7 @@ from typing import Any
 
 from etf_screener.config import EXPORTS_DIR, METHODOLOGY_VERSION, RUNS_DIR
 from etf_screener.database.db import Database
+from etf_screener.holdings.coverage import asset_ids_for_weight_coverage, filter_rows_by_asset_ids
 from etf_screener.roic.auth import load_roic_api_key
 from etf_screener.roic.client import RoicClient
 from etf_screener.roic.identity_resolver import APPROVED_STATUSES, IdentityResult, resolve_asset_identity
@@ -16,11 +17,12 @@ def _now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
 
-def list_assets_for_identity(db: Database, priority: str = "P1") -> list[dict[str, Any]]:
-    return [
-        dict(row)
-        for row in db.fetchall(
-            """
+def list_assets_for_identity(
+    db: Database,
+    priority: str = "P1",
+    tickers: list[str] | None = None,
+) -> list[dict[str, Any]]:
+    sql = """
             SELECT
                 a.asset_id,
                 a.canonical_name,
@@ -41,15 +43,25 @@ def list_assets_for_identity(db: Database, priority: str = "P1") -> list[dict[st
                   FROM composition_snapshots cs2
                   WHERE cs2.etf_id = e.etf_id
               )
+    """
+    params: list[Any] = [priority]
+    if tickers:
+        placeholders = ",".join("?" for _ in tickers)
+        sql += f" AND e.ticker IN ({placeholders})"
+        params.extend(t.upper() for t in tickers)
+    sql += """
             GROUP BY a.asset_id
             ORDER BY max_weight DESC, a.canonical_name
-            """,
-            (priority,),
-        )
-    ]
+    """
+    return [dict(row) for row in db.fetchall(sql, tuple(params))]
 
 
-def pending_identity_assets(db: Database, priority: str = "P1") -> list[dict[str, Any]]:
+def pending_identity_assets(
+    db: Database,
+    priority: str = "P1",
+    tickers: list[str] | None = None,
+    coverage_target: float | None = None,
+) -> list[dict[str, Any]]:
     approved = {
         int(row["asset_id"])
         for row in db.fetchall(
@@ -60,10 +72,28 @@ def pending_identity_assets(db: Database, priority: str = "P1") -> list[dict[str
             tuple(APPROVED_STATUSES),
         )
     }
-    return [row for row in list_assets_for_identity(db, priority) if int(row["asset_id"]) not in approved]
+    rows = [
+        row
+        for row in list_assets_for_identity(db, priority, tickers=tickers)
+        if int(row["asset_id"]) not in approved
+    ]
+    if coverage_target is None:
+        return rows
+    allowed = asset_ids_for_weight_coverage(
+        db,
+        priority=priority,
+        tickers=tickers,
+        coverage_target=coverage_target,
+    )
+    return filter_rows_by_asset_ids(rows, allowed)
 
 
-def excluded_identity_assets(db: Database, priority: str = "P1") -> list[dict[str, Any]]:
+def excluded_identity_assets(
+    db: Database,
+    priority: str = "P1",
+    tickers: list[str] | None = None,
+    coverage_target: float | None = None,
+) -> list[dict[str, Any]]:
     excluded_ids = {
         int(row["asset_id"])
         for row in db.fetchall(
@@ -73,11 +103,20 @@ def excluded_identity_assets(db: Database, priority: str = "P1") -> list[dict[st
             """
         )
     }
-    return [
+    rows = [
         row
-        for row in list_assets_for_identity(db, priority)
+        for row in list_assets_for_identity(db, priority, tickers=tickers)
         if int(row["asset_id"]) in excluded_ids
     ]
+    if coverage_target is None:
+        return rows
+    allowed = asset_ids_for_weight_coverage(
+        db,
+        priority=priority,
+        tickers=tickers,
+        coverage_target=coverage_target,
+    )
+    return filter_rows_by_asset_ids(rows, allowed)
 
 
 def save_identity(conn, asset_id: int, result: IdentityResult, country: str | None = None) -> None:
@@ -136,6 +175,8 @@ def run_identity_resolution(
     limit: int | None = None,
     reset: bool = False,
     retry_excluded: bool = False,
+    tickers: list[str] | None = None,
+    coverage_target: float | None = 0.90,
 ) -> dict[str, Any]:
     if reset:
         db.execute("DELETE FROM asset_identities")
@@ -144,9 +185,13 @@ def run_identity_resolution(
     api_key = load_roic_api_key()
     client = RoicClient(api_key)
     if retry_excluded:
-        queue = excluded_identity_assets(db, priority)
+        queue = excluded_identity_assets(
+            db, priority, tickers=tickers, coverage_target=coverage_target
+        )
     else:
-        queue = pending_identity_assets(db, priority)
+        queue = pending_identity_assets(
+            db, priority, tickers=tickers, coverage_target=coverage_target
+        )
     if limit is not None:
         queue = queue[:limit]
 
@@ -158,6 +203,8 @@ def run_identity_resolution(
 
     summary: dict[str, Any] = {
         "priority": priority,
+        "tickers": tickers,
+        "coverage_target": coverage_target,
         "started_at": _now(),
         "time_limit_seconds": time_limit_seconds,
         "queue_size": len(queue),

@@ -17,6 +17,7 @@ from etf_screener.database.db import Database
 from etf_screener.fundamentals.fetch_worker import (
     _now,
     fetch_asset_fundamentals,
+    list_verified_assets,
     pending_fetch_retries,
     pending_verified_fetches,
     record_fetch,
@@ -29,6 +30,13 @@ from etf_screener.roic.client import RoicClient
 def main() -> int:
     parser = argparse.ArgumentParser(description="Levanta fundamentos ROIC para ativos P1.")
     parser.add_argument("--priority", default="P1", help="Prioridade do universo (padrão: P1).")
+    parser.add_argument("--etf", action="append", help="Limita a ticker(s), ex.: --etf VOO")
+    parser.add_argument(
+        "--coverage-target",
+        type=float,
+        default=0.90,
+        help="Só ativos da faixa de cobertura de peso (padrão 0.90). Use 0 para todos.",
+    )
     parser.add_argument(
         "--time-limit-seconds",
         type=int,
@@ -46,13 +54,30 @@ def main() -> int:
     api_key = load_roic_api_key()
     db = Database()
     db.init_schema()
+    coverage = None if args.coverage_target == 0 else args.coverage_target
 
     if args.retry_errors:
         queue = pending_fetch_retries(db, priority=args.priority)
+        if args.etf or coverage is not None:
+            allowed = {
+                item.asset_id
+                for item in list_verified_assets(
+                    db,
+                    priority=args.priority,
+                    tickers=args.etf,
+                    coverage_target=coverage,
+                )
+            }
+            queue = [item for item in queue if item.asset_id in allowed]
     else:
-        queue = pending_verified_fetches(db, priority=args.priority)
+        queue = pending_verified_fetches(
+            db,
+            priority=args.priority,
+            tickers=args.etf,
+            coverage_target=coverage,
+        )
     if args.limit is not None:
-        queue = queue[:args.limit]
+        queue = queue[: args.limit]
 
     if not queue:
         print("Nenhum ativo verificado pendente para esta prioridade.")
@@ -69,6 +94,8 @@ def main() -> int:
     client = RoicClient(api_key)
     summary = {
         "priority": args.priority,
+        "tickers": args.etf,
+        "coverage_target": coverage,
         "mode": "verified_only",
         "started_at": _now(),
         "time_limit_seconds": args.time_limit_seconds,
@@ -84,7 +111,7 @@ def main() -> int:
 
     print(
         f"Iniciando fundamentos {args.priority} (somente verificados): {len(queue)} ativos, "
-        f"limite {args.time_limit_seconds}s (plano gratuito).",
+        f"cobertura={coverage}, limite {args.time_limit_seconds}s.",
         flush=True,
     )
 
