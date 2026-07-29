@@ -12,6 +12,8 @@ Registro das mudanças relevantes do repositório.
     `--coverage-target` (padrão 0.90) e `--etf`.
 - **Semeadura por ISIN** (`scripts/seed_identities_from_db.py`) a partir do SQLite do
   dashboard, para reaproveitar identidades/fundamentos já resolvidos sem gastar cota ROIC.
+- **Rodada ROIC nos ETFs Vanguard reativados** (faixa 90%): identidades + fundamentos +
+  métricas consolidadas; banco do dashboard atualizado (`frontend/data/etf_screener.sqlite`).
 - **Adapter Vanguard API** para composição de holdings:
   - `etf_screener/holdings/vanguard_api.py` baixa posições com ISIN/CUSIP/SEDOL.
   - Pipeline escolhe fonte via `holdings_sources.json` (Vanguard → SEC).
