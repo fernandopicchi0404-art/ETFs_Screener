@@ -193,11 +193,11 @@ Para CSV iShares **sem ISIN**: a resolução ROIC usa ticker + bolsa/país (já 
 4. ~~Reativar no `etf_universe.json`~~ — VT, VXUS, VEA, VWO, VGK, VPL, VTI, VOO, VYMI, VSS.
 5. Seguir identidade → fundamentos → métricas nos P1 reativados (próximo passo operacional).
 
-### Fase B — iShares onde a SEC falhou + gaps
+### Fase B — iShares onde a SEC falhou + gaps ✅ (EWJ/EZU)
 
-1. Implementar `ishares_csv.py` + tabela `product_id`/`slug` por ticker.
-2. Prioridade: **EWJ**, **EZU**, e qualquer active ainda sem snapshot (EFV, FEZ, QQQ se necessário).
-3. Reativar EWJ/EZU; rodar identidade/fundamentos.
+1. ~~Implementar `ishares_csv.py` + tabela `product_id`/`slug`~~ — feito.
+2. ~~Prioridade: **EWJ**, **EZU**~~ — extraídos e reativados.
+3. FNDF e outros gaps (EFV/FEZ/QQQ se SEC falhar) ficam para a sequência.
 
 ### Fase C — Expandir o universo (os temas que faltam)
 

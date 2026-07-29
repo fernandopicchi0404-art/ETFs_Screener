@@ -12,6 +12,9 @@ Registro das mudanças relevantes do repositório.
   - Script `update_holdings.py` aceita `--source` e `--include-paused`.
   - Reativados 10 ETFs Vanguard que estavam pausados por falta de N-PORT
     (VT, VXUS, VEA, VWO, VGK, VPL, VTI, VOO, VYMI, VSS).
+- **Adapter iShares CSV** (`latest-holdings.csv`) para EWJ e EZU:
+  - `etf_screener/holdings/ishares_csv.py` com product_id/slug no catálogo.
+  - Reativados EWJ e EZU (antes `sem_composicao_sec`).
 - **Plano de extração de composições via gestoras** (`PLANO_EXTRACAO_COMPOSICOES.md`):
   pesquisa de fontes (Vanguard API, iShares CSV, SPDR XLSX), mapeamento dos temas
   pedidos (All World, VOO, World ex-USA, Europa, Japão, dividendos/valor, REITs) e
