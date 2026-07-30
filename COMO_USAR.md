@@ -281,6 +281,10 @@ Abra `http://localhost:3000`.
 | Detalhe do ETF | `/etf/VOO` | Yields, ROE/EY, projeção de retorno e ativos (10 iniciais; botão para +50) |
 | Todos os ativos | `/ativos` | Empresas em ordem alfabética com métricas |
 
+Nas tabelas largas, **role para baixo e para o lado dentro da própria tabela**
+(a barra lateral fica na base da área visível). O cabeçalho e a primeira coluna
+permanecem visíveis enquanto você navega.
+
 O site **só lista ETFs com cobertura limpa ≥ 70%** (barra amarela ou verde). Os demais
 continuam no banco e no pipeline, mas não aparecem na home nem na ficha até a cobertura
 melhorar.

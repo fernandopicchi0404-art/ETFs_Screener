@@ -4,6 +4,13 @@ Registro das mudanças relevantes do repositório.
 
 ## [Não publicado]
 
+### Corrigido
+
+- **Tabelas do painel cabem na tela**: a área da tabela agora tem altura máxima
+  (rola por dentro) e a barra de rolagem lateral fica sempre à vista — não é mais
+  preciso descer até o fim para arrastar para o lado. Cabeçalho e primeira coluna
+  ficam fixos ao rolar; o conteúdo usa melhor a largura em monitores grandes.
+
 ### Adicionado
 
 - **Projeção de retorno por ETF no painel**: inputs editáveis de inflação (padrão 3%) e

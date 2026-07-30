@@ -8,7 +8,7 @@ const links = [
 export default function Navigation() {
   return (
     <header className="border-b border-slate-200 bg-white">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+      <div className="mx-auto flex max-w-[90rem] items-center justify-between px-4 py-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-wider text-brand-600">
             ETF Screener
