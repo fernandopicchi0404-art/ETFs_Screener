@@ -31,16 +31,26 @@ export default function DataTable<T extends object>({
 }: DataTableProps<T>) {
   const router = useRouter();
 
+  // Altura limitada à área útil da tela: a barra de rolagem lateral fica
+  // sempre à vista, sem precisar descer até o fim da tabela.
   return (
     <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-      <div className="overflow-x-auto">
+      <div className="max-h-[calc(100vh-14rem)] overflow-auto">
         <table className="min-w-full text-sm">
-          <thead className="bg-slate-50 text-left text-slate-600">
+          <thead className="sticky top-0 z-20 bg-slate-50 text-left text-slate-600 shadow-[0_1px_0_0_rgb(226_232_240)]">
             <tr>
-              {columns.map((column) => (
+              {columns.map((column, columnIndex) => (
                 <th
                   key={column.key}
-                  className={`px-4 py-3 font-medium ${column.align === "right" ? "text-right" : ""}`}
+                  className={[
+                    "whitespace-nowrap px-4 py-3 font-medium",
+                    column.align === "right" ? "text-right" : "",
+                    columnIndex === 0
+                      ? "sticky left-0 z-30 bg-slate-50"
+                      : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
                 >
                   {column.sortable && onSort ? (
                     <button
@@ -73,13 +83,21 @@ export default function DataTable<T extends object>({
                 return (
                   <tr
                     key={index}
-                    className={`border-t border-slate-100 ${href ? "cursor-pointer hover:bg-brand-50" : ""}`}
+                    className={`border-t border-slate-100 ${href ? "cursor-pointer hover:bg-brand-50" : ""} group`}
                     onClick={href ? () => router.push(href) : undefined}
                   >
-                    {columns.map((column) => (
+                    {columns.map((column, columnIndex) => (
                       <td
                         key={column.key}
-                        className={`px-4 py-3 text-slate-800 ${column.align === "right" ? "text-right" : ""}`}
+                        className={[
+                          "whitespace-nowrap px-4 py-3 text-slate-800",
+                          column.align === "right" ? "text-right" : "",
+                          columnIndex === 0
+                            ? `sticky left-0 z-10 ${href ? "bg-white group-hover:bg-brand-50" : "bg-white"}`
+                            : "",
+                        ]
+                          .filter(Boolean)
+                          .join(" ")}
                       >
                         {column.render
                           ? column.render(row)
